@@ -1,36 +1,61 @@
-/* StudyMate Web —— 原创视觉系统：暖色编辑风学习工作台
-   颜色：米色底 + 深墨色文字 + 靛蓝主色 + 琥珀强调。无外部字体/CDN 依赖。 */
+/* ai自学通 —— 原创视觉系统：深空科技风
+   颜色：近黑蓝底 + 电光蓝主色 + 青色强调 + 玻璃质感面板。无外部字体/CDN 依赖。 */
 
 :root {
   --font-scale: 1;
-  /* 参考主题：accent2 #F2EFE6 米色纸面、accent1 #D1CCB5 线色、accent5 #374F57 / accent6 #2B2A2F 墨色、高频青绿 #37969B、黄铜 #BAA780 */
-  --bg: #f2efe6;
-  --bg-soft: #f6f0eb;
-  --bg-sunk: #e9e4d5;
-  --ink: #2b2a2f;
-  --ink-soft: #374f57;
-  --ink-muted: #787b6a;
-  --line: #d1ccb5;
-  --line-strong: #a29f7e;
-  --indigo: #37969b;
-  --indigo-soft: #e1ebe8;
-  --indigo-ink: #2c6f73;
-  --amber: #baa780;
-  --amber-soft: #efe7d6;
-  --teal: #50696d;
-  --teal-soft: #e4e9e8;
-  --ok: #3f7a63;
-  --ok-soft: #e2ede6;
-  --warn: #8a6a2f;
-  --warn-soft: #f0e7d3;
-  --bad: #8f4a45;
-  --bad-soft: #f2e2df;
-  --radius-lg: 18px;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 1px 2px rgba(30, 26, 18, 0.06), 0 1px 1px rgba(30, 26, 18, 0.04);
-  --shadow: 0 6px 20px rgba(35, 30, 20, 0.07), 0 1px 2px rgba(35, 30, 20, 0.05);
-  --shadow-lg: 0 18px 45px rgba(30, 25, 15, 0.12);
+
+  /* 设计令牌：整站组件都引用这些变量，因此换这一块即可整体换肤。 */
+  --bg: #070b15;
+  --bg-soft: #0d1424;
+  --bg-sunk: #05080f;
+  --bg-raised: #111a2e;
+
+  --ink: #e9eefc;
+  --ink-soft: #a7b6d6;
+  --ink-muted: #6d7d9e;
+
+  --line: #1b2540;
+  --line-strong: #2c3b5e;
+
+  /* 主色：电光蓝 */
+  --indigo: #4d7cfe;
+  --indigo-soft: #12203f;
+  --indigo-ink: #9cc0ff;
+  /* 强调：青色 */
+  --amber: #22d3ee;
+  --amber-soft: #0a2734;
+  /* 次级：雾蓝 */
+  --teal: #5b6b8c;
+  --teal-soft: #131d31;
+
+  /* 「实心深色块 + 亮字」专用（toast / 跳过链接 / 选中态）。
+     注意：深色主题里 --ink 是**浅色文字**，不能拿它当实心背景，否则白字会糊成一片。 */
+  --solid: #16203a;
+  --solid-hover: #1d2a4b;
+  --solid-ink: #f2f6ff;
+
+  --ok: #34d399;
+  --ok-soft: #06251c;
+  --warn: #fbbf24;
+  --warn-soft: #2a2109;
+  --bad: #fb7185;
+  --bad-soft: #2c1218;
+
+  --radius-lg: 20px;
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 34px 80px rgba(0, 0, 0, 0.62);
+
+  /* 科技感光效：面板描边光、主色渐变、玻璃高光、网格线 */
+  --glow-primary: 0 0 0 1px rgba(77, 124, 254, 0.35), 0 0 34px rgba(77, 124, 254, 0.18);
+  --glow-cyan: 0 0 30px rgba(34, 211, 238, 0.18);
+  --grad-primary: linear-gradient(135deg, #4d7cfe 0%, #22d3ee 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
+  --grid-line: rgba(125, 160, 235, 0.055);
+
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -39,8 +64,9 @@
   --space-6: 32px;
   --space-7: 48px;
   --max-width: 1180px;
-  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
-  --font-serif: "华文中宋", "方正小标宋简体", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", "Iowan Old Style", Palatino, Georgia, "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "HarmonyOS Sans SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  /* 深空主题不使用衬线标题：这里指向无衬线栈，保证所有标题统一成技术感排版 */
+  --font-serif: var(--font-sans);
   --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
 }
 
@@ -89,7 +115,7 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-su
 
 .skip-link {
   position: absolute; left: -999px; top: 0; z-index: 100;
-  background: var(--ink); color: #fff; padding: var(--space-2) var(--space-4); border-radius: 0 0 var(--radius) 0;
+  background: var(--solid); color: var(--solid-ink); padding: var(--space-2) var(--space-4); border-radius: 0 0 var(--radius) 0;
 }
 .skip-link:focus { left: 0; }
 
@@ -183,9 +209,9 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-su
 .field-label { font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); }
 .text-input {
   font: inherit; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
-  background: #fff; color: var(--ink); width: 100%;
+  background: var(--bg-raised); color: var(--ink); width: 100%;
 }
-.text-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(64, 72, 168, 0.15); outline: none; }
+.text-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px rgba(77, 124, 254, 0.22); outline: none; }
 textarea.text-input { resize: vertical; min-height: 84px; }
 .range { width: 100%; accent-color: var(--indigo); }
 .checkbox { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: 0.92rem; }
@@ -277,7 +303,7 @@ textarea.text-input { resize: vertical; min-height: 84px; }
   font: inherit; font-size: 0.86rem; padding: 5px 12px; border-radius: 999px;
   border: 1px solid var(--line-strong); background: transparent; color: var(--ink-soft); cursor: pointer;
 }
-.chip.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip.is-active { background: var(--solid); color: var(--solid-ink); border-color: var(--indigo); }
 .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4); }
 .course-card { display: flex; flex-direction: column; }
 .course-card.accent-indigo { border-top: 4px solid var(--indigo); }
@@ -446,7 +472,7 @@ textarea.text-input { resize: vertical; min-height: 84px; }
 
 /* ---------- 提示条 ---------- */
 .toast-region { position: fixed; right: var(--space-5); bottom: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); z-index: 60; max-width: 90vw; }
-.toast { background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 999px; font-size: 0.88rem; box-shadow: var(--shadow-lg); animation: toast-in 0.2s ease-out; }
+.toast { background: var(--solid); color: var(--solid-ink); padding: 10px 16px; border-radius: 999px; font-size: 0.88rem; box-shadow: var(--shadow-lg), var(--glow-primary); animation: toast-in 0.2s ease-out; }
 .toast-ok { background: var(--ok); }
 .toast-warn { background: var(--amber); }
 .toast-bad { background: var(--bad); }
@@ -494,8 +520,7 @@ textarea.text-input { resize: vertical; min-height: 84px; }
 }
 
 /* ---------- 无障碍与打印 ---------- */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+@media (prefers-reduced-motion: reduce) {  html { scroll-behavior: auto; }
   .orbital-mark { animation: none; }
   .btn:hover, .roadmap-node:hover { transform: none; }
 }
@@ -578,6 +603,142 @@ textarea.text-input { resize: vertical; min-height: 84px; }
   .deck-index { display: none; }
   .deck-bignum { font-size: 3.4rem; }
 }
+
+/* ============================================================================
+   深空科技主题图层
+   —— 只做「表面」的事：画布、玻璃质感、发光线框、渐变、微交互。
+      结构与尺寸仍由上面的既有规则决定，换肤不会把布局弄坏。
+      位置刻意放在打印样式之前，打印时后面的规则优先，不影响「另存为 PDF」。
+   ============================================================================ */
+
+/* ---------- 画布：深空底 + 细网格 + 两处光晕（全部由 CSS 生成，无图片资源） ---------- */
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1200px 640px at 12% -14%, rgba(77, 124, 254, 0.17), transparent 62%),
+    radial-gradient(900px 520px at 92% -8%, rgba(34, 211, 238, 0.12), transparent 58%),
+    radial-gradient(800px 700px at 50% 118%, rgba(77, 124, 254, 0.09), transparent 62%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: auto, auto, auto, 100% 46px, 46px 100%;
+  background-attachment: fixed;
+  color: var(--ink);
+}
+
+::selection { background: rgba(77, 124, 254, 0.38); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 999px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--indigo); }
+
+/* ---------- 顶栏：玻璃拟态 + 发光选中态 ---------- */
+.app-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(7, 11, 21, 0.74);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+}
+.nav-link { border-radius: 999px; transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease; }
+.nav-link:hover { background: rgba(255, 255, 255, 0.05); }
+.nav-link[aria-current="page"] {
+  background: var(--indigo-soft); color: var(--indigo-ink);
+  box-shadow: inset 0 0 0 1px rgba(77, 124, 254, 0.5), 0 0 24px rgba(77, 124, 254, 0.22);
+}
+
+/* ---------- 排版：统一无衬线标题 + 渐变主标题 ---------- */
+h1, h2, h3, .view-head h1 { font-family: var(--font-sans); letter-spacing: -0.022em; }
+.view-head h1 {
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  background-image: linear-gradient(118deg, #ffffff 0%, var(--indigo-ink) 52%, var(--amber) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.view-head .muted, .view-head p { max-width: 72ch; }
+
+/* ---------- 面板 / 卡片：玻璃面 + 发丝描边 + 悬停辉光 ---------- */
+.panel, .card {
+  background-image: var(--grad-surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow), 0 0 34px rgba(77, 124, 254, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+.hero {
+  background-image:
+    radial-gradient(620px 260px at 88% 6%, rgba(34, 211, 238, 0.17), transparent 66%),
+    radial-gradient(540px 300px at 4% 94%, rgba(77, 124, 254, 0.2), transparent 68%),
+    var(--grad-surface);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- 按钮：渐变主按钮 + 描边辉光 ---------- */
+.btn { font-weight: 600; transition: transform 140ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease; }
+.btn-primary {
+  background-image: var(--grad-primary); color: #fff; border-color: transparent;
+  box-shadow: 0 6px 22px rgba(77, 124, 254, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+.btn-primary:hover {
+  background-image: linear-gradient(135deg, #6a92ff 0%, #4ee0f5 100%); color: #fff;
+  box-shadow: 0 10px 30px rgba(77, 124, 254, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.btn-ghost { background: rgba(255, 255, 255, 0.02); }
+.btn-ghost:hover { border-color: var(--indigo); color: var(--ink); box-shadow: 0 0 0 1px rgba(77, 124, 254, 0.35), 0 0 22px rgba(77, 124, 254, 0.16); }
+.btn:focus-visible, .nav-link:focus-visible, .text-input:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--amber); outline-offset: 2px;
+}
+
+/* ---------- 进度 / 状态等细节在深色底上的可读性 ---------- */
+.progress-track { background: var(--bg-sunk); box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.55); }
+.progress-fill { background-image: var(--grad-primary); box-shadow: 0 0 20px rgba(77, 124, 254, 0.38); }
+.panel, .card, .badge, .chip { color: var(--ink); }
+code, pre { font-family: var(--font-mono); }
+pre { background: var(--bg-sunk); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+
+/* ---------- 课件（放映）模式 ---------- */
+.deck-slide-inner { background-image: var(--grad-surface); border-color: var(--line-strong); }
+.deck-label { color: var(--amber); letter-spacing: 0.2em; }
+
+/* ---------- 无障碍：用户开了「减少动画」或系统偏好时，动效全部停掉 ---------- */
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  transition-duration: 0.001ms !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+}
+.reduce-motion .card:hover, .reduce-motion .btn:hover { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+  .card:hover, .btn:hover { transform: none; }
+}
+
+/* ---------- 高级设置：默认折叠，不打扰普通用户 ---------- */
+details.advanced {
+  margin-top: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-sunk);
+  padding: var(--space-2) var(--space-4);
+}
+details.advanced > summary {
+  cursor: pointer;
+  padding: var(--space-2) 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  list-style: none;
+}
+details.advanced > summary::-webkit-details-marker { display: none; }
+details.advanced > summary::before { content: '▸ '; color: var(--indigo-ink); }
+details.advanced[open] > summary::before { content: '▾ '; }
+details.advanced > summary:hover { color: var(--ink); }
+details.advanced[open] { padding-bottom: var(--space-4); }
+details.advanced h3 { margin-top: var(--space-5); }
 
 /* 打印 / 另存为 PDF：每一页独占一张纸 */
 @media print {

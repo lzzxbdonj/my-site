@@ -133,10 +133,10 @@ function authPanel(ctx) {
 
   return h('section', { class: 'panel' },
     h('h2', { text: '账号（可选，GitHub 登录）' }),
-    h('p', { class: 'muted', text: '用 GitHub 账号登录，方便以后把「按量计费的 AI 用量」绑定到你自己的账号上；不登录也能使用课程库、定制课程、视频、测验与学习进度。登录完全由你自己的 Worker 完成，GitHub 的 client secret 只保存在 Worker 机密里。' }),
+    h('p', { class: 'muted', text: '用 GitHub 登录，学习进度与用量就能绑到你自己的账号上。不登录也可以使用课程库、定制课程、视频、测验与学习进度。' }),
     h('p', { class: worker.ok ? `form-status ${auth.status === 'signed-in' ? 'ok' : ''}` : 'form-status', text: worker.ok ? `◆ ${statusText}` : `⚠ ${worker.reason}` }),
     auth.enabled === false
-      ? h('p', { class: 'form-status', text: `⚠ 这个 Worker 还没有配置登录${auth.error ? `：${auth.error}` : '（需要 GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET / AUTH_TOKEN_SECRET）。'}` })
+      ? h('p', { class: 'form-status', text: `⚠ 这个服务还没有开启登录${auth.error ? `：${auth.error}` : '。'}` })
       : null,
     h('div', { class: 'panel-actions' },
       auth.status === 'signed-in'
@@ -155,9 +155,16 @@ function authPanel(ctx) {
       })
     ),
     h('ul', { class: 'privacy-list' },
-      h('li', { text: '登录令牌只保存在这台设备这个浏览器的独立存储键里，导出备份**不会**包含它，也不会用于任何统计或追踪。' }),
-      h('li', { text: '令牌默认 30 天有效；在 Worker 里更换 AUTH_TOKEN_SECRET 可让所有旧令牌立即失效（当前实现是无状态签名，无法单独吊销某一个令牌）。' }),
-      h('li', { text: '前端在 *.github.io、Worker 在 *.workers.dev，两者跨站，因此用 Authorization 头而不是 Cookie 维持登录态。' })
+      h('li', { text: '登录信息只保存在这台设备上，导出备份不会包含它，也不会用于任何统计或追踪。' }),
+      h('li', { text: '登录状态最长保持 30 天，到期后需要重新登录。' })
+    ),
+    h('details', { class: 'advanced' },
+      h('summary', { text: '登录的技术细节' }),
+      h('ul', { class: 'privacy-list' },
+        h('li', { text: '令牌只保存在本机的独立存储键里，不进入主状态对象。' }),
+        h('li', { text: '实现是无状态签名（HMAC-SHA256），因此无法单独吊销某一个令牌；在服务端更换 AUTH_TOKEN_SECRET 可让所有旧令牌立即失效。' }),
+        h('li', { text: '前端与接口分属不同站点时用 Authorization 头而不是 Cookie 维持登录态（跨站 Cookie 不可靠）；若你把它部署到同一个自有域名下，可以改用更安全的同站 Cookie。' })
+      )
     )
   );
 }
@@ -168,6 +175,9 @@ export function settingsView(ctx) {
   const check = validateEndpoint(ai.endpoint);
   const workerCheck = normalizeWorkerUrl(ai.workerUrl || '');
   const keyPresent = Boolean(ctx.secrets?.read?.());
+  // 服务地址可用时，界面上就把这件事说成「已就绪」，把技术字段收进高级设置：
+  // 用户不需要知道什么 Worker、什么接口地址。
+  const aiReady = workerCheck.ok;
 
   return h('div', { class: 'view view-settings' },
     h('header', { class: 'view-head' },
@@ -176,40 +186,51 @@ export function settingsView(ctx) {
     ),
 
     h('section', { class: 'panel' },
-      h('h2', { text: 'AI 通道（可选）' }),
-      h('p', { class: 'muted', text: '本站不提供任何内置 AI 服务，也不伪造 AI 回答。推荐使用代理模式：把 AI 代理 Worker 部署到自己的 Cloudflare 账号，供应商密钥保存在 Worker 机密里，浏览器只填写 Worker 地址、不接触密钥。' }),
-      h('label', { class: 'field' },
-        h('span', { class: 'field-label', text: 'AI 代理 Worker 地址（推荐，支持完整建课与讲解）' }),
-        h('input', { class: 'text-input', attrs: { type: 'url', value: ai.workerUrl || '', placeholder: 'https://studymate-ai-proxy.<你的子域>.workers.dev', 'data-focus-key': 'ai-worker' }, on: { input: (e) => ctx.actions.updateAi({ workerUrl: e.target.value }) } })
-      ),
-      h('p', { class: workerCheck.ok ? 'form-status ok' : 'form-status', text: workerCheck.ok ? `✓ 代理模式可用：${workerCheck.base}` : `未启用代理模式：${workerCheck.reason}` }),
-      h('p', { class: 'muted small', text: '部署方式见仓库中的 worker/README.md（wrangler secret put PROVIDER_API_KEY / IP_SALT，默认额度 60 次/访客/天、200 次/全站/天，可在 Worker 变量中调整）。' }),
-      h('h2', { text: '直连模式（次级，仅用于讲解）' }),
-      h('p', { class: 'muted', text: '浏览器直接调用你的 OpenAI 兼容接口。注意：密钥会暴露给该接口方，且无法限制调用次数；仅建议在本地或自建服务上使用。' }),
-      h('label', { class: 'field' },
-        h('span', { class: 'field-label', text: '接口地址（https，或本机 http://localhost）' }),
-        h('input', { class: 'text-input', attrs: { type: 'url', value: ai.endpoint, placeholder: 'https://api.openai.com', 'data-focus-key': 'ai-endpoint' }, on: { input: (e) => ctx.actions.updateAi({ endpoint: e.target.value }) } })
-      ),
-      h('p', { class: check.ok ? 'form-status ok' : 'form-status', text: check.ok ? '✓ 地址格式可用' : `⚠ ${check.reason}` }),
-      h('label', { class: 'field' },
-        h('span', { class: 'field-label', text: '模型名' }),
-        h('input', { class: 'text-input', attrs: { type: 'text', value: ai.model, placeholder: '例如 gpt-4o-mini / qwen-plus', 'data-focus-key': 'ai-model' }, on: { input: (e) => ctx.actions.updateAi({ model: e.target.value }) } })
-      ),
-      h('label', { class: 'field' },
-        h('span', { class: 'field-label', text: `API 密钥（${keyPresent ? '当前会话已填写' : '未填写'}）` }),
-        h('input', { class: 'text-input', attrs: { type: 'password', placeholder: '只会写入 sessionStorage / 内存，导出备份时被剔除', autocomplete: 'off', 'data-focus-key': 'ai-key' }, on: { change: (e) => ctx.actions.saveSecret(e.target.value) } })
-      ),
-      h('div', { class: 'panel-actions' },
-        h('label', { class: 'checkbox' },
-          h('input', { attrs: { type: 'checkbox' }, checked: ai.enabled, on: { change: (e) => ctx.actions.updateAi({ enabled: e.target.checked }) } }),
-          h('span', { text: '启用直连模式（仅讲解；代理模式下无需开启）' })
+      h('h2', { text: '智能服务' }),
+      h('p', { class: aiReady ? 'form-status ok' : 'form-status', text: aiReady
+        ? `✓ 已就绪，开箱即用（${workerCheck.base}）`
+        : '尚未就绪：需要填写服务地址（见下方「高级设置」）。' }),
+      h('p', { class: 'muted', text: aiReady
+        ? '建课与讲解都已配置好，这一页不需要你做任何设置。密钥保存在服务端，浏览器不接触、也不会上传你的学习数据。'
+        : '本站不内置 AI 服务，也不会伪造回答。若你部署了自己的服务，请在下方高级设置里填入地址。' }),
+
+      h('details', { class: 'advanced' },
+        h('summary', { text: '高级设置（一般不需要动）' }),
+        h('p', { class: 'muted small', text: '只有在你自己部署服务、或需要接自建接口时才会用到下面这些字段。' }),
+        h('label', { class: 'field' },
+          h('span', { class: 'field-label', text: '服务地址（代理模式，支持完整建课与讲解）' }),
+          h('input', { class: 'text-input', attrs: { type: 'url', value: ai.workerUrl || '', placeholder: 'https://studymate-ai-proxy.<你的子域>.workers.dev', 'data-focus-key': 'ai-worker' }, on: { input: (e) => ctx.actions.updateAi({ workerUrl: e.target.value }) } })
         ),
-        h('button', { class: 'btn btn-ghost danger', attrs: { type: 'button' }, on: { click: () => { ctx.actions.saveSecret(''); ctx.actions.toast('已清除当前会话中的密钥'); } }, text: '清除本次会话密钥' })
-      ),
-      h('ul', { class: 'privacy-list' },
-        h('li', { text: '密钥默认只保存在 sessionStorage（关闭标签页即失效），不会写入 localStorage，也不会出现在导出文件里。' }),
-        h('li', { text: '只有你点击「生成讲解」时，才会把这个知识点的标题与摘要发送到你填写的接口。' }),
-        h('li', { text: '注意：浏览器直连第三方接口会暴露密钥给该接口方，请自行评估风险，建议使用限额密钥。' })
+        h('p', { class: workerCheck.ok ? 'form-status ok' : 'form-status', text: workerCheck.ok ? `✓ 代理模式可用：${workerCheck.base}` : `未启用代理模式：${workerCheck.reason}` }),
+        h('p', { class: 'muted small', text: '部署方式见仓库中的 worker/README.md（wrangler secret put PROVIDER_API_KEY / IP_SALT，默认额度 60 次/访客/天、200 次/全站/天，可在 Worker 变量中调整）。' }),
+
+        h('h3', { text: '直连模式（仅用于讲解，不推荐）' }),
+        h('p', { class: 'muted small', text: '浏览器直接调用你的 OpenAI 兼容接口。密钥会暴露给该接口方，且无法限制调用次数；仅建议在本地或自建服务上使用。' }),
+        h('label', { class: 'field' },
+          h('span', { class: 'field-label', text: '接口地址（https，或本机 http://localhost）' }),
+          h('input', { class: 'text-input', attrs: { type: 'url', value: ai.endpoint, placeholder: 'https://api.openai.com', 'data-focus-key': 'ai-endpoint' }, on: { input: (e) => ctx.actions.updateAi({ endpoint: e.target.value }) } })
+        ),
+        h('p', { class: check.ok ? 'form-status ok' : 'form-status', text: check.ok ? '✓ 地址格式可用' : `⚠ ${check.reason}` }),
+        h('label', { class: 'field' },
+          h('span', { class: 'field-label', text: '模型名' }),
+          h('input', { class: 'text-input', attrs: { type: 'text', value: ai.model, placeholder: '例如 gpt-4o-mini / qwen-plus', 'data-focus-key': 'ai-model' }, on: { input: (e) => ctx.actions.updateAi({ model: e.target.value }) } })
+        ),
+        h('label', { class: 'field' },
+          h('span', { class: 'field-label', text: `API 密钥（${keyPresent ? '当前会话已填写' : '未填写'}）` }),
+          h('input', { class: 'text-input', attrs: { type: 'password', placeholder: '只会写入 sessionStorage / 内存，导出备份时被剔除', autocomplete: 'off', 'data-focus-key': 'ai-key' }, on: { change: (e) => ctx.actions.saveSecret(e.target.value) } })
+        ),
+        h('div', { class: 'panel-actions' },
+          h('label', { class: 'checkbox' },
+            h('input', { attrs: { type: 'checkbox' }, checked: ai.enabled, on: { change: (e) => ctx.actions.updateAi({ enabled: e.target.checked }) } }),
+            h('span', { text: '启用直连模式（仅讲解；代理模式下无需开启）' })
+          ),
+          h('button', { class: 'btn btn-ghost danger', attrs: { type: 'button' }, on: { click: () => { ctx.actions.saveSecret(''); ctx.actions.toast('已清除当前会话中的密钥'); } }, text: '清除本次会话密钥' })
+        ),
+        h('ul', { class: 'privacy-list' },
+          h('li', { text: '密钥默认只保存在 sessionStorage（关闭标签页即失效），不会写入 localStorage，也不会出现在导出文件里。' }),
+          h('li', { text: '只有你点击「生成讲解」时，才会把这个知识点的标题与摘要发送到你填写的接口。' }),
+          h('li', { text: '注意：浏览器直连第三方接口会暴露密钥给该接口方，请自行评估风险，建议使用限额密钥。' })
+        )
       )
     ),
 

@@ -37,27 +37,23 @@ export function generateView(ctx) {  const ai = ctx.state.ai || {};
 
   return h('div', { class: 'view view-generate' },
     h('header', { class: 'view-head' },
-      h('h1', { text: 'AI 建课' }),
+      h('h1', { text: '智能建课' }),
       h('p', { class: 'muted', text: '告诉它你想学什么，它会生成一门完整课程：知识点顺序、正文讲解、练习、带解析的测验，以及动手单元。分两步生成（先大纲、再逐个知识点），过程中会显示进度；生成结果先给你预览，只有你点「保存」才会进入你的课程库。' })
     ),
 
     h('section', { class: `panel notice ${ready ? '' : 'notice-warn'}` },
-      h('h2', { text: ready ? '当前使用的 AI 通道' : '还没有配置 AI 通道' }),
-      h('ul', {},
-        h('li', { text: worker.ok
-          ? `代理模式（推荐）：${worker.base} —— 供应商密钥保存在 Cloudflare Worker 机密中，浏览器不会拿到。`
-          : directReady
-            ? '直连模式（次级）：浏览器直接调用你填写的接口，密钥只存在当前会话；请自行评估把密钥交给该接口方的风险。'
-            : worker.ok
-              ? ''
-              : '未配置时，课程库、定制计划、视频、测验与进度等核心功能全部照常可用。' }),
-        h('li', { text: directReady && !worker.ok
-          ? '你当前配置的是直连模式：它只支持课时页的「AI 讲解」，不支持完整建课（完整建课需要代理 Worker，才能安全保管密钥并限制调用次数）。'
-          : '直连模式（浏览器直接调用你填写的接口）仍保留，但仅作为「AI 讲解」的次级选项。' }),
-        h('li', { text: '生成会消耗你配置的 AI 服务的额度；本站不提供免费额度，也不会替你付费。' }),
-        h('li', { text: PROXY_DISCLAIMER })
-      ),
-      h('div', { class: 'panel-actions' }, h('a', { class: 'btn btn-ghost', attrs: { href: buildRoute('settings') }, text: '去配置 AI 通道' }))
+      h('h2', { text: ready ? '智能服务已就绪' : '智能建课还没有就绪' }),
+      ready
+        ? h('ul', {},
+            h('li', { text: '直接开始就行，不需要任何设置；密钥保存在服务端，浏览器不接触。' }),
+            h('li', { text: '生成会真实调用模型，因此会消耗服务端的调用额度；失败或输出无效不会计入你的额度。' }),
+            h('li', { text: PROXY_DISCLAIMER }))
+        : h('ul', {},
+            h('li', { text: '课程库、定制课程、课件、视频、测验与学习进度都可以照常使用，不受影响。' }),
+            h('li', { text: directReady
+              ? '你当前填的是「直连接口」：它只支持课时页的讲解，不支持完整建课。完整建课需要连接一个服务端地址。'
+              : '要使用建课与讲解，需要连接一个智能服务；自己部署的话，在设置里填入地址即可。' })),
+      ready ? null : h('div', { class: 'panel-actions' }, h('a', { class: 'btn btn-ghost', attrs: { href: buildRoute('settings') }, text: '去设置' }))
     ),
 
     h('section', { class: 'panel' },

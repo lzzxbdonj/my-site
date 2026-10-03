@@ -69,7 +69,7 @@ export const NAV_ITEMS = [
   { view: 'dashboard', label: '学习台' },
   { view: 'explore', label: '课程库' },
   { view: 'plan', label: '定制课程' },
-  { view: 'generate', label: 'AI 建课' },
+  { view: 'generate', label: '智能建课' },
   { view: 'videos', label: '视频课' },
   { view: 'profile', label: '我的进度' },
   { view: 'about', label: '关于' },
@@ -80,7 +80,7 @@ export function routeTitle(route) {
     case 'dashboard': return '学习台';
     case 'explore': return '课程库';
     case 'plan': return '定制课程';
-    case 'generate': return 'AI 建课';
+    case 'generate': return '智能建课';
     case 'course': return '课程详情';
     case 'lesson': return '课时';
     case 'slides': return '课件模式';

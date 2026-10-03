@@ -63,7 +63,7 @@ test('路由切换时 document.title 与导航 logo 都是新品牌名', async (
 
   for (const [hash, expected] of [
     ['#/explore', '课程库'],
-    ['#/generate', 'AI 建课'],
+    ['#/generate', '智能建课'],
     ['#/videos', '视频课'],
     ['#/profile', '我的进度'],
     ['#/settings', '设置'],
