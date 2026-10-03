@@ -749,6 +749,12 @@ export function createApp({ root }) {
       const fallback = defaultWorkerUrl();
       if (fallback) setState({ ...state, ai: { ...state.ai, workerUrl: fallback } }, { silent: true });
     }
+    // 只有**本机确实存有登录令牌**时才向自己的 Worker 校验一次会话：
+    // 否则每次刷新都停在「尚未检查登录状态」，用户会以为登录没生效。
+    // 没有令牌时一个请求都不发。
+    if (createAuthTokenStore().read()) {
+      Promise.resolve().then(() => actions.refreshSession());
+    }
     render();
   }
 
