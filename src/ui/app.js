@@ -60,6 +60,9 @@ export function createApp({ root }) {
   const secrets = createSecretStore();
   let state = store.load();
   let route = parseRoute(typeof location !== 'undefined' ? location.hash : '#/');
+  // 中文输入法组字状态：组字期间不重渲染（否则输入框被替换，中文打不出来）
+  let composing = false;
+  let renderQueued = false;
   const ui = {
     query: '',
     subjectId: 'all',
@@ -610,6 +613,13 @@ export function createApp({ root }) {
   }
 
   function render() {
+    // 中文输入法正在组字时**绝不能重渲染**：全量重渲染会替换掉输入框，
+    // 组字被浏览器中断，用户会发现「只能打英文」。
+    // 这里把渲染推迟到 compositionend，组字结束后再统一渲染一次。
+    if (composing) {
+      renderQueued = true;
+      return;
+    }
     const active = document.activeElement;
     const focusKey = active && active.dataset ? active.dataset.focusKey : null;
     const selectionStart = focusKey && typeof active.selectionStart === 'number' ? active.selectionStart : null;
@@ -712,6 +722,17 @@ export function createApp({ root }) {
 
   function start() {
     window.addEventListener('hashchange', render);
+    // 输入法组字：捕获阶段监听，覆盖页面上所有输入框。
+    // 组字期间把渲染挂起，组字结束（或取消）后再统一渲染一次 —— 这是中文能正常输入的关键。
+    window.addEventListener('compositionstart', () => { composing = true; }, true);
+    const endComposing = () => {
+      composing = false;
+      if (renderQueued) {
+        renderQueued = false;
+        render();
+      }
+    };
+    window.addEventListener('compositionend', endComposing, true);
     // 课件模式键盘导航（← → / PageUp / PageDown / Home / End / Esc）
     window.addEventListener('keydown', (event) => {
       if (route.view !== 'slides') return;
