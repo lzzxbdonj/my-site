@@ -87,6 +87,14 @@ export function loadConfig(env = {}) {
   }
   const authConfigured = provided.every(Boolean) && !authError;
 
+  // 信用点账本（收费前置）。默认 REQUIRE_CREDITS=false：账本可用但**不拦截**生成，
+  // 这样没有接支付之前站点行为不变；等你配好支付再打开开关。
+  const requireCredits = String(env.REQUIRE_CREDITS || '').toLowerCase() === 'true';
+  const paymentWebhookSecret = String(env.PAYMENT_WEBHOOK_SECRET || '').trim();
+  const creditsError = requireCredits && !authConfigured
+    ? '开启 REQUIRE_CREDITS 必须同时配置 GitHub 登录（信用点要绑定到账号）。'
+    : null;
+
   const environment = String(env.ENVIRONMENT || 'production').toLowerCase();
   const config = {
     environment,
@@ -109,6 +117,11 @@ export function loadConfig(env = {}) {
     authRedirectUri,
     authConfigured,
     authError,
+    requireCredits,
+    paymentWebhookSecret,
+    creditsError,
+    creditsPerOutline: positiveInt(env.CREDITS_PER_OUTLINE, 1),
+    creditsPerLesson: positiveInt(env.CREDITS_PER_LESSON, 1),
   };
 
   if (missing.length > 0 || invalid.length > 0) {

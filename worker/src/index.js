@@ -18,6 +18,7 @@ import { loadConfig, isAllowedOrigin } from './config.js';
 import { buildCoursePrompt, buildExplainPrompt, buildOutlinePrompt, buildLessonPrompt, extractJson, sanitizeExplanation } from './prompt.js';
 import { validateGeneratedCourse, validateCourseOutline, validateConceptContent, SchemaError } from './schema.js';
 import { RateLimiter } from './ratelimit.js';
+import { AccountLedger } from './ledger.js';
 import { SERVER_VIDEOS, SERVER_CATALOG_VERSION, selectServerVideos, knownVideoIds } from './catalog.js';
 import { normalizeTemplateId, getTemplate } from '../../src/data/course-templates.js';
 import {
@@ -28,9 +29,10 @@ import {
   exchangeCodeForToken,
   fetchGithubUser,
   pickReturnTo,
+  timingSafeEqual,
 } from './auth.js';
 
-export { RateLimiter };
+export { RateLimiter, AccountLedger };
 
 const ROUTES = new Set([
   '/api/health',
@@ -41,6 +43,8 @@ const ROUTES = new Set([
   '/api/auth/login',
   '/api/auth/callback',
   '/api/auth/me',
+  '/api/account',
+  '/api/account/grant',
 ]);
 const TEXT_DECODER = new TextDecoder();
 
@@ -80,6 +84,10 @@ export default {
       return handleAuthRoute({ request, url, config, cors });
     }
 
+    if (url.pathname === '/api/account' || url.pathname === '/api/account/grant') {
+      return handleAccountRoute({ request, url, config, cors, env });
+    }
+
     if (url.pathname === '/api/health') {
       return json({
         ok: true,
@@ -105,6 +113,12 @@ export default {
             !config.authTokenSecret ? 'AUTH_TOKEN_SECRET' : null,
           ].filter(Boolean),
           error: config.authError,
+        },
+        credits: {
+          required: config.requireCredits,
+          perOutline: config.creditsPerOutline,
+          perLesson: config.creditsPerLesson,
+          error: config.creditsError,
         },
       }, 200, cors);
     }
@@ -285,6 +299,90 @@ async function handleAuthCallback({ url, config }) {
     status: 302,
     headers: { location: target.toString(), 'cache-control': 'no-store', 'referrer-policy': 'no-referrer' },
   });
+}
+
+/* ---------------------------------------------------------------------------
+ * 信用点账本（收费前置）
+ *
+ * GET  /api/account         需要登录：返回余额、活跃预留与最近流水
+ * POST /api/account/grant   支付回调/管理员加点：需要 PAYMENT_WEBHOOK_SECRET，
+ *                           并以订单号作为幂等键 —— 同一订单重复回调只加点一次。
+ *
+ * 账号维度用 GitHub 的 sub（用户 id），不是用户名（用户名可以改）。
+ * ------------------------------------------------------------------------- */
+
+function ledgerStub(env, accountId) {
+  if (!env.ACCOUNT_LEDGER) return null;
+  const id = env.ACCOUNT_LEDGER.idFromName(`account:${accountId}`);
+  return env.ACCOUNT_LEDGER.get(id);
+}
+
+function bearerToken(request) {
+  const match = (request.headers.get('authorization') || '').match(/^Bearer\s+(.+)$/i);
+  return match ? match[1].trim() : '';
+}
+
+async function requireSession(request, config) {
+  if (!config.authConfigured) {
+    return { ok: false, status: 503, error: 'auth-not-configured', message: '此 Worker 未配置 GitHub 登录。' };
+  }
+  const verified = await verifySessionToken(config.authTokenSecret, bearerToken(request));
+  if (!verified.ok) {
+    return { ok: false, status: 401, error: 'unauthorized', reason: verified.reason, message: '请先登录。' };
+  }
+  return { ok: true, user: verified.payload };
+}
+
+async function handleAccountRoute({ request, url, config, cors, env }) {
+  const noStore = { ...cors, 'cache-control': 'no-store' };
+
+  if (url.pathname === '/api/account/grant') {
+    if (request.method !== 'POST') return json({ ok: false, error: 'method-not-allowed' }, 405, noStore);
+    if (!config.paymentWebhookSecret || config.paymentWebhookSecret.length < 16) {
+      return json({ ok: false, error: 'grant-not-configured', message: '未配置 PAYMENT_WEBHOOK_SECRET，拒绝加点。' }, 503, noStore);
+    }
+    const provided = request.headers.get('x-payment-secret') || '';
+    if (!timingSafeEqual(provided, config.paymentWebhookSecret)) {
+      return json({ ok: false, error: 'forbidden', message: '支付回调密钥不正确。' }, 403, noStore);
+    }
+    const raw = await readJsonBody(request, config.maxRequestBytes);
+    if (!raw.ok) return json({ ok: false, error: raw.error, message: raw.message }, raw.status, noStore);
+    const body = raw.value || {};
+    const accountId = String(body.accountId || '').trim().slice(0, 80);
+    const orderId = String(body.orderId || '').trim().slice(0, 120);
+    const amountRaw = Number(body.amount);
+    const amount = Number.isInteger(amountRaw) ? amountRaw : NaN;
+    if (!accountId || !orderId || !Number.isInteger(amount) || amount <= 0) {
+      return json({ ok: false, error: 'bad-request', message: '需要 accountId、orderId 与正整数 amount（不接受小数）。' }, 400, noStore);
+    }
+    const stub = ledgerStub(env, accountId);
+    if (!stub) return json({ ok: false, error: 'ledger-unavailable', message: '缺少 ACCOUNT_LEDGER 绑定。' }, 503, noStore);
+    const response = await stub.fetch('https://ledger.worker/', {
+      method: 'POST',
+      body: JSON.stringify({ action: 'grant', key: orderId, amount, accountId, note: body.note }),
+    });
+    const data = await response.json();
+    return json(data, response.status, noStore);
+  }
+
+  if (request.method !== 'GET') return json({ ok: false, error: 'method-not-allowed' }, 405, noStore);
+  const session = await requireSession(request, config);
+  if (!session.ok) {
+    return json({ ok: false, error: session.error, reason: session.reason, message: session.message }, session.status, noStore);
+  }
+  const stub = ledgerStub(env, session.user.sub);
+  if (!stub) return json({ ok: false, error: 'ledger-unavailable', message: '缺少 ACCOUNT_LEDGER 绑定。' }, 503, noStore);
+  const response = await stub.fetch('https://ledger.worker/', {
+    method: 'POST',
+    body: JSON.stringify({ action: 'state', accountId: session.user.sub }),
+  });
+  const data = await response.json();
+  return json({
+    ...data,
+    user: { sub: session.user.sub, login: session.user.login, name: session.user.name },
+    requireCredits: config.requireCredits,
+    pricing: config.requireCredits ? { outline: config.creditsPerOutline, lesson: config.creditsPerLesson } : null,
+  }, response.status, noStore);
 }
 
 function quotaNote(kind) {

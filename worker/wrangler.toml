@@ -51,6 +51,15 @@ AUTH_REDIRECT_URI = "https://ai-zixuetong.pages.dev/api/auth/callback"
 name = "RATE_LIMITER"
 class_name = "RateLimiter"
 
+# 按账号的信用点账本（收费前置）：一个账号一个实例，保证扣费原子且幂等
+[[durable_objects.bindings]]
+name = "ACCOUNT_LEDGER"
+class_name = "AccountLedger"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["RateLimiter"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["AccountLedger"]

@@ -15,6 +15,47 @@
 | `GET /api/auth/login` | 返回 GitHub 授权地址（仅在配置了登录时可用） |
 | `GET /api/auth/callback` | GitHub 跳回这里：换取用户身份并签发会话令牌（顶层导航，不校验 Origin，靠签名 state 防 CSRF） |
 | `GET /api/auth/me` | 校验 `Authorization: Bearer <token>` 并返回当前用户 |
+| `GET /api/account` | **需要登录**：返回该账号的信用点余额、活跃预留与最近流水 |
+| `POST /api/account/grant` | **支付回调/管理员加点**：需要 `x-payment-secret` 头，以订单号幂等 |
+
+## 信用点账本（收费前置，默认不拦截）
+
+账本用一个新的 Durable Object `AccountLedger`：**一个账号一个实例**，所有扣费在该实例的
+`storage.transaction` 里串行完成，因此不会出现「两个并发请求同时读到余额充足、各自扣一次」的超扣。
+
+计费语义（与 [`docs/commercialization-plan.md`](../docs/commercialization-plan.md) 一致）：
+
+- **先预留、后结算**：发起模型调用前 `reserve`，成功并通过校验后 `settle`（扣实际用量、释放剩余预留），
+  失败则 `release` —— **失败不扣用户信用点**（供应商可能仍对我们计费，这笔成本由商户吸收）。
+- **幂等**：每次操作都带业务键（生成任务用 `jobId`，充值用 `orderId`）。同一个键重复到达只生效一次，
+  这是**支付回调重复投递**与网络重试下不重复加点/不重复扣费的关键。
+- **拒绝凭空扣费**：找不到预留就拒绝结算（409）；已释放的预留不能再结算；结算额超过预留额时按预留额封顶并如实回报。
+- **金额一律整数信用点**：小数会被直接拒绝，不做静默取整（涉及金额不能悄悄改变数值）。
+
+相关配置：
+
+| 变量 | 默认 | 说明 |
+| --- | --- | --- |
+| `REQUIRE_CREDITS` | `false` | 设为 `true` 才开始用信用点拦截生成。**默认关闭**，因为还没接支付时不能把所有人挡住 |
+| `CREDITS_PER_OUTLINE` | `1` | 每门课的大纲消耗/预留多少点 |
+| `CREDITS_PER_LESSON` | `1` | 每个知识点消耗/预留多少点（一门 N 知识点的课 = 大纲 + N） |
+| `PAYMENT_WEBHOOK_SECRET` | 无（机密） | 加点接口的鉴权密钥，至少 16 位。**未设置时加点接口返回 503**，宁可不可用也不接受无鉴权加点 |
+
+> ⚠️ **收款上线前必须做的**：`REQUIRE_CREDITS` 只能在**支付与加点链路已经打通**之后再打开；
+> 打开后所有生成都会先要求登录并扣点。另外账本目前**只记账，不处理退款与对账**，
+> 上线前还需要：退款流程、订单与账本的对账任务、以及把 `PAYMENT_WEBHOOK_SECRET` 换成
+> 支付方的**验签**（现在是一个共享密钥，够内测但不足以承载真实资金）。
+
+加点示例（服务端调用，不要放在浏览器里）：
+
+```bash
+curl -X POST https://<你的-worker>/api/account/grant \
+  -H "content-type: application/json" \
+  -H "x-payment-secret: <PAYMENT_WEBHOOK_SECRET>" \
+  -d '{"accountId":"<GitHub 用户 id>","orderId":"<你的订单号>","amount":100,"note":"充值 100 点"}'
+```
+
+同一 `orderId` 重复调用只会加点一次。
 
 ## GitHub 登录（可选）
 
