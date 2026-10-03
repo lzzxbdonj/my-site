@@ -153,18 +153,6 @@ function authPanel(ctx) {
         on: { click: () => ctx.actions.refreshSession() },
         text: '检查登录状态',
       })
-    ),
-    h('ul', { class: 'privacy-list' },
-      h('li', { text: '登录信息只保存在这台设备上，导出备份不会包含它，也不会用于任何统计或追踪。' }),
-      h('li', { text: '登录状态最长保持 30 天，到期后需要重新登录。' })
-    ),
-    h('details', { class: 'advanced' },
-      h('summary', { text: '登录的技术细节' }),
-      h('ul', { class: 'privacy-list' },
-        h('li', { text: '令牌只保存在本机的独立存储键里，不进入主状态对象。' }),
-        h('li', { text: '实现是无状态签名（HMAC-SHA256），因此无法单独吊销某一个令牌；在服务端更换 AUTH_TOKEN_SECRET 可让所有旧令牌立即失效。' }),
-        h('li', { text: '前端与接口分属不同站点时用 Authorization 头而不是 Cookie 维持登录态（跨站 Cookie 不可靠）；若你把它部署到同一个自有域名下，可以改用更安全的同站 Cookie。' })
-      )
     )
   );
 }
@@ -188,15 +176,11 @@ export function settingsView(ctx) {
     h('section', { class: 'panel' },
       h('h2', { text: '智能服务' }),
       h('p', { class: aiReady ? 'form-status ok' : 'form-status', text: aiReady
-        ? `✓ 已就绪，开箱即用（${workerCheck.base}）`
+        ? `✓ 已就绪（${workerCheck.base}）`
         : '尚未就绪：需要填写服务地址（见下方「高级设置」）。' }),
-      h('p', { class: 'muted', text: aiReady
-        ? '建课与讲解都已配置好，这一页不需要你做任何设置。密钥保存在服务端，浏览器不接触、也不会上传你的学习数据。'
-        : '本站不内置 AI 服务，也不会伪造回答。若你部署了自己的服务，请在下方高级设置里填入地址。' }),
 
       h('details', { class: 'advanced' },
         h('summary', { text: '高级设置（一般不需要动）' }),
-        h('p', { class: 'muted small', text: '只有在你自己部署服务、或需要接自建接口时才会用到下面这些字段。' }),
         h('label', { class: 'field' },
           h('span', { class: 'field-label', text: '服务地址（代理模式，支持完整建课与讲解）' }),
           h('input', { class: 'text-input', attrs: { type: 'url', value: ai.workerUrl || '', placeholder: 'https://studymate-ai-proxy.<你的子域>.workers.dev', 'data-focus-key': 'ai-worker' }, on: { input: (e) => ctx.actions.updateAi({ workerUrl: e.target.value }) } })
@@ -291,52 +275,17 @@ export function aboutView(ctx) {
     h('section', { class: 'panel' },
       h('h2', { text: '来源与许可' }),
       h('p', {}, h('span', { text: '灵感与功能参考来自上游项目 ' }), h('a', { class: 'link', attrs: { href: 'https://github.com/Miaotofu01/Study-Mate', target: '_blank', rel: 'noopener noreferrer' }, text: 'Miaotofu01/Study-Mate' }), h('span', { text: '（MIT License, Copyright (c) 2026 Cattofu）。' })),
-      h('p', { text: '本项目为独立重写：没有复制上游的角色形象、美术资源或桌面端代码；界面、课程内容与文案均为原创。上游的 MIT 许可与版权声明完整保留在 NOTICE 文件中。' }),
-      h('p', { text: '本站课程文字、测验题目、路线图与界面设计由本项目原创撰写；教学视频为第三方站点外链，版权归原作者所有，本站不下载、不转存、不二次分发。' })
+      h('p', { text: '本项目为独立重写：没有复制上游的角色形象、美术资源或桌面端代码；界面、课程内容与文案均为原创。上游许可与版权声明完整保留在 NOTICE 文件中。' }),
+      h('p', { text: '课程文字、测验与界面设计由本项目原创；教学视频为第三方平台外链，版权归原作者所有。' })
     ),
 
     h('section', { class: 'panel' },
-      h('h2', { text: '能力对照（保留了什么、哪些做不到）' }),
-      h('ul', { class: 'capability-list' },
-        h('li', {}, h('strong', { text: '课程总览与路线图' }), h('span', { text: '保留了「依赖 + 状态着色」的概念地图，并改成可点击的网页版。' })),
-        h('li', {}, h('strong', { text: '教材式课时' }), h('span', { text: '保留分段讲解、术语表、关键结论与常见误解；内容为本站原创。' })),
-        h('li', {}, h('strong', { text: '定制练习与测评' }), h('span', { text: '保留随堂测验与解析，新增自动评分、通过线与历史最佳。' })),
-        h('li', {}, h('strong', { text: '项目与实验室' }), h('span', { text: '保留项目式学习，新增可勾选的任务清单与评分标准。' })),
-        h('li', {}, h('strong', { text: '目标/水平访谈' }), h('span', { text: '改为四步网页向导，并给出可解释的排课理由。' })),
-        h('li', {}, h('strong', { text: '跨学科记忆与进度' }), h('span', { text: '保留，但改为浏览器本地存储；没有云端同步，因此换设备需要导出/导入备份。' })),
-        h('li', {}, h('strong', { text: '本地资料与桌面端能力' }), h('span', { text: '未保留：纯静态站点无法读写本地目录、无法调用桌面壳/插件 API。' })),
-        h('li', {}, h('strong', { text: 'AI 讲解/改写' }), h('span', { text: '保留为可选功能，需要用户自己配置代理 Worker（推荐，密钥留在 Cloudflare 机密中）或直连接口；不内置密钥、不伪造回答。新增的 AI 建课功能同样走这条代理通道，生成课程会先预览再保存。' }))
-      )
-    ),
-
-    h('section', { class: 'panel' },
-      h('h2', { text: '内容与视频的事实' }),
+      h('h2', { text: '运行信息' }),
       h('ul', { class: 'kv-list' },
         h('li', {}, h('span', { text: '课程 / 学习单元 / 测验 / 题目' }), h('code', { text: `${stats.courses} / ${stats.concepts} / ${stats.quizzes} / ${stats.questions}` })),
-        h('li', {}, h('span', { text: '精选视频条目' }), h('code', { text: String(VIDEO_LIBRARY.length) })),
-        h('li', {}, h('span', { text: '官方认证账号来源' }), h('code', { text: verifiedChannels.join('、') })),
-        h('li', {}, h('span', { text: '视频信息核实基线' }), h('code', { text: VERIFIED_AT }))
+        h('li', {}, h('span', { text: '版本' }), h('code', { text: ctx.state?.meta?.app || PRODUCT_NAME }))
       ),
-      h('p', { class: 'muted small', text: '核实方式、逐条来源与已知限制见仓库中的 docs/video-sources.md；可用 npm run verify:videos 重新核对。' })
-    ),
-
-    h('section', { class: 'panel' },
-      h('h2', { text: '技术实现' }),
-      h('ul', {},
-        h('li', { text: '零运行时依赖的静态站点：原生 ES 模块 + 原生 CSS，构建脚本把源码复制为 dist（含 .nojekyll 与 404.html）。' }),
-        h('li', { text: '全部资源使用相对路径 + hash 路由，因此在 https://<user>.github.io/<任意仓库名>/ 下都能直接运行。' }),
-        h('li', { text: '测试：node --test（单元/集成）+ 真实浏览器 CDP 流程测试（Edge 无头模式），命令见 README。' })
-      )
-    ),
-
-    h('section', { class: 'panel' },
-      h('h2', { text: '已知边界' }),
-      h('ul', {},
-        h('li', { text: '嵌入播放器的成功播放未做验证；视频能否播放取决于地区、账号与浏览器策略，请使用「打开来源页」兜底。' }),
-        h('li', { text: '本项目的构建环境无法访问 YouTube，因此没有收录 YouTube 视频，也没有对其可达性做任何声称。' }),
-        h('li', { text: '进度只存在本地浏览器，不支持多设备同步。' }),
-        h('li', { text: 'AI 功能依赖第三方接口，质量与可用性由该服务决定，本站只做诚实的错误提示。' })
-      )
+      h('p', { class: 'muted small', text: `使用条款见「用户协议」。` })
     )
   );
 }

@@ -722,6 +722,12 @@ details.advanced > summary:hover { color: var(--ink); }
 details.advanced[open] { padding-bottom: var(--space-4); }
 details.advanced h3 { margin-top: var(--space-5); }
 
+/* ---------- 用户协议：条款排版 ---------- */
+.terms-list { margin: 0; padding-left: 1.35em; display: flex; flex-direction: column; gap: var(--space-2); }
+.terms-list li { line-height: 1.8; color: var(--ink-soft); }
+.view-terms .panel { margin-bottom: var(--space-4); }
+.view-terms .panel h2 { font-size: 1.02rem; }
+
 /* 打印 / 另存为 PDF：每一页独占一张纸 */
 @media print {
   .app-header, .app-footer, .toast-region, .deck-toolbar, .deck-index, .deck-hint, .skip-link, .breadcrumb { display: none !important; }

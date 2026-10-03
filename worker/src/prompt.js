@@ -171,7 +171,7 @@ const LESSON_SPEC = `{
   "exercises": [{"prompt": "练习要求(5-300字)", "hint": "提示(2-200字)"}, ...(1-3条)],
   "tasks": [{"title": "任务(2-60字)", "detail": "怎么做(10-300字)", "acceptance": "验收标准(4-200字)"}, ...(仅 practical/lab 需要，3-5条)],
   "project": {"goal": "项目目标(10-400字)", "deliverables": ["交付物", ...(2-5条)], "rubric": [{"criterion": "评分项(2-80字)", "weight": 数字(1-100)}, ...(2-5条)]},
-  "videoIds": ["只能从下面提供的已核实视频目录中选择，可为空数组"],
+  "videoSearchKeywords": ["用于检索配套视频的关键词", ...(2-5条：写具体的技术名、知识点名或典型术语，不要写整句)],
   "quiz": {
     "questions": [
       {
@@ -209,11 +209,8 @@ ${OUTLINE_RULES}`;
   return { system, user };
 }
 
-/** 第二段：为单个知识点生成完整正文、练习与测验。 */
-export function buildLessonPrompt({ input, outline, concept, videoLibrary, catalogVersion = '', templateId = '' }) {
-  const libraryText = videoLibrary.length === 0
-    ? '（本次没有提供已核实视频，videoIds 必须是空数组）'
-    : videoLibrary.map((v) => `- id=${v.id} | 标题：${v.title} | 作者：${v.creator} | 知识点标签：${(v.knowledgePoints || []).join(',') || '无'}`).join('\n');
+/** 第二段：为单个知识点生成完整正文、练习与测验，并给出视频检索关键词。 */
+export function buildLessonPrompt({ input, outline, concept, templateId = '' }) {
   const siblings = (outline.concepts || []).map((c) => `- ${c.id}：${c.title}（${c.type}）`).join('\n');
   const isHands = concept.type === 'practical' || concept.type === 'lab';
   const focus = templateFocus(templateId, 'lesson');
@@ -234,9 +231,6 @@ ${siblings}
 - 概述：${concept.summary}
 - 学习目标：${(concept.objectives || []).join('；') || '（未指定）'}
 
-服务端已核实视频目录（${catalogVersion || 'videos'}，videoIds 只能从中选择）：
-${libraryText}
-
 请严格按下面结构输出 JSON：
 ${LESSON_SPEC}
 
@@ -246,7 +240,7 @@ ${LESSON_SPEC}
 3. lesson.sections 给出 2-3 节，每节 body 至少 1 段，必须是真正能读懂的讲解与具体例子，不要写「见教材」「略」这类占位。
 4. quiz 必须有 2-4 道题，每题都要有解释原因的 explanation。
 5. exercises 至少 1 条。${isHands ? '这是动手单元，必须额外给出 3-5 条带验收标准的 tasks。' : '这是概念课，不要输出 tasks 与 project。'}${concept.type === 'lab' ? ' 这是实验单元，还必须给出 project（目标、交付物、评分标准）。' : ''}
-6. videoIds 只能使用上面目录里给出的 id；没有合适视频就给空数组，绝不能编造 id、标题或链接。
+6. videoSearchKeywords 给 2-5 条**检索关键词**：写具体的技术名、知识点名或典型术语（例如「列表推导式」「特征值」），不要写整句，也不要编造任何视频标题、id 或链接 —— 配套视频由服务端用这些关键词去检索并加入课程。
 7. 只写这一个知识点的内容，不要输出其他知识点。`;
   return { system, user };
 }

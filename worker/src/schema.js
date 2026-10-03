@@ -51,15 +51,49 @@ export class SchemaError extends Error {
   }
 }
 
+/**
+ * 校验过程中的「警告」收集器。
+ *
+ * 为什么把「超长」从错误降级为警告：模型偶尔会把一段解析写成 1600 字，
+ * 而原来的实现会因此让**整门课**（7 个知识点、已花的钱）全部作废 —— 代价完全不成比例。
+ * 现在的规则：
+ *  - **太短**仍然是错误（防的是空占位，属于质量问题，必须重来）；
+ *  - **太长**只算警告：按句子边界截断到上限并如实记录，课程照常可用；
+ *  - HTML / 链接 / 编造视频 id / 非法测验答案仍然是错误（这些是安全与正确性问题）。
+ */
+let warnings = [];
+function warn(message) { warnings.push(message); }
+
+/** 取出并清空本次校验产生的警告（在一次 validate 调用之后使用）。 */
+export function takeValidationWarnings() {
+  const collected = warnings;
+  warnings = [];
+  return collected;
+}
+
+/** 按句子边界截断，避免把一句话拦腰剪断。 */
+function clampText(value, max) {
+  if (value.length <= max) return value;
+  const head = value.slice(0, max);
+  const lastStop = Math.max(head.lastIndexOf('。'), head.lastIndexOf('！'), head.lastIndexOf('？'), head.lastIndexOf('；'));
+  if (lastStop >= Math.floor(max * 0.5)) return head.slice(0, lastStop + 1);
+  return `${head.slice(0, max - 1)}…`;
+}
+
 function text(value, path, [min, max], errors, { allowUrl = false } = {}) {
   if (typeof value !== 'string') {
     errors.push(`${path} 必须是字符串`);
     return '';
   }
   const trimmed = value.replace(/\s+/g, ' ').trim();
-  if (trimmed.length < min || trimmed.length > max) {
-    errors.push(`${path} 长度需在 ${min}-${max} 之间（实际 ${trimmed.length}）`);
-    return trimmed.slice(0, max);
+  if (trimmed.length < min) {
+    errors.push(`${path} 长度需至少 ${min}（实际 ${trimmed.length}）`);
+    return trimmed;
+  }
+  if (trimmed.length > max) {
+    // 超长只警告并按句截断：不让一处啰嗦毁掉整门课
+    warn(`${path} 超出建议长度 ${max}（实际 ${trimmed.length}），已按句子边界截断`);
+    return clampText(trimmed, max);
   }
   if (containsHtmlMarkup(trimmed)) {
     errors.push(`${path} 不允许包含 HTML 标签`);
@@ -77,8 +111,11 @@ function array(value, path, [min, max], errors) {
     errors.push(`${path} 必须是数组`);
     return [];
   }
-  if (value.length < min || value.length > max) {
-    errors.push(`${path} 的元素个数需在 ${min}-${max} 之间（实际 ${value.length}）`);
+  if (value.length < min) {
+    errors.push(`${path} 的元素个数至少 ${min}（实际 ${value.length}）`);
+  } else if (value.length > max) {
+    // 数量超出只警告并截取：多余的条目丢掉即可，不必让整次生成失败
+    warn(`${path} 的元素个数超过 ${max}（实际 ${value.length}），已保留前 ${max} 条`);
   }
   return value.slice(0, max);
 }
@@ -143,6 +180,7 @@ export function validateVideoLibrary(raw, errors = []) {
  * @returns {object} 规范化后的课程（可直接被前端转换为应用内课程结构）
  */
 export function validateGeneratedCourse(raw, { videoLibrary = [], subjectKey = 'generated' } = {}) {
+  warnings = [];
   const errors = [];
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new SchemaError(['返回内容不是 JSON 对象']);
   const allowedVideoIds = new Set(videoLibrary.map((v) => v.id));
@@ -310,6 +348,7 @@ export function validateGeneratedCourse(raw, { videoLibrary = [], subjectKey = '
 
 /** 校验「课程大纲」阶段：只有元信息与知识点骨架，不含正文与测验。 */
 export function validateCourseOutline(raw, { subjectKey = 'generated' } = {}) {
+  warnings = [];
   const errors = [];
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new SchemaError(['返回内容不是 JSON 对象']);
 
@@ -390,6 +429,7 @@ export function validateCourseOutline(raw, { subjectKey = 'generated' } = {}) {
 
 /** 校验「单个知识点的正文」阶段。concept 来自大纲（type 以大纲为准）。 */
 export function validateConceptContent(raw, { concept, videoLibrary = [] } = {}) {
+  warnings = [];
   const errors = [];
   if (!concept || typeof concept.id !== 'string' || !SLUG_PATTERN.test(concept.id)) throw new SchemaError(['缺少合法的概念信息']);
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new SchemaError(['返回内容不是 JSON 对象']);

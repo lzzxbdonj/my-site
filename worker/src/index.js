@@ -16,10 +16,10 @@
 
 import { loadConfig, isAllowedOrigin } from './config.js';
 import { buildCoursePrompt, buildExplainPrompt, buildOutlinePrompt, buildLessonPrompt, extractJson, sanitizeExplanation } from './prompt.js';
-import { validateGeneratedCourse, validateCourseOutline, validateConceptContent, SchemaError } from './schema.js';
+import { validateGeneratedCourse, validateCourseOutline, validateConceptContent, SchemaError, takeValidationWarnings } from './schema.js';
 import { RateLimiter } from './ratelimit.js';
 import { AccountLedger } from './ledger.js';
-import { SERVER_VIDEOS, SERVER_CATALOG_VERSION, selectServerVideos, knownVideoIds } from './catalog.js';
+import { SERVER_VIDEOS, SERVER_CATALOG_VERSION, selectServerVideos, searchServerVideos, knownVideoIds } from './catalog.js';
 import { normalizeTemplateId, getTemplate } from '../../src/data/course-templates.js';
 import {
   buildAuthorizeUrl,
@@ -502,8 +502,7 @@ async function handleLesson({ raw, config, cors, reservation }) {
   const concept = outline.concepts.find((c) => c.id === wantedId);
   if (!concept) throw Object.assign(new Error('指定的知识点不在大纲中'), { userError: true });
 
-  const selection = selectServerVideos({ topic: `${input.topic} ${concept.title}`, limit: 12 });
-  const prompt = buildLessonPrompt({ input, outline, concept, videoLibrary: selection.videos, catalogVersion: SERVER_CATALOG_VERSION, templateId: input.templateId });
+  const prompt = buildLessonPrompt({ input, outline, concept, templateId: input.templateId });
   const completion = await callProvider({ config, messages: prompt, maxTokens: Math.min(config.maxOutputTokens, LESSON_MAX_TOKENS) });
   if (completion.truncated) {
     const error = new Error(`知识点「${concept.title}」的输出达到长度上限（max_tokens=${Math.min(config.maxOutputTokens, LESSON_MAX_TOKENS)}）而被截断。`);
@@ -512,7 +511,25 @@ async function handleLesson({ raw, config, cors, reservation }) {
   }
   const parsed = extractJson(completion.text);
   if (!parsed.ok) throw new SchemaError([parsed.error]);
-  const content = validateConceptContent(parsed.value, { concept, videoLibrary: SERVER_VIDEOS });
+
+  // 视频由**服务端在建课时检索**：
+  //  - 先丢掉模型可能给出的 videoIds（模型只允许给「检索意图」，不允许指定视频）；
+  //  - 校验正文之后，再用检索关键词 + 知识点标题/目标去服务端目录里检索并写入 videoIds。
+  const modelOutput = { ...(parsed.value && typeof parsed.value === 'object' ? parsed.value : {}) };
+  const rawKeywords = Array.isArray(modelOutput.videoSearchKeywords) ? modelOutput.videoSearchKeywords : [];
+  const keywords = rawKeywords.map((word) => String(word || '').slice(0, 40)).filter(Boolean).slice(0, 5);
+  delete modelOutput.videoIds;
+  delete modelOutput.videoSearchKeywords;
+
+  const content = validateConceptContent(modelOutput, { concept, videoLibrary: SERVER_VIDEOS });
+  // 超长/超量只算警告（已按句截断），课程仍然可用 —— 不让一处啰嗦毁掉整门课
+  const warnings = takeValidationWarnings();
+  const found = searchServerVideos({
+    keywords,
+    topic: `${concept.title} ${(concept.objectives || []).join(' ')} ${input.topic}`,
+    limit: 3,
+  });
+  content.videoIds = found.videos.map((video) => video.id);
 
   return {
     outcome: 'success',
@@ -525,10 +542,12 @@ async function handleLesson({ raw, config, cors, reservation }) {
         model: completion.model || config.providerModel,
         templateId: input.templateId,
         templateLabel: getTemplate(input.templateId)?.label || '',
-        catalogMatchedByTopic: selection.matchedByTopic,
+        videoSearchKeywords: keywords,
+        videoSearchMatched: found.matched,
+        warnings,
         matchedVideoIds: content.videoIds,
         noVerifiedVideoMatch: content.videoIds.length === 0,
-        note: '视频只从服务端已核实目录中匹配；没有匹配到就是没有匹配到。',
+        note: '配套视频由服务端在建课时按知识点检索加入；没有匹配到就是没有匹配到。',
         disclaimer: 'AI 生成内容，请自行核对。',
         usage: completion.usage || null,
       },

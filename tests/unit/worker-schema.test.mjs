@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateGeneratedCourse, validateConceptContent, validateVideoLibrary, SchemaError, findCycle } from '../../worker/src/schema.js';
+import { validateGeneratedCourse, validateConceptContent, validateVideoLibrary, SchemaError, findCycle, takeValidationWarnings } from '../../worker/src/schema.js';
 import { makeValidCourse, mutate } from './support/fixture.mjs';
 
 const library = [
@@ -53,10 +53,30 @@ test('拒绝 HTML、链接与脚本协议', () => {
   }
 });
 
-test('拒绝超长 / 超量内容（数组与字符串上界）', () => {
-  assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.lesson.sections', new Array(9).fill({ heading: '标题', body: ['内容'.repeat(20)], points: [] })), { videoLibrary: library }), SchemaError);
+test('超长/超量只警告并按句截断，太短仍然是错误', () => {
+  // 超量：超出上限的条目被截掉，并留下一条警告（换以前会让整门课失败）
+  const manySections = mutate(makeValidCourse(), 'concepts.0.lesson.sections', new Array(9).fill({ heading: '标题', body: ['内容'.repeat(20)], points: [] }));
+  const course = validateGeneratedCourse(manySections, { videoLibrary: library });
+  assert.ok(course.concepts[0].lesson.sections.length <= 5, '超出上限的小节应被截掉');
+  const sectionWarnings = takeValidationWarnings();
+  assert.ok(sectionWarnings.some((w) => w.includes('sections')), `应记录小节超量警告，实际：${JSON.stringify(sectionWarnings)}`);
+
+  // 太短仍然是错误：防的是空占位，属于质量问题
   assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'outcomes', ['太短']), { videoLibrary: library }), SchemaError);
   assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.summary', '短'), { videoLibrary: library }), SchemaError);
+});
+
+test('回归：解析写到 1614 字不再让整门课作废，而是按句截断并警告', () => {
+  // 这是真实发生过的失败：quiz.questions[0].explanation 实际 1614 字，
+  // 旧实现直接 422，整门课（含已生成的知识点、已花的调用）全部作废。
+  const verbose = mutate(makeValidCourse(), 'concepts.0.quiz.questions.0.explanation', '这是一段很长的解析。'.repeat(160));
+  const course = validateGeneratedCourse(verbose, { videoLibrary: library });
+  const explanation = course.concepts[0].quiz.questions[0].explanation;
+  assert.ok(explanation.length <= 400, `超长解析应被截断到上限内，实际 ${explanation.length}`);
+  assert.ok(explanation.endsWith('。'), '应在句子边界截断，而不是拦腰剪断');
+  const warnings = takeValidationWarnings();
+  assert.ok(warnings.some((w) => w.includes('explanation')), `应记录截断警告，实际：${JSON.stringify(warnings)}`);
+  assert.equal(course.concepts.length, 4, '整门课仍然可用');
 });
 
 test('拒绝重复 id、自引用、缺失前置与依赖环', () => {
@@ -97,8 +117,10 @@ test('单字术语（「键」「值」）在完整课程与单个知识点两�
   // 空白与空串仍然被拒绝（不能因为放开下限就把空术语当合法）
   assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.keyTerms', [{ term: '', definition: '这里是足够长的定义文本内容。' }]), { videoLibrary: library }), SchemaError);
   assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.keyTerms', [{ term: '   ', definition: '这里是足够长的定义文本内容。' }]), { videoLibrary: library }), SchemaError);
-  // 超长（>40）仍然被拒绝
-  assert.throws(() => validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.keyTerms', [{ term: '术'.repeat(41), definition: '这里是足够长的定义文本内容。' }]), { videoLibrary: library }), SchemaError);
+  // 超长（>40）不再报错，而是截断 + 警告（术语太长属于啰嗦，不该让整门课失败）
+  const longTerm = validateGeneratedCourse(mutate(makeValidCourse(), 'concepts.0.keyTerms', [{ term: '术'.repeat(41), definition: '这里是足够长的定义文本内容。' }]), { videoLibrary: library });
+  assert.equal(longTerm.concepts[0].keyTerms[0].term.length, 40, '超长术语应被截断到上限');
+  assert.ok(takeValidationWarnings().some((w) => w.includes('keyTerms')), '应记录术语超长警告');
 });
 
 test('视频 id 必须来自提供的已核实库，编造即拒绝', () => {

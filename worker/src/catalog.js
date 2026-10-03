@@ -32,6 +32,32 @@ export function knownVideoIds(list) {
 }
 
 /**
+ * 建课时**检索**配套视频：用模型给出的检索关键词（+ 知识点标题/目标）在服务端目录里检索。
+ *
+ * 为什么由服务端检索而不是让模型挑 id：
+ *  - 模型只能给「检索意图」（关键词），不能凭空指定视频，因此不可能编造 id 或链接；
+ *  - 检索结果仍然只来自服务端目录，客户端与模型都无法把外部内容塞进课程。
+ */
+export function searchServerVideos({ keywords = [], topic = '', limit = 3 } = {}) {
+  const words = [...keywords, ...String(topic).split(/[\s,，、/|]+/)]
+    .map((word) => String(word).trim().toLowerCase())
+    .filter((word) => word.length >= 2);
+  const unique = [...new Set(words)].slice(0, 24);
+  const scored = SERVER_VIDEOS.map((video) => {
+    const haystack = `${video.title} ${video.creator} ${video.subjectId} ${(video.knowledgePoints || []).join(' ')}`.toLowerCase();
+    let score = 0;
+    for (const word of unique) if (haystack.includes(word)) score += 3;
+    if (video.enrichment) score -= 1;
+    return { video, score };
+  }).filter((item) => item.score > 0).sort((a, b) => (b.score - a.score) || a.video.id.localeCompare(b.video.id));
+  return {
+    videos: scored.slice(0, Math.max(0, Math.min(limit, 6))).map((item) => item.video),
+    keywords: unique,
+    matched: scored.length > 0,
+  };
+}
+
+/**
  * 依据学习主题挑选相关视频作为提示词素材（仍然只是候选，由模型在给定集合内选择）。
  * 关键字命中标题/作者/知识点/学科时优先；没有命中时返回全部（并明确告知模型可留空）。
  */

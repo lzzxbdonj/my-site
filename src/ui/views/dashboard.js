@@ -69,16 +69,7 @@ export function dashboardView(ctx) {
               h('span', { class: 'muted small', text: ` · ${item.courseTitle} · 上次完成 ${formatRelative(item.completedAt)}` })
             )))
         )
-      : null,
-
-    h('section', { class: 'panel notice' },
-      h('h2', { text: '这个网站的边界（如实说明）' }),
-      h('ul', {},
-        h('li', { text: '所有进度、笔记、计划都存在你自己的浏览器里（localStorage），换浏览器或清理数据就会丢失，请在「我的进度」里定期导出备份。' }),
-        h('li', { text: 'AI 建课与 AI 讲解都是可选功能：推荐配置自建代理 Worker（密钥留在 Cloudflare 机密里，浏览器只填 Worker 地址）；也保留仅用于讲解的直连模式（密钥只存在当前会话、不会写入备份）。未配置时全部核心功能照常可用。' }),
-        h('li', { text: '教学视频为第三方站点外链，本站不转存视频，也不保证任何时刻都能播放。' })
-      )
-    )
+      : null
   );
 }
 

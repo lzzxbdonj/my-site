@@ -13,6 +13,7 @@ export const ROUTES = [
   { view: 'settings', pattern: ['settings'] },
   { view: 'authComplete', pattern: ['auth', 'complete'] },
   { view: 'about', pattern: ['about'] },
+  { view: 'terms', pattern: ['terms'] },
 ];
 
 const DEFAULT_ROUTE = { view: 'dashboard', params: {}, query: {}, raw: '#/' };
@@ -70,8 +71,9 @@ export const NAV_ITEMS = [
   { view: 'explore', label: '课程库' },
   { view: 'plan', label: '定制课程' },
   { view: 'generate', label: '智能建课' },
-  { view: 'videos', label: '视频课' },
+  
   { view: 'profile', label: '我的进度' },
+  { view: 'terms', label: '用户协议' },
   { view: 'about', label: '关于' },
 ];
 
@@ -89,6 +91,7 @@ export function routeTitle(route) {
     case 'settings': return '设置';
     case 'authComplete': return '正在完成登录';
     case 'about': return '关于本项目';
+    case 'terms': return '用户协议';
     default: return '页面不存在';
   }
 }

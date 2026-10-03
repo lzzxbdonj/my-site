@@ -185,10 +185,11 @@ test('缺少 outline 的知识点请求被拒绝', async () => {
   assert.equal(response.status, 400);
 });
 
-test('模型编造的视频 id 不会进入结果', async () => {
+test('模型编造的视频 id 不会进入结果（服务端在建课时自行检索视频）', async () => {
   const { env } = createEnv();
   const target = contentFrom(course.concepts[0]);
   target.videoIds = ['invented-by-model'];
+  target.videoSearchKeywords = ['列表', 'Python'];
   await withProvider(
     () => providerResponse(target),
     async () => {
@@ -197,8 +198,51 @@ test('模型编造的视频 id 不会进入结果', async () => {
         env,
       );
       const body = await response.json();
-      assert.equal(response.status, 422);
-      assert.ok(body.problems.some((p) => p.includes('视频库')), `应拒绝编造的视频 id：${JSON.stringify(body.problems)}`);
+      assert.equal(response.status, 200, '模型给的 videoIds 应被丢弃，而不是让整次生成失败');
+      assert.ok(!body.concept.videoIds.includes('invented-by-model'), '编造的 id 绝不能出现在结果里');
+      const known = new Set(VIDEO_LIBRARY.map((v) => v.id));
+      assert.ok(body.concept.videoIds.every((id) => known.has(id)), '返回的视频必须来自服务端目录');
+      assert.deepEqual(body.meta.videoSearchKeywords, ['列表', 'Python'], '应保留模型给出的检索关键词');
+    },
+  );
+});
+
+test('建课时按关键词检索视频：关键词命中才会带上视频', async () => {
+  const { env } = createEnv();
+  const target = contentFrom(course.concepts[0]);
+  target.videoSearchKeywords = ['python'];
+  await withProvider(
+    () => providerResponse(target),
+    async () => {
+      const response = await worker.fetch(
+        makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'c1' } }),
+        env,
+      );
+      const body = await response.json();
+      assert.equal(response.status, 200);
+      assert.ok(body.concept.videoIds.length > 0, '命中关键词时应检索到视频并加入课程');
+      assert.equal(body.meta.videoSearchMatched, true);
+    },
+  );
+});
+
+test('主题与关键词都命中不了时不硬塞视频，如实返回空数组', async () => {
+  const { env } = createEnv();
+  const target = contentFrom(course.concepts[0]);
+  target.videoSearchKeywords = ['zzz不存在的关键词zzz'];
+  await withProvider(
+    () => providerResponse(target),
+    async () => {
+      // 用中性主题：检索同时会用「主题 + 知识点标题 + 学习目标」兜底，
+      // 若主题含 python 之类会命中，那就不是「命中不了」的场景了。
+      const response = await worker.fetch(
+        makeRequest({ path: '/api/course/lesson', body: { ...base, topic: 'ZZZ 无关主题', outline, conceptId: 'c1' } }),
+        env,
+      );
+      const body = await response.json();
+      assert.equal(response.status, 200);
+      assert.deepEqual(body.concept.videoIds, [], '没有匹配就是没有匹配，不硬塞');
+      assert.equal(body.meta.noVerifiedVideoMatch, true);
     },
   );
 });

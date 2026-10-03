@@ -35,6 +35,7 @@ import { slidesView } from './views/slides.js';
 import { videosView } from './views/videos.js';
 import { generateView } from './views/generate.js';
 import { profileView, settingsView, aboutView } from './views/account.js';
+import { termsView } from './views/terms.js';
 
 const APP_VERSION = '1.0.0';
 
@@ -608,6 +609,7 @@ export function createApp({ root }) {
       case 'settings': return settingsView(ctx);
       case 'authComplete': return authCompleteView(ctx);
       case 'about': return aboutView(ctx);
+      case 'terms': return termsView(ctx);
       default: return h('div', { class: 'view' }, h('h1', { text: '页面不存在' }), h('p', { class: 'muted', text: '请从导航栏重新进入。' }));
     }
   }
