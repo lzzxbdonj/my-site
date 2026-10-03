@@ -16,37 +16,35 @@
                                        └─ 回程把 CORS 改写成真实请求方
 ```
 
-### 在网页后台连接（CLI 在此网络下不可用，必须用后台）
+### ✅ 已完成（实测通过）
 
-1. 打开 https://dash.cloudflare.com/ → 左侧 **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. 授权 Cloudflare 的 GitHub App，选择仓库 `my-site`
-3. 填写（**项目名必须是 `ai-zixuetong`**，否则 `pages.dev` 地址会变，代理里的来源白名单也要跟着改）：
+- 项目名 `ai-zixuetong`，由 CLI 直接部署（`wrangler pages deploy dist`）
+- 站点：**https://ai-zixuetong.pages.dev/** → HTTP 200
+- 代理：**https://ai-zixuetong.pages.dev/api/health** → 返回 Worker 的真实响应
+  （`{"ok":true,"service":"studymate-ai-proxy","model":"deepseek-chat",...}`）
+- 预检：`OPTIONS /api/course/outline` → 204
+- **端到端真实建课**：经代理跑通 1 次大纲 + 7 个知识点，8 次调用、47.8 秒、**7/7 全部成功、无重试**，
+  拼装与前端二次校验通过（7 套测验、1 个动手单元、匹配 13 条已核实视频）；
+  服务端回报用量 输入 10,789 / 输出 16,786 tokens（**成功响应的下界，不是账单金额**）
+- 零配置：站点在 `*.pages.dev` 上打开时，前端会**自动**把代理地址设为当前源
+  （见 `src/core/ai-client.js` 的 `defaultWorkerUrl`），用户不需要手填任何地址
 
-   | 字段 | 值 |
-   | --- | --- |
-   | Project name | `ai-zixuetong` |
-   | Production branch | `main` |
-   | Build command | `npm run build` |
-   | Build output directory | `dist` |
+### 部署时踩到的网络问题与绕法（如实记录）
 
-4. **Save and Deploy**
+本机对 `api.cloudflare.com` 的请求被 **HTTP 劫持重定向到 `https://m.baidu.com/`**（302），
+导致 `wrangler` 一律 `fetch failed`。**解决方式**：用 IP 直连验证（`104.17.0.1` 返回真实 200 与账号信息），
+然后在 hosts 里固定解析：
 
-完成后会得到两个地址：
+```
+104.17.0.1 api.cloudflare.com
+```
 
-- 站点：**https://ai-zixuetong.pages.dev/**（`dist` 的静态前端，与 GitHub Pages 内容相同）
-- API 代理：**https://ai-zixuetong.pages.dev/api/***（转发到原 Worker）
-
-之后每次 push 到 `main`，Cloudflare 会自动重新构建部署——不需要本机 CLI。
-
-### 使用方式
-
-在网站 **设置 → AI 通道** 里把地址填成 `https://ai-zixuetong.pages.dev` 即可。
-如果直接用 `https://ai-zixuetong.pages.dev/` 打开站点，前后端同源，连 CORS 都不需要。
+> 备选路径：如果你不想改 hosts，也可以完全走网页后台「Connect to Git」，
+> 让 Cloudflare 自己从 GitHub 拉取构建——那样连本机网络都不需要。
 
 ### 已知限制（如实记录）
 
 - **访客级限额可能退化为共享计数**：经过代理后，Worker 看到的 `CF-Connecting-IP` 是否仍为终端用户 IP 取决于 Cloudflare 行为，本网络下无法实测确认。**全站每日限额（200 次/天）始终有效**。要彻底解决，需要在 Worker 侧加「可信代理签名」校验——那需要重新部署 Worker。
-- Pages 项目创建与部署**必须走网页后台**：本机到 `api.cloudflare.com` 的连接被劫持（POST 返回 302、证书被替换），CLI 会 `fetch failed`。
 - 这是绕过网络封锁，不是修复网络：`workers.dev` 本身在该地区依旧不可用。
 
 ## 实际部署结果（已发生的事实）

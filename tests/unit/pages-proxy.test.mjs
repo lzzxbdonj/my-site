@@ -11,6 +11,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { onRequest } from '../../functions/api/[[path]].js';
+import { defaultWorkerUrl } from '../../src/core/ai-client.js';
 
 const UPSTREAM = 'https://studymate-ai-proxy.lzzxbdonj.workers.dev';
 const GITHUB_ORIGIN = 'https://lzzxbdonj.github.io';
@@ -116,6 +117,21 @@ test('上游不可达时返回 502 与可读原因，而不是空响应', async 
     assert.equal(body.error, 'upstream-unreachable');
     assert.match(body.message, /connection reset/);
   });
+});
+
+test('同源部署时默认代理地址取当前源；其它主机不乱猜', () => {
+  assert.equal(
+    defaultWorkerUrl({ hostname: 'ai-zixuetong.pages.dev', origin: 'https://ai-zixuetong.pages.dev' }),
+    'https://ai-zixuetong.pages.dev',
+  );
+  assert.equal(defaultWorkerUrl({ hostname: 'pages.dev', origin: 'https://pages.dev' }), 'https://pages.dev');
+  assert.equal(
+    defaultWorkerUrl({ hostname: 'lzzxbdonj.github.io', origin: 'https://lzzxbdonj.github.io' }),
+    '',
+    'GitHub Pages 上没有同源 API，不能猜一个地址出来',
+  );
+  assert.equal(defaultWorkerUrl(null), '');
+  assert.equal(defaultWorkerUrl({}), '');
 });
 
 test('访客 IP 会被透传给上游（若被 Cloudflare 覆盖则退化为共享计数，已在文件头说明）', async () => {

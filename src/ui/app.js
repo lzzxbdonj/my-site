@@ -9,7 +9,7 @@ import { createStore, createLocalStorageBackend, createMemoryBackend, createSecr
 import { parseRoute, buildRoute, NAV_ITEMS, routeTitle } from '../core/router.js';
 import { PRODUCT_NAME, PRODUCT_TAGLINE, BRAND_ARIA_LABEL, brandDocumentTitle } from '../core/brand.js';
 import { getCourse, getConcept, registerGeneratedCourses } from '../core/catalog.js';
-import { explainViaWorker, normalizeWorkerUrl } from '../core/ai-client.js';
+import { explainViaWorker, normalizeWorkerUrl, defaultWorkerUrl } from '../core/ai-client.js';
 import {
   startGithubLogin as requestGithubLogin,
   fetchSession,
@@ -743,6 +743,12 @@ export function createApp({ root }) {
       }
     });
     if (!location.hash) location.hash = '#/';
+    // 同源部署（例如 Cloudflare Pages：前端与 /api/* 反代同域）时自动填好代理地址，
+    // 用户在新设备上打开即可用；不发任何请求，只是按主机名判断。
+    if (!state.ai?.workerUrl) {
+      const fallback = defaultWorkerUrl();
+      if (fallback) setState({ ...state, ai: { ...state.ai, workerUrl: fallback } }, { silent: true });
+    }
     render();
   }
 

@@ -12,6 +12,22 @@ import { toTemplatePayload } from '../data/course-templates.js';
 export const PROXY_DISCLAIMER = 'AI 生成内容仅供参考，可能包含错误，请自行核对。只有你点击「生成」时才会把学习需求发送到你自己配置的服务。';
 
 /**
+ * 同源部署时的默认代理地址（例如 Cloudflare Pages：静态前端与 `/api/*` 反向代理在同一个域名下）。
+ *
+ * 为什么需要它：这种部署里用户不需要知道任何地址，打开就能用；否则每换一台设备都要手填一次，
+ * 对「拿来就能学」的产品是硬伤。
+ *
+ * 这里**不做任何网络探测**，只按主机名判断，因此不会引入后台请求；
+ * 判断不成立时返回空串，界面照旧提示去配置。
+ */
+export function defaultWorkerUrl(loc = (typeof location !== 'undefined' ? location : null)) {
+  if (!loc) return '';
+  const host = String(loc.hostname || '');
+  if (!host) return '';
+  return host === 'pages.dev' || host.endsWith('.pages.dev') ? String(loc.origin || '') : '';
+}
+
+/**
  * 前端等待 Worker 的截止时间（毫秒）。
  *
  * 为什么必须大于 Worker 侧的 PROVIDER_TIMEOUT_MS（worker/src/config.js 默认 90000ms）：
