@@ -134,6 +134,17 @@ test('同源部署时默认代理地址取当前源；其它主机不乱猜', ()
   assert.equal(defaultWorkerUrl({}), '');
 });
 
+test('302 重定向（GitHub 登录回跳）原样透传，代理不得自己跟随', async () => {
+  const location = 'https://ai-zixuetong.pages.dev/#/auth/complete?token=abc.def';
+  const mock = captureFetch(() => new Response(null, { status: 302, headers: { location } }));
+  await withFetch(mock, async () => {
+    const response = await onRequest({ request: makeRequest('/api/auth/callback?code=x&state=y') });
+    assert.equal(response.status, 302, '必须把 302 交给浏览器，而不是自己跟掉');
+    assert.equal(response.headers.get('location'), location, '回跳地址必须完整保留（令牌在里面）');
+  });
+  assert.equal(mock.calls[0].init.redirect, 'manual', '代理必须是 manual 重定向，否则登录会断');
+});
+
 test('访客 IP 会被透传给上游（若被 Cloudflare 覆盖则退化为共享计数，已在文件头说明）', async () => {
   const mock = captureFetch(() => new Response('{}', { status: 200 }));
   await withFetch(mock, async () => {

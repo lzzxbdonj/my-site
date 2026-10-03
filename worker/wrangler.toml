@@ -19,7 +19,8 @@ ENVIRONMENT = "production"
 PROVIDER_BASE_URL = "https://api.deepseek.com"
 PROVIDER_MODEL = "deepseek-chat"
 # 允许调用本 Worker 的前端源，逗号分隔，必须与浏览器地址栏的源完全一致（只写源，不要带仓库路径）
-ALLOWED_ORIGINS = "https://lzzxbdonj.github.io"
+# 两个源都要登记：GitHub Pages 与 Cloudflare Pages；登录回跳（returnTo）也只会落在这些源上
+ALLOWED_ORIGINS = "https://lzzxbdonj.github.io,https://ai-zixuetong.pages.dev"
 # 额度：项目选定的默认值（60 次/访客/天，200 次/全站/天），不是用户指定值，可自行调整
 # 单位是「模型尝试次数」：分阶段建课下一门课约消耗 1（大纲）+ 知识点个数（正文）次
 VISITOR_DAILY_LIMIT = "60"
@@ -33,8 +34,10 @@ RESERVATION_TTL_MS = "180000"
 
 # ---- GitHub 登录（可选）----
 # 三个变量必须同时设置才会启用登录；缺任意一个，登录端点返回 503，但 AI 建课等既有能力不受影响。
+# ⚠️ 回调地址走 Pages 反代（不是 workers.dev）——因为 workers.dev 在部分网络被封锁，
+#    而 Pages 反代会把 /api/* 转发到本 Worker。
 # GITHUB_CLIENT_ID = "Iv1.xxxxxxxxxxxx"          # 来自 GitHub OAuth App 的 Client ID（非机密）
-# AUTH_REDIRECT_URI = "https://studymate-ai-proxy.<你的子域>.workers.dev/api/auth/callback"
+AUTH_REDIRECT_URI = "https://ai-zixuetong.pages.dev/api/auth/callback"
 #   必须与 GitHub OAuth App 里填的 Authorization callback URL 完全一致；不设置则按请求来源自动推导。
 
 # 机密（不要写在此文件里，用 wrangler secret put 设置）：

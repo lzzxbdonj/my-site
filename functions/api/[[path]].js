@@ -77,6 +77,10 @@ export async function onRequest(context) {
   if (clientIp) headers.set('cf-connecting-ip', clientIp);
 
   const init = { method: request.method, headers };
+  // 关键：必须手动处理重定向。GitHub 登录回跳靠的就是 Worker 返回的 302，
+  // 若让 fetch 默认 follow，代理会自己把 302 跟掉、把回跳地址当页面抓回来，
+  // 浏览器就永远拿不到那个带令牌的重定向，登录直接断掉。
+  init.redirect = 'manual';
   if (request.method !== 'GET' && request.method !== 'HEAD') init.body = request.body;
 
   let upstream;
