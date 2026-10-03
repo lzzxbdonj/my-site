@@ -3,6 +3,39 @@
 > 这份清单是**照做就行**的操作步骤。把 `<用户名>`、`<仓库名>` 替换成你自己的值。
 > 顺序不能颠倒：GitHub 登录的回调地址必须和 Worker 地址完全一致，所以**先部署 Worker，再建 OAuth App**。
 
+## 实际部署结果（已发生的事实）
+
+| 项目 | 实际值 | 状态 |
+| --- | --- | --- |
+| GitHub 仓库 | https://github.com/lzzxbdonj/my-site | ✅ 已推送（125 个文件） |
+| 静态站点 | **https://lzzxbdonj.github.io/my-site/** | ✅ 已上线，HTTP 200，标题「ai自学通」 |
+| Pages 来源 | GitHub Actions（workflow `deploy-pages.yml`） | ✅ 已启用，构建与部署作业成功 |
+| Workers 子域 | `lzzxbdonj.workers.dev` | ✅ 已创建 |
+| AI Worker | **https://studymate-ai-proxy.lzzxbdonj.workers.dev** | ✅ 已部署（Cloudflare 侧有版本记录） |
+| Worker 机密 | `PROVIDER_API_KEY`、`IP_SALT` | ✅ 已上传（未打印内容） |
+| 允许来源 | `ALLOWED_ORIGINS = https://lzzxbdonj.github.io` | ✅ 已写入并部署 |
+| GitHub 登录 | 需要 OAuth App | ⬜ 未配置 |
+| 从本机访问 Worker | — | ❌ **不通**，见下 |
+
+### ⚠️ 当前阻塞：本网络无法访问 `*.workers.dev`
+
+实测结果（这是网络问题，不是部署问题）：
+
+- 用三个公共 DNS 解析 `studymate-ai-proxy.lzzxbdonj.workers.dev`，得到**三个完全不同的地址**（`210.56.51.192` / `103.214.168.106` / `104.244.46.9`），都不是 Cloudflare 的地址 → 链路上存在 **DNS 污染**。
+- 强行指定 Cloudflare 真实 IP（`104.16.132.229` / `104.17.0.1`）连接，被 **RST 重置**；`172.67.0.1` 直接超时 → 连接层被**主动阻断**。
+- 同一时刻 `https://lzzxbdonj.github.io/my-site/` 返回 **200**，说明前端没问题；本机 TLS 还需要系统证书（早前 npm 也要 `--use-system-ca`），说明链路上还有 TLS 拦截。
+
+**结论**：Worker 已经正确部署，但这个网络到 Cloudflare 边缘的连接被阻断，因此**在本机用不了 AI 功能**。同一网络下的最终用户也会遇到同样问题。
+
+**先做这一步再决定**：用**手机的移动数据（不要连 WiFi）**打开
+
+```
+https://studymate-ai-proxy.lzzxbdonj.workers.dev/api/health
+```
+
+- 看到 `{"ok":false,"error":"origin-not-allowed"}` → **Worker 是活的**，只是浏览器没带 Origin（这是正常的）；换到网站上用就能工作。说明只是本机 WiFi 被限制。
+- 一直转圈/连接被重置 → 该地区整体访问不了 `workers.dev`，需要换后端方案（见文末「如果 workers.dev 在你那里不可用」）。
+
 ## 当前进度（本机已经完成的）
 
 - ✅ 本地 git 仓库已初始化：分支 `main`，初始提交 `0299426`，**124 个文件**
@@ -159,6 +192,15 @@ npx wrangler deploy --config worker/wrangler.toml
 3. 会话令牌是**无状态签名**的，默认 30 天有效、**无法单独吊销**；在 Cloudflare 更换 `AUTH_TOKEN_SECRET` 可让所有旧令牌立即失效。
 
 ## 已知边界（不夸大）
+
+### 如果 `workers.dev` 在你那里不可用
+
+按代价从低到高：
+
+1. **BYO Worker（零成本，本站已支持）**：每个用户把 Worker 部署到**自己的** Cloudflare 账号。你需要把 Worker 地址告知用户，或让他们自己部署。注意：如果他们的网络同样阻断 `workers.dev`，这条也走不通。
+2. **自定义域绑定 Worker**：买一个便宜域名，在 Cloudflare 里加 `routes` 指向 Worker（`wrangler.toml` 里已留注释示例）。**只解决「workers.dev 被单独封」的情况**；若整片 Cloudflare 边缘都被阻断，换域也没用。
+3. **换后端位置**：把「保管密钥 + 限流 + 调用模型」这件事放到目标用户能稳定访问的地方（例如国内云函数/自建服务）。代价：`worker/src/index.js` 依赖 Durable Object 做原子限流，需要改写；前端只需改「AI 代理 Worker 地址」一项，因为协议就是普通的 HTTPS JSON 接口。
+4. **只用不依赖 AI 的功能**：课程库、定制课程、课件模式、视频、测验、进度、备份全部在浏览器本地完成，**不需要任何后端**。
 
 - 真实 GitHub OAuth 往返**尚未执行过**：现有验证使用模拟 GitHub，覆盖了完整前端流程与全部安全分支（state 篡改/过期、令牌伪造/过期、开放重定向、密钥不外泄）。
 - 视频「嵌入播放成功」从未验证，界面标注为「播放未验证」，请用「打开来源页」兜底。
