@@ -34,8 +34,9 @@ function createEnv(overrides = {}) {
       PROVIDER_API_KEY: API_KEY,
       ALLOWED_ORIGINS: ORIGIN,
       IP_SALT: 'test-salt-0123456789',
-      VISITOR_DAILY_LIMIT: '10',
-      SITE_DAILY_LIMIT: '100',
+      // 按节生成下一个知识点约消耗 sections+2 次调用，这里给出与生产默认一致的额度
+      VISITOR_DAILY_LIMIT: '60',
+      SITE_DAILY_LIMIT: '200',
       MAX_CONCURRENT_PROVIDER_REQUESTS: '4',
       RATE_LIMITER: namespace,
       ...overrides,
@@ -84,6 +85,31 @@ function providerResponse(payload, { status = 200, finishReason = 'stop' } = {})
   }), { status, headers: { 'content-type': 'application/json' } });
 }
 
+/** 按「按节生成」的三段提示词，返回对应形状的响应。 */
+function stagedLessonResponse(concept, prompt) {
+  if (prompt.includes('教学骨架')) {
+    return {
+      keyTerms: concept.keyTerms,
+      videoSearchKeywords: concept.videoSearchKeywords || ['python', concept.title],
+      sections: concept.lesson.sections.map((s) => ({ heading: s.heading, points: s.points || [] })),
+      takeaways: concept.lesson.takeaways,
+      pitfalls: concept.lesson.pitfalls,
+      exercises: concept.exercises,
+      ...(concept.tasks ? { tasks: concept.tasks } : {}),
+      ...(concept.project ? { project: concept.project } : {}),
+    };
+  }
+  if (prompt.includes('随堂测验')) return { questions: concept.quiz.questions };
+  const match = prompt.match(/- 标题：(.+)/);
+  const heading = match ? match[1].trim() : '';
+  const section = concept.lesson.sections.find((s) => s.heading === heading) || concept.lesson.sections[0];
+  return { body: section.body, points: section.points || [] };
+}
+
+/** 一个按节响应的模拟供应商（骨架 / 逐节正文 / 测验各返回对应片段）。 */
+function stagedProvider(concept) {
+  return (url, init) => providerResponse(stagedLessonResponse(concept, JSON.parse(init.body).messages[1].content));
+}
 async function withProvider(handler, fn) {
   const original = globalThis.fetch;
   const calls = [];
@@ -125,7 +151,7 @@ test('知识点接口返回正文、练习与测验，视频只来自服务端�
   const { env } = createEnv();
   const target = course.concepts[0];
   await withProvider(
-    () => providerResponse(contentFrom(target)),
+    stagedProvider(target),
     async () => {
       const response = await worker.fetch(
         makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'c1' } }),
@@ -150,7 +176,7 @@ test('伪造大纲里注入 HTML/脚本会被拒绝（两段之间不产生信�
   const poisoned = outlineFrom(course);
   poisoned.concepts[0].summary = '<script>alert(1)</script> 这是一段被注入的概述文本，长度足够但必须被拒绝。';
   await withProvider(
-    () => providerResponse(contentFrom(course.concepts[0])),
+    stagedProvider(course.concepts[0]),
     async () => {
       const response = await worker.fetch(
         makeRequest({ path: '/api/course/lesson', body: { ...base, outline: poisoned, conceptId: 'c1' } }),
@@ -167,7 +193,7 @@ test('伪造大纲里注入 HTML/脚本会被拒绝（两段之间不产生信�
 test('请求大纲里不存在的知识点 id 会被拒绝', async () => {
   const { env } = createEnv();
   await withProvider(
-    () => providerResponse(contentFrom(course.concepts[0])),
+    stagedProvider(course.concepts[0]),
     async () => {
       const response = await worker.fetch(
         makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'not-in-outline' } }),
@@ -187,11 +213,9 @@ test('缺少 outline 的知识点请求被拒绝', async () => {
 
 test('模型编造的视频 id 不会进入结果（服务端在建课时自行检索视频）', async () => {
   const { env } = createEnv();
-  const target = contentFrom(course.concepts[0]);
-  target.videoIds = ['invented-by-model'];
-  target.videoSearchKeywords = ['列表', 'Python'];
+  const target = { ...course.concepts[0], videoSearchKeywords: ['列表', 'Python'] };
   await withProvider(
-    () => providerResponse(target),
+    stagedProvider(target),
     async () => {
       const response = await worker.fetch(
         makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'c1' } }),
@@ -209,10 +233,9 @@ test('模型编造的视频 id 不会进入结果（服务端在建课时自行�
 
 test('建课时按关键词检索视频：关键词命中才会带上视频', async () => {
   const { env } = createEnv();
-  const target = contentFrom(course.concepts[0]);
-  target.videoSearchKeywords = ['python'];
+  const target = { ...course.concepts[0], videoSearchKeywords: ['python'] };
   await withProvider(
-    () => providerResponse(target),
+    stagedProvider(target),
     async () => {
       const response = await worker.fetch(
         makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'c1' } }),
@@ -228,10 +251,9 @@ test('建课时按关键词检索视频：关键词命中才会带上视频', as
 
 test('主题与关键词都命中不了时不硬塞视频，如实返回空数组', async () => {
   const { env } = createEnv();
-  const target = contentFrom(course.concepts[0]);
-  target.videoSearchKeywords = ['zzz不存在的关键词zzz'];
+  const target = { ...course.concepts[0], videoSearchKeywords: ['zzz不存在的关键词zzz'] };
   await withProvider(
-    () => providerResponse(target),
+    stagedProvider(target),
     async () => {
       // 用中性主题：检索同时会用「主题 + 知识点标题 + 学习目标」兜底，
       // 若主题含 python 之类会命中，那就不是「命中不了」的场景了。
@@ -265,15 +287,19 @@ test('两个阶段各计一次模型尝试额度（额度单位是尝试次数�
   const { env, namespace } = createEnv();
   const attempts = () => namespace.state.peek()?.siteAttempts ?? 0;
   await withProvider(
-    (url) => (url.includes('/chat/completions')
-      ? providerResponse(url.includes('outline') ? outline : contentFrom(course.concepts[0]))
-      : providerResponse(outline)),
+    (url, init) => {
+      const prompt = JSON.parse(init.body).messages[1].content;
+      return providerResponse(prompt.includes('请为一门中文课程设计') ? outline : stagedLessonResponse(course.concepts[0], prompt));
+    },
     async () => {
       assert.equal(attempts(), 0);
       await worker.fetch(makeRequest({ path: '/api/course/outline', body: base }), env);
-      assert.equal(attempts(), 1);
+      assert.equal(attempts(), 1, '大纲阶段：1 次调用 = 1 次额度');
+      const sections = course.concepts[0].lesson.sections.length;
       await worker.fetch(makeRequest({ path: '/api/course/lesson', body: { ...base, outline, conceptId: 'c1' } }), env);
-      assert.equal(attempts(), 2);
+      // 按节生成：骨架 1 次 + 每节正文 1 次 + 测验 1 次 = sections + 2 次调用，
+      // 额度必须按**真实调用次数**计费，否则限额会被低估。
+      assert.equal(attempts(), 1 + sections + 2, `知识点阶段应计入 ${sections + 2} 次调用`);
     },
   );
 });
@@ -289,8 +315,9 @@ test('两个阶段各计一次模型尝试额度（额度单位是尝试次数�
 const OUTLINE_SENTINEL = '请为一门中文课程设计**大纲**';
 
 function contentFromPrompt(sent) {
-  const match = sent.messages[1].content.match(/^- id：([a-z0-9-]+)$/m);
-  const wanted = match ? course.concepts.find((c) => c.id === match[1]) : null;
+  const prompt = sent.messages[1].content;
+  const marker = prompt.match(/知识点：(.+?)（/);
+  const wanted = marker ? course.concepts.find((c) => c.title === marker[1].trim()) : null;
   return wanted || null;
 }
 
@@ -305,8 +332,8 @@ test('两段拼装出的课程能通过前端二次校验（完整链路）', as
       seen.push(isOutline ? 'outline' : 'lesson');
       if (isOutline) return providerResponse(outline);
       const wanted = contentFromPrompt(sent);
-      assert.ok(wanted, `知识点阶段的提示词必须带上要写的知识点 id，实际提示词片段：${prompt.slice(0, 200)}`);
-      return providerResponse(contentFrom(wanted));
+      assert.ok(wanted, `知识点阶段必须能定位到知识点；解析到的标题=${JSON.stringify(prompt.match(/知识点：(.+?)（/)?.[1] || null)}，候选=${JSON.stringify(course.concepts.map((c) => c.title))}`);
+      return providerResponse(stagedLessonResponse(wanted, prompt));
     },
     async () => {
       const outlineRes = await worker.fetch(makeRequest({ path: '/api/course/outline', body: base }), env);
@@ -326,7 +353,11 @@ test('两段拼装出的课程能通过前端二次校验（完整链路）', as
         contents[concept.id] = body.concept;
       }
 
-      assert.deepEqual(seen, ['outline', 'lesson', 'lesson', 'lesson', 'lesson'], '两段各走各的提示词（1 次大纲 + 4 次知识点）');
+      // 按节生成：1 次大纲 + 每个知识点（骨架 1 + 每节正文 1 + 测验 1）次调用
+      const expectedCalls = 1 + course.concepts.reduce((n, c) => n + (c.lesson.sections.length + 2), 0);
+      assert.equal(seen.length, expectedCalls, `调用次数应为 ${expectedCalls}，实际 ${seen.length}`);
+      assert.equal(seen.filter((s) => s === 'outline').length, 1, '只应取一次大纲');
+      assert.equal(seen[0], 'outline', '第一段必须是大纲');
 
       const merged = {
         ...generated,
@@ -351,7 +382,7 @@ test('课程模板：受信任的模板取向会进入大纲与正文两段提�
       prompts.push(prompt);
       if (prompt.includes(OUTLINE_SENTINEL)) return providerResponse(outline);
       const wanted = contentFromPrompt(sent);
-      return providerResponse(contentFrom(wanted || course.concepts[0]));
+      return providerResponse(stagedLessonResponse(wanted || course.concepts[0], prompt));
     },
     async () => {
       const outlineRes = await worker.fetch(makeRequest({ path: '/api/course/outline', body: { ...base, templateId: 'exam' } }), env);

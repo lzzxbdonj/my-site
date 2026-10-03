@@ -67,21 +67,24 @@ function reserve(counters, payload, visitor, now) {
   const siteAttemptLimit = limit(payload.siteAttemptLimit);
   const maxConcurrent = limit(payload.maxConcurrent) || 1;
   const ttl = limit(payload.reservationTtlMs) || 180000;
+  // 一次请求可能包含多次模型调用（按节生成），因此额度按**真实调用次数**计费：
+  // 默认 1；调用方预先声明本次要发起的调用数，避免限额被低估。
+  const cost = Math.max(1, Math.min(limit(payload.cost) || 1, 32));
 
   purgeExpired(counters, now);
   const active = Object.keys(counters.reservations).length;
 
   if (active >= maxConcurrent) return { ok: false, allowed: false, reason: 'concurrency-limit' };
-  if (counters.siteAttempts >= siteAttemptLimit) return { ok: false, allowed: false, reason: 'site-attempt-limit' };
-  if ((counters.visitors[visitor] || 0) >= visitorAttemptLimit) return { ok: false, allowed: false, reason: 'visitor-attempt-limit' };
+  if (counters.siteAttempts + cost > siteAttemptLimit) return { ok: false, allowed: false, reason: 'site-attempt-limit' };
+  if ((counters.visitors[visitor] || 0) + cost > visitorAttemptLimit) return { ok: false, allowed: false, reason: 'visitor-attempt-limit' };
 
   const reservationId = `${counters.day}:${visitor}:${now.toString(36)}:${Math.random().toString(36).slice(2, 8)}`;
-  counters.reservations[reservationId] = { day: counters.day, at: now, expiresAt: now + ttl };
-  counters.siteAttempts += 1;
-  counters.visitors[visitor] = (counters.visitors[visitor] || 0) + 1;
+  counters.reservations[reservationId] = { day: counters.day, at: now, expiresAt: now + ttl, cost };
+  counters.siteAttempts += cost;
+  counters.visitors[visitor] = (counters.visitors[visitor] || 0) + cost;
   counters.attemptDays[counters.day] = counters.attemptDays[counters.day] || {};
-  counters.attemptDays[counters.day][visitor] = (counters.attemptDays[counters.day][visitor] || 0) + 1;
-  return { ok: true, allowed: true, reservationId, day: counters.day, changed: true };
+  counters.attemptDays[counters.day][visitor] = (counters.attemptDays[counters.day][visitor] || 0) + cost;
+  return { ok: true, allowed: true, reservationId, day: counters.day, cost, changed: true };
 }
 
 function release(counters, payload, now) {

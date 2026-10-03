@@ -16,6 +16,7 @@
 
 import { loadConfig, isAllowedOrigin } from './config.js';
 import { buildCoursePrompt, buildExplainPrompt, buildOutlinePrompt, buildLessonPrompt, extractJson, sanitizeExplanation } from './prompt.js';
+import { buildSkeletonPrompt, buildSectionPrompt, buildQuizPrompt, assembleConceptContent } from './lesson-stages.js';
 import { validateGeneratedCourse, validateCourseOutline, validateConceptContent, SchemaError, takeValidationWarnings } from './schema.js';
 import { RateLimiter } from './ratelimit.js';
 import { AccountLedger } from './ledger.js';
@@ -147,7 +148,7 @@ export default {
         return result.response;
       }
       if (url.pathname === '/api/course/lesson') {
-        const result = await handleLesson({ raw: raw.value, config, cors, reservation });
+        const result = await handleLesson({ raw: raw.value, config, cors, reservation, env, visitorHash: visitor.hash });
         outcome = result.outcome;
         return result.response;
       }
@@ -486,7 +487,7 @@ async function handleOutline({ raw, config, cors, reservation }) {
 }
 
 /** 分阶段建课：第二段为单个知识点生成正文、练习与测验。 */
-async function handleLesson({ raw, config, cors, reservation }) {
+async function handleLesson({ raw, config, cors, reservation, env, visitorHash = '' }) {
   const input = normalizeGenerateInput(raw);
   const outlineInput = raw?.outline;
   if (!outlineInput || typeof outlineInput !== 'object' || Array.isArray(outlineInput)) {
@@ -502,26 +503,75 @@ async function handleLesson({ raw, config, cors, reservation }) {
   const concept = outline.concepts.find((c) => c.id === wantedId);
   if (!concept) throw Object.assign(new Error('指定的知识点不在大纲中'), { userError: true });
 
-  const prompt = buildLessonPrompt({ input, outline, concept, templateId: input.templateId });
-  const completion = await callProvider({ config, messages: prompt, maxTokens: Math.min(config.maxOutputTokens, LESSON_MAX_TOKENS) });
-  if (completion.truncated) {
-    const error = new Error(`知识点「${concept.title}」的输出达到长度上限（max_tokens=${Math.min(config.maxOutputTokens, LESSON_MAX_TOKENS)}）而被截断。`);
-    error.code = 'output-truncated';
-    throw error;
+  // 按节生成：骨架 → 逐节正文 → 测验，每次输出都很小，
+  // 既不容易撞上长度上限，失败也只需重跑一小段。
+  const usage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
+  let modelUsed = '';
+  const callStage = async (messages, label) => {
+    const completion = await callProvider({ config, messages, maxTokens: Math.min(config.maxOutputTokens, LESSON_MAX_TOKENS) });
+    if (completion.truncated) {
+      const error = new Error(`知识点「${concept.title}」的${label}输出达到长度上限而被截断。`);
+      error.code = 'output-truncated';
+      throw error;
+    }
+    if (completion.usage) {
+      for (const key of Object.keys(usage)) usage[key] += Number(completion.usage[key]) || 0;
+    }
+    if (completion.model) modelUsed = completion.model;
+    const parsed = extractJson(completion.text);
+    if (!parsed.ok) throw new SchemaError([`${label}：${parsed.error}`]);
+    if (!parsed.value || typeof parsed.value !== 'object') throw new SchemaError([`${label}：模型没有返回 JSON 对象`]);
+    return parsed.value;
+  };
+
+  const skeleton = await callStage(
+    buildSkeletonPrompt({ input, outline, concept, templateId: input.templateId }),
+    '教学骨架',
+  );
+  const plannedSections = Array.isArray(skeleton.sections) ? skeleton.sections.slice(0, 3) : [];
+  if (plannedSections.length === 0) {
+    throw new SchemaError([`concepts.${concept.id}.sections 模型没有给出任何小节`]);
   }
-  const parsed = extractJson(completion.text);
-  if (!parsed.ok) throw new SchemaError([parsed.error]);
 
-  // 视频由**服务端在建课时检索**：
-  //  - 先丢掉模型可能给出的 videoIds（模型只允许给「检索意图」，不允许指定视频）；
-  //  - 校验正文之后，再用检索关键词 + 知识点标题/目标去服务端目录里检索并写入 videoIds。
-  const modelOutput = { ...(parsed.value && typeof parsed.value === 'object' ? parsed.value : {}) };
-  const rawKeywords = Array.isArray(modelOutput.videoSearchKeywords) ? modelOutput.videoSearchKeywords : [];
+  // 后续还要发 1 次测验 + 每节 1 次正文：按真实调用次数补一次额度预占。
+  // 额度不足时**必须在发任何后续调用之前**停下来，并如实返回 429（不是 502）。
+  const extra = await reserveQuota(env, config, visitorHash, plannedSections.length + 1);
+  if (!extra.ok) {
+    return {
+      outcome: 'quota-exceeded',
+      response: json({
+        ...(extra.body || { ok: false, error: 'quota-exceeded' }),
+        message: extra.body?.message || `剩余额度不足以完成这个知识点（还需要 ${plannedSections.length + 1} 次调用）。`,
+        note: quotaNote('invalid-output'),
+      }, extra.status || 429, cors),
+    };
+  }
+
+  let sections;
+  let quiz;
+  try {
+    sections = [];
+    for (let index = 0; index < plannedSections.length; index += 1) {
+      const section = plannedSections[index];
+      const part = await callStage(
+        buildSectionPrompt({ input, outline, concept, skeleton, section, index, total: plannedSections.length }),
+        `第 ${index + 1} 节正文`,
+      );
+      sections.push({
+        heading: section.heading,
+        body: Array.isArray(part.body) ? part.body : [],
+        extraPoints: Array.isArray(part.points) ? part.points : [],
+      });
+    }
+    quiz = await callStage(buildQuizPrompt({ input, outline, concept, skeleton }), '测验');
+  } finally {
+    await releaseQuota(env, config, extra, 'success');
+  }
+
+  const rawKeywords = Array.isArray(skeleton.videoSearchKeywords) ? skeleton.videoSearchKeywords : [];
   const keywords = rawKeywords.map((word) => String(word || '').slice(0, 40)).filter(Boolean).slice(0, 5);
-  delete modelOutput.videoIds;
-  delete modelOutput.videoSearchKeywords;
-
-  const content = validateConceptContent(modelOutput, { concept, videoLibrary: SERVER_VIDEOS });
+  const assembled = assembleConceptContent({ skeleton, sections, quiz, videoSearchKeywords: keywords });
+  const content = validateConceptContent(assembled, { concept, videoLibrary: SERVER_VIDEOS });
   // 超长/超量只算警告（已按句截断），课程仍然可用 —— 不让一处啰嗦毁掉整门课
   const warnings = takeValidationWarnings();
   const found = searchServerVideos({
@@ -539,19 +589,20 @@ async function handleLesson({ raw, config, cors, reservation }) {
       meta: {
         stage: 'lesson',
         conceptId: concept.id,
-        model: completion.model || config.providerModel,
+        model: modelUsed || config.providerModel,
         templateId: input.templateId,
         templateLabel: getTemplate(input.templateId)?.label || '',
+        stagedCalls: plannedSections.length + 2,
         videoSearchKeywords: keywords,
         videoSearchMatched: found.matched,
         warnings,
         matchedVideoIds: content.videoIds,
         noVerifiedVideoMatch: content.videoIds.length === 0,
-        note: '配套视频由服务端在建课时按知识点检索加入；没有匹配到就是没有匹配到。',
+        note: '这个知识点分 3 段生成（骨架 → 逐节正文 → 测验），配套视频由服务端按知识点检索加入。',
         disclaimer: 'AI 生成内容，请自行核对。',
-        usage: completion.usage || null,
+        usage,
       },
-      counters: reservation?.counters || null,
+      counters: extra?.counters || reservation?.counters || null,
     }, 200, cors),
   };
 }
@@ -669,7 +720,7 @@ async function quotaStub(env) {
   return env.RATE_LIMITER.get(id);
 }
 
-async function reserveQuota(env, config, visitorHash) {
+async function reserveQuota(env, config, visitorHash, cost = 1) {
   const stub = await quotaStub(env);
   if (!stub) {
     return { ok: false, status: 503, body: { ok: false, error: 'worker-configuration-error', message: '缺少 RATE_LIMITER Durable Object 绑定，无法保证配额，已拒绝服务。' } };
@@ -679,6 +730,7 @@ async function reserveQuota(env, config, visitorHash) {
     body: JSON.stringify({
       action: 'reserve',
       visitorHash,
+      cost,
       visitorAttemptLimit: config.visitorDailyLimit,
       siteAttemptLimit: config.siteDailyLimit,
       maxConcurrent: config.maxConcurrentProviderRequests,

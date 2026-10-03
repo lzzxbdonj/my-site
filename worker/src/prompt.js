@@ -6,7 +6,7 @@ import { getTemplate, normalizeTemplateId } from '../../src/data/course-template
  * 模板取向说明：只从共用目录里按受信任 id 取文本。
  * 未知 id / 缺失 id 一律返回空串——提示词与加入模板之前完全一致（向后兼容）。
  */
-function templateFocus(templateId, stage) {
+export function templateFocus(templateId, stage) {
   const template = getTemplate(normalizeTemplateId(templateId));
   if (!template || template.id === 'custom') return '';
   const emphasis = stage === 'lesson' ? template.lessonEmphasis : template.outlineEmphasis;
