@@ -98,6 +98,12 @@ export default {
         auth: {
           enabled: config.authConfigured,
           provider: 'github',
+          // 只列出「还缺哪个变量名」，绝不回显任何值——方便部署者自己定位问题
+          missing: [
+            !config.githubClientId ? 'GITHUB_CLIENT_ID' : null,
+            !config.githubClientSecret ? 'GITHUB_CLIENT_SECRET' : null,
+            !config.authTokenSecret ? 'AUTH_TOKEN_SECRET' : null,
+          ].filter(Boolean),
           error: config.authError,
         },
       }, 200, cors);

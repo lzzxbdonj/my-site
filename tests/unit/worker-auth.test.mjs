@@ -112,9 +112,25 @@ test('只配置了一部分登录变量：明确报错，但 AI 端点仍然可�
   assert.equal(health.status, 200);
   assert.equal(body.auth.enabled, false);
   assert.match(body.auth.error, /必须同时设置/, '应明确指出三者必须同时设置');
+  // 诊断字段只给变量名，方便部署者定位；绝不能泄露任何值
+  assert.deepEqual(body.auth.missing.sort(), ['AUTH_TOKEN_SECRET', 'GITHUB_CLIENT_SECRET'].sort());
+  const serialized = JSON.stringify(body);
+  assert.ok(!serialized.includes(CLIENT_SECRET), '诊断信息不得包含任何密钥值');
 
   const login = await worker.fetch(request('/api/auth/login'), env);
   assert.equal(login.status, 503);
+});
+
+test('登录配置齐全时：missing 为空且密码字段值绝不外泄', async () => {
+  const { env } = createEnv(AUTH_ENV);
+  const health = await worker.fetch(request('/api/health'), env);
+  const body = await health.json();
+  assert.equal(body.auth.enabled, true);
+  assert.deepEqual(body.auth.missing, []);
+  assert.equal(body.auth.error, null);
+  const serialized = JSON.stringify(body);
+  assert.ok(!serialized.includes(CLIENT_SECRET));
+  assert.ok(!serialized.includes(TOKEN_SECRET));
 });
 
 test('登录地址包含必要参数，但绝不包含 client secret', async () => {
