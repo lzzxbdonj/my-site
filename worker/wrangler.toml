@@ -18,8 +18,8 @@ ENVIRONMENT = "production"
 # 固定服务端 HTTPS 端点（OpenAI 兼容），客户端无法指定目标
 PROVIDER_BASE_URL = "https://api.deepseek.com"
 PROVIDER_MODEL = "deepseek-chat"
-# 允许调用本 Worker 的前端源，逗号分隔，必须与浏览器地址栏的源完全一致
-ALLOWED_ORIGINS = "https://your-name.github.io"
+# 允许调用本 Worker 的前端源，逗号分隔，必须与浏览器地址栏的源完全一致（只写源，不要带仓库路径）
+ALLOWED_ORIGINS = "https://lzzxbdonj.github.io"
 # 额度：项目选定的默认值（60 次/访客/天，200 次/全站/天），不是用户指定值，可自行调整
 # 单位是「模型尝试次数」：分阶段建课下一门课约消耗 1（大纲）+ 知识点个数（正文）次
 VISITOR_DAILY_LIMIT = "60"
