@@ -4,7 +4,7 @@
  */
 
 import { h, clear, renderInto } from './dom.js';
-import { orbitalMark, badge } from './components.js';
+import { brandMark, badge } from './components.js';
 import { createStore, createLocalStorageBackend, createMemoryBackend, createSecretStore, exportState, importState, createEmptyState } from '../core/storage.js';
 import { parseRoute, buildRoute, NAV_ITEMS, routeTitle } from '../core/router.js';
 import { PRODUCT_NAME, PRODUCT_TAGLINE, BRAND_ARIA_LABEL, brandDocumentTitle } from '../core/brand.js';
@@ -660,7 +660,7 @@ export function createApp({ root }) {
     return h('header', { class: 'app-header' },
       h('div', { class: 'header-inner' },
         h('a', { class: 'brand', attrs: { href: buildRoute('dashboard'), 'aria-label': BRAND_ARIA_LABEL } },
-          orbitalMark(34),
+          brandMark(34),
           h('span', { class: 'brand-text' },
             h('strong', { text: PRODUCT_NAME }),
             h('span', { class: 'brand-sub', text: PRODUCT_TAGLINE })

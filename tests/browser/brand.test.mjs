@@ -58,8 +58,8 @@ test('路由切换时 document.title 与导航 logo 都是新品牌名', async (
   assert.match(brand, new RegExp(PRODUCT_NAME), '导航应显示新品牌名');
   const aria = await page.evaluate('document.querySelector("a.brand")?.getAttribute("aria-label") || ""');
   assert.equal(aria, `${PRODUCT_NAME} 首页`, '品牌链接应有新品牌名的无障碍标签');
-  const markLabel = await page.evaluate('document.querySelector(".orbital-mark")?.getAttribute("aria-label") || ""');
-  assert.match(markLabel, new RegExp(PRODUCT_NAME), '轨道标记的替代文本也要用新品牌名');
+  const markLabel = await page.evaluate('document.querySelector(".brand-mark")?.getAttribute("aria-label") || ""');
+  assert.match(markLabel, new RegExp(PRODUCT_NAME), '品牌标记的替代文本也要用新品牌名');
 
   for (const [hash, expected] of [
     ['#/explore', '课程库'],

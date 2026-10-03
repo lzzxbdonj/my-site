@@ -1,5 +1,5 @@
 import { h } from '../dom.js';
-import { badge, orbitalMark, progressBar, statTile } from '../components.js';
+import { badge, brandMark, progressBar, statTile } from '../components.js';
 import { GOALS, LEVELS } from '../../core/personalize.js';
 import { courseProgress, studyStats } from '../../core/progress.js';
 import { catalogStats } from '../../data/courses.js';
@@ -280,7 +280,7 @@ export function aboutView(ctx) {
   const verifiedChannels = [...new Set(VIDEO_LIBRARY.filter((v) => v.creatorVerified).map((v) => v.creator))];
   return h('div', { class: 'view view-about' },
     h('header', { class: 'view-head hero-small' },
-      orbitalMark(56),
+      brandMark(56),
       h('div', {},
         h('h1', { text: '关于本项目' }),
         h('p', { class: 'muted', text: `${PRODUCT_NAME}：一个受 Study-Mate 启发的、可部署在 GitHub Pages 上的中文学习网站——定制课程 + 精选视频 + 真实测验 + 本地进度。` }),

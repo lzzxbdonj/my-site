@@ -1,5 +1,5 @@
 import { h } from '../dom.js';
-import { orbitalMark, statTile, badge, emptyState, progressBar, typeLabel } from '../components.js';
+import { brandMark, statTile, badge, emptyState, progressBar, typeLabel } from '../components.js';
 import { buildRoute } from '../../core/router.js';
 import { courseProgress, nextConcepts, studyStats, conceptStateMap } from '../../core/progress.js';
 import { formatMinutes, percent, formatRelative } from '../../core/format.js';
@@ -15,7 +15,7 @@ export function dashboardView(ctx) {
 
   return h('div', { class: 'view view-dashboard' },
     h('section', { class: 'hero card' },
-      h('div', { class: 'hero-mark' }, orbitalMark(72)),
+      h('div', { class: 'hero-mark' }, brandMark(72)),
       h('div', { class: 'hero-body' },
         h('p', { class: 'eyebrow', text: '本地优先 · 不需要登录 · 数据只存在这台设备' }),
         h('h1', { text: greet(state) }),

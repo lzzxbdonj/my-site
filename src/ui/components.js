@@ -7,18 +7,28 @@ import { gradeQuiz, questionTypeLabel } from '../core/quiz.js';
 import { resolveVideoPlayback, verificationBadge } from '../core/video.js';
 import { safeHttpUrl } from '../core/storage.js';
 import { buildRoute } from '../core/router.js';
-import { PRODUCT_ORBITAL_LABEL } from '../core/brand.js';
+import { PRODUCT_MARK_LABEL } from '../core/brand.js';
 
-/** 原创「轨道学习伙伴」标记：抽象几何，不含任何上游角色形象。 */
-export function orbitalMark(size = 40) {
+/**
+ * 品牌标记：圆角方块 + 手绘「自」字（Stroke 描边，不用字体，因此任何环境渲染一致）。
+ *
+ * 为什么改成这样：原来的三个同心椭圆（轨道）在小尺寸下糊成一团，且是最常见的
+ * 「抽象几何 + 发光」套路，一眼就像模板。现在改用**品牌首字作为单字徽标**：
+ * 在 24–34px 下依然清晰，且与「ai自学通」直接对应。
+ */
+export function brandMark(size = 40) {
   return h('svg', {
-    class: 'orbital-mark',
-    attrs: { viewBox: '0 0 64 64', width: size, height: size, role: 'img', 'aria-label': PRODUCT_ORBITAL_LABEL },
+    class: 'brand-mark',
+    attrs: { viewBox: '0 0 48 48', width: size, height: size, role: 'img', 'aria-label': PRODUCT_MARK_LABEL },
   },
-    h('circle', { attrs: { cx: 32, cy: 32, r: 9, class: 'om-core' } }),
-    h('ellipse', { attrs: { cx: 32, cy: 32, rx: 26, ry: 11, class: 'om-ring', transform: 'rotate(-18 32 32)' } }),
-    h('ellipse', { attrs: { cx: 32, cy: 32, rx: 26, ry: 11, class: 'om-ring om-ring-2', transform: 'rotate(48 32 32)' } }),
-    h('circle', { attrs: { cx: 54, cy: 22, r: 4, class: 'om-node' } })
+    h('rect', { attrs: { class: 'bm-tile', x: 0, y: 0, width: 48, height: 48, rx: 13 } }),
+    h('g', { class: 'bm-glyph', attrs: { fill: 'none', 'stroke-width': 3.4, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } },
+      // 「自」= 目 + 顶上一小竖；用四条笔画画出来，不依赖任何字体
+      h('path', { attrs: { d: 'M24 10.5v3.2' } }),
+      h('path', { attrs: { d: 'M16.8 18.2h14.4v19.6H16.8z' } }),
+      h('path', { attrs: { d: 'M16.8 24.7h14.4' } }),
+      h('path', { attrs: { d: 'M16.8 31.2h14.4' } })
+    )
   );
 }
 
@@ -44,7 +54,7 @@ export function statTile({ label, value, hint, tone = 'default' }) {
 
 export function emptyState({ title, description, actionLabel, onAction, secondary }) {
   return h('div', { class: 'empty-state' },
-    h('div', { class: 'empty-glyph', attrs: { 'aria-hidden': 'true' } }, orbitalMark(48)),
+    h('div', { class: 'empty-glyph', attrs: { 'aria-hidden': 'true' } }, brandMark(48)),
     h('h3', { text: title }),
     description ? h('p', { text: description }) : null,
     actionLabel ? h('button', { class: 'btn btn-primary', attrs: { type: 'button' }, on: { click: onAction }, text: actionLabel }) : null,

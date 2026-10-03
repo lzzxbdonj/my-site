@@ -1,60 +1,53 @@
-/* ai自学通 —— 原创视觉系统：深空科技风
-   颜色：近黑蓝底 + 电光蓝主色 + 青色强调 + 玻璃质感面板。无外部字体/CDN 依赖。 */
+/* ai自学通 —— 原创视觉系统：纸面编辑风（依据参考演示文稿的属性层证据）
+   配色与字体取自 1999-1.4(new).pptx 的主题色与高频显式色，见 STYLE_REFERENCE.md。
+   方向是「印刷品」而不是「霓虹模板」：米色纸面、墨色正文、青绿与黄铜点缀、
+   1px 细线、小圆角、几乎不用投影与渐变。无外部字体/CDN 依赖。 */
 
 :root {
   --font-scale: 1;
 
-  /* 设计令牌：整站组件都引用这些变量，因此换这一块即可整体换肤。 */
-  --bg: #070b15;
-  --bg-soft: #0d1424;
-  --bg-sunk: #05080f;
-  --bg-raised: #111a2e;
+  /* 纸面与墨色 */
+  --bg: #f2efe6;          /* accent2：米色纸面 */
+  --bg-soft: #f6f0eb;
+  --bg-sunk: #e9e4d5;     /* 参考文件里出现次数最多的显式色 */
+  --bg-raised: #fbf9f4;
 
-  --ink: #e9eefc;
-  --ink-soft: #a7b6d6;
-  --ink-muted: #6d7d9e;
+  --ink: #22232a;         /* 近 accent6 #2B2A2F，略压暗以提升纸面对比 */
+  --ink-soft: #374f57;    /* accent5 深灰绿 */
+  --ink-muted: #787b6a;
 
-  --line: #1b2540;
-  --line-strong: #2c3b5e;
+  --line: #d1ccb5;        /* accent1 米灰线 */
+  --line-strong: #a29f7e;
 
-  /* 主色：电光蓝 */
-  --indigo: #4d7cfe;
-  --indigo-soft: #12203f;
-  --indigo-ink: #9cc0ff;
-  /* 强调：青色 */
-  --amber: #22d3ee;
-  --amber-soft: #0a2734;
-  /* 次级：雾蓝 */
-  --teal: #5b6b8c;
-  --teal-soft: #131d31;
+  /* 点缀：青绿与黄铜（各自压深一档，保证在纸面上的可读性） */
+  --indigo: #2f7f84;
+  --indigo-soft: #e3ecea;
+  --indigo-ink: #26686c;
+  --amber: #a98f5f;
+  --amber-soft: #efe7d6;
+  --teal: #50696d;        /* dk2 灰绿 */
+  --teal-soft: #e4e9e8;
 
-  /* 「实心深色块 + 亮字」专用（toast / 跳过链接 / 选中态）。
-     注意：深色主题里 --ink 是**浅色文字**，不能拿它当实心背景，否则白字会糊成一片。 */
-  --solid: #16203a;
-  --solid-hover: #1d2a4b;
-  --solid-ink: #f2f6ff;
+  /* 「墨色实心块 + 纸色字」专用（toast / 跳过链接 / 选中态） */
+  --solid: #2b2a2f;
+  --solid-hover: #3a3941;
+  --solid-ink: #f6f0eb;
 
-  --ok: #34d399;
-  --ok-soft: #06251c;
-  --warn: #fbbf24;
-  --warn-soft: #2a2109;
-  --bad: #fb7185;
-  --bad-soft: #2c1218;
+  --ok: #3f7a63;
+  --ok-soft: #e2ede6;
+  --warn: #8a6a2f;
+  --warn-soft: #f0e7d3;
+  --bad: #8f4a45;
+  --bad-soft: #f2e2df;
 
-  --radius-lg: 20px;
-  --radius: 14px;
-  --radius-sm: 10px;
+  /* 印刷感：小圆角、极浅投影，不用发光 */
+  --radius-lg: 6px;
+  --radius: 4px;
+  --radius-sm: 3px;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 34px 80px rgba(0, 0, 0, 0.62);
-
-  /* 科技感光效：面板描边光、主色渐变、玻璃高光、网格线 */
-  --glow-primary: 0 0 0 1px rgba(77, 124, 254, 0.35), 0 0 34px rgba(77, 124, 254, 0.18);
-  --glow-cyan: 0 0 30px rgba(34, 211, 238, 0.18);
-  --grad-primary: linear-gradient(135deg, #4d7cfe 0%, #22d3ee 100%);
-  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
-  --grid-line: rgba(125, 160, 235, 0.055);
+  --shadow-sm: 0 1px 0 rgba(43, 42, 47, 0.05);
+  --shadow: 0 1px 2px rgba(43, 42, 47, 0.06), 0 10px 26px rgba(43, 42, 47, 0.05);
+  --shadow-lg: 0 20px 50px rgba(43, 42, 47, 0.13);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -65,8 +58,9 @@
   --space-7: 48px;
   --max-width: 1180px;
   --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "HarmonyOS Sans SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
-  /* 深空主题不使用衬线标题：这里指向无衬线栈，保证所有标题统一成技术感排版 */
-  --font-serif: var(--font-sans);
+  /* 中文衬线标题栈（参考演示文稿的主题东亚字体是「华文中宋」）。
+     只依赖系统已装字体并逐级回退，**不打包任何字体文件**。 */
+  --font-serif: "华文中宋", "方正小标宋简体", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", "Iowan Old Style", Palatino, Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
 }
 
@@ -126,9 +120,8 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-su
 
 .app-header {
   position: sticky; top: 0; z-index: 40;
-  background: rgba(247, 243, 234, 0.86);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line-strong);
 }
 .header-inner {
   max-width: var(--max-width); margin: 0 auto; padding: var(--space-3) var(--space-5);
@@ -139,13 +132,11 @@ code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-su
 .brand-text strong { font-size: 1.02rem; letter-spacing: -0.01em; }
 .brand-sub { font-size: 0.72rem; color: var(--ink-muted); }
 
-.orbital-mark .om-core { fill: var(--amber); }
-.orbital-mark .om-ring { fill: none; stroke: var(--indigo); stroke-width: 3; }
-.orbital-mark .om-ring-2 { stroke: #9aa0e6; stroke-width: 2; }
-.orbital-mark .om-node { fill: var(--teal); }
-.reduce-motion .orbital-mark { animation: none !important; }
-.orbital-mark { animation: orbit-drift 14s linear infinite; }
-@keyframes orbit-drift { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* 品牌标记：实心圆角方块 + 描边「自」字。
+   刻意不做旋转/发光动效 —— 静态、干净，在 24–34px 下也清楚。 */
+.brand-mark { flex: 0 0 auto; display: block; }
+.brand-mark .bm-tile { fill: var(--ink); }
+.brand-mark .bm-glyph { stroke: var(--bg-soft); }
 
 .primary-nav { display: flex; gap: var(--space-1); margin-left: auto; flex-wrap: wrap; }
 .nav-link {
@@ -472,7 +463,7 @@ textarea.text-input { resize: vertical; min-height: 84px; }
 
 /* ---------- 提示条 ---------- */
 .toast-region { position: fixed; right: var(--space-5); bottom: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); z-index: 60; max-width: 90vw; }
-.toast { background: var(--solid); color: var(--solid-ink); padding: 10px 16px; border-radius: 999px; font-size: 0.88rem; box-shadow: var(--shadow-lg), var(--glow-primary); animation: toast-in 0.2s ease-out; }
+.toast { background: var(--solid); color: var(--solid-ink); padding: 10px 16px; border-radius: var(--radius-sm); font-size: 0.88rem; box-shadow: var(--shadow-lg); animation: toast-in 0.2s ease-out; }
 .toast-ok { background: var(--ok); }
 .toast-warn { background: var(--amber); }
 .toast-bad { background: var(--bad); }
@@ -605,105 +596,98 @@ textarea.text-input { resize: vertical; min-height: 84px; }
 }
 
 /* ============================================================================
-   深空科技主题图层
-   —— 只做「表面」的事：画布、玻璃质感、发光线框、渐变、微交互。
-      结构与尺寸仍由上面的既有规则决定，换肤不会把布局弄坏。
-      位置刻意放在打印样式之前，打印时后面的规则优先，不影响「另存为 PDF」。
+   纸面编辑图层
+   —— 只做「表面」的事：纸纹、细线、字距、克制的点缀。
+      刻意不用发光、渐变、玻璃与大量投影 —— 那些正是「一眼 AI 模板」的来源。
+      位置在打印样式之前，打印规则优先，不影响「另存为 PDF」。
    ============================================================================ */
 
-/* ---------- 画布：深空底 + 细网格 + 两处光晕（全部由 CSS 生成，无图片资源） ---------- */
+/* ---------- 纸面：极淡的平行细纹 + 两处几乎察觉不到的色晕（纯 CSS，无图片） ---------- */
 body {
   background-color: var(--bg);
   background-image:
-    radial-gradient(1200px 640px at 12% -14%, rgba(77, 124, 254, 0.17), transparent 62%),
-    radial-gradient(900px 520px at 92% -8%, rgba(34, 211, 238, 0.12), transparent 58%),
-    radial-gradient(800px 700px at 50% 118%, rgba(77, 124, 254, 0.09), transparent 62%),
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: auto, auto, auto, 100% 46px, 46px 100%;
-  background-attachment: fixed;
+    repeating-linear-gradient(90deg, rgba(120, 123, 106, 0.045) 0 1px, transparent 1px 42px),
+    radial-gradient(1100px 520px at 10% -12%, rgba(47, 127, 132, 0.05), transparent 62%),
+    radial-gradient(900px 460px at 94% -8%, rgba(186, 167, 128, 0.08), transparent 58%);
+  background-attachment: scroll, scroll, scroll;
   color: var(--ink);
 }
 
-::selection { background: rgba(77, 124, 254, 0.38); color: #fff; }
+::selection { background: rgba(47, 127, 132, 0.18); color: var(--ink); }
 
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 999px; border: 2px solid var(--bg); }
-::-webkit-scrollbar-thumb:hover { background: var(--indigo); }
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--bg-sunk); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border: 3px solid var(--bg-sunk); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal); }
 
-/* ---------- 顶栏：玻璃拟态 + 发光选中态 ---------- */
+/* ---------- 顶栏：纸面 + 一条墨线；当前页用下划线标记（印刷品的做法，不做胶囊与发光） ---------- */
 .app-header {
   position: sticky; top: 0; z-index: 40;
-  background: rgba(7, 11, 21, 0.74);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line-strong);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
-.nav-link { border-radius: 999px; transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease; }
-.nav-link:hover { background: rgba(255, 255, 255, 0.05); }
+.nav-link { border-radius: 2px; transition: background 140ms ease, color 140ms ease; }
+.nav-link:hover { background: var(--bg-sunk); color: var(--ink); }
 .nav-link[aria-current="page"] {
-  background: var(--indigo-soft); color: var(--indigo-ink);
-  box-shadow: inset 0 0 0 1px rgba(77, 124, 254, 0.5), 0 0 24px rgba(77, 124, 254, 0.22);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 650;
+  box-shadow: inset 0 -2px 0 var(--amber);
 }
+.brand-text strong { letter-spacing: 0.01em; }
 
-/* ---------- 排版：统一无衬线标题 + 渐变主标题 ---------- */
-h1, h2, h3, .view-head h1 { font-family: var(--font-sans); letter-spacing: -0.022em; }
-.view-head h1 {
-  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
-  background-image: linear-gradient(118deg, #ffffff 0%, var(--indigo-ink) 52%, var(--amber) 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+/* ---------- 标题：中文衬线 + 黄铜细线；正文仍是无衬线，保证屏幕可读性 ---------- */
+h1, h2, h3, .view-head h1 { font-family: var(--font-serif); font-weight: 600; letter-spacing: 0.01em; }
+.view-head h1 { font-size: clamp(1.5rem, 2.9vw, 1.95rem); color: var(--ink); }
+.view-head h1::after {
+  content: ''; display: block; width: 44px; height: 2px;
+  margin-top: var(--space-3); background: var(--amber);
 }
-.view-head .muted, .view-head p { max-width: 72ch; }
+.view-head .muted, .view-head p { max-width: 74ch; color: var(--ink-muted); }
+.panel > h2 { font-size: 1.12rem; }
 
-/* ---------- 面板 / 卡片：玻璃面 + 发丝描边 + 悬停辉光 ---------- */
+/* ---------- 面板 / 卡片：纸卡 + 1px 细线 + 极浅投影；悬停只改线色，不位移不发光 ---------- */
 .panel, .card {
-  background-image: var(--grad-surface);
+  background: var(--bg-raised);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.045);
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 140ms ease;
 }
-.card:hover {
-  border-color: var(--line-strong);
-  box-shadow: var(--shadow), 0 0 34px rgba(77, 124, 254, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transform: translateY(-2px);
-}
+.card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-sm); transform: none; }
 .hero {
-  background-image:
-    radial-gradient(620px 260px at 88% 6%, rgba(34, 211, 238, 0.17), transparent 66%),
-    radial-gradient(540px 300px at 4% 94%, rgba(77, 124, 254, 0.2), transparent 68%),
-    var(--grad-surface);
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--amber);
+  box-shadow: var(--shadow-sm);
 }
 
-/* ---------- 按钮：渐变主按钮 + 描边辉光 ---------- */
-.btn { font-weight: 600; transition: transform 140ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease; }
-.btn-primary {
-  background-image: var(--grad-primary); color: #fff; border-color: transparent;
-  box-shadow: 0 6px 22px rgba(77, 124, 254, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.24);
-}
-.btn-primary:hover {
-  background-image: linear-gradient(135deg, #6a92ff 0%, #4ee0f5 100%); color: #fff;
-  box-shadow: 0 10px 30px rgba(77, 124, 254, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-.btn-ghost { background: rgba(255, 255, 255, 0.02); }
-.btn-ghost:hover { border-color: var(--indigo); color: var(--ink); box-shadow: 0 0 0 1px rgba(77, 124, 254, 0.35), 0 0 22px rgba(77, 124, 254, 0.16); }
+/* ---------- 按钮：墨色实心 / 描边，小圆角，无渐变无光晕 ---------- */
+.btn { font-weight: 600; border-radius: var(--radius-sm); transition: background 140ms ease, border-color 140ms ease, color 140ms ease; }
+.btn-primary { background: var(--solid); color: var(--solid-ink); border-color: var(--solid); box-shadow: none; }
+.btn-primary:hover { background: var(--solid-hover); color: var(--solid-ink); }
+.btn-ghost { background: transparent; border-color: var(--line-strong); color: var(--ink); }
+.btn-ghost:hover { background: var(--bg-sunk); border-color: var(--ink-muted); box-shadow: none; }
 .btn:focus-visible, .nav-link:focus-visible, .text-input:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid var(--amber); outline-offset: 2px;
+  outline: 2px solid var(--indigo); outline-offset: 2px;
 }
 
-/* ---------- 进度 / 状态等细节在深色底上的可读性 ---------- */
-.progress-track { background: var(--bg-sunk); box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.55); }
-.progress-fill { background-image: var(--grad-primary); box-shadow: 0 0 20px rgba(77, 124, 254, 0.38); }
-.panel, .card, .badge, .chip { color: var(--ink); }
-code, pre { font-family: var(--font-mono); }
-pre { background: var(--bg-sunk); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+/* ---------- 链接与进度：点缀只出现在这些地方 ---------- */
+a { color: var(--indigo-ink); }
+.card-link:hover { color: var(--indigo-ink); }
+.progress-track { background: var(--bg-sunk); box-shadow: inset 0 0 0 1px var(--line); }
+.progress-fill { background: var(--indigo); box-shadow: none; }
 
-/* ---------- 课件（放映）模式 ---------- */
-.deck-slide-inner { background-image: var(--grad-surface); border-color: var(--line-strong); }
+/* ---------- 输入框：白纸面 + 细线，聚焦只改线色 ---------- */
+.text-input { border-color: var(--line-strong); background: #fff; }
+.text-input:focus { border-color: var(--indigo); box-shadow: none; outline: 2px solid rgba(47, 127, 132, 0.18); outline-offset: 0; }
+
+/* ---------- 品牌标记与章节微标签 ---------- */
 .deck-label { color: var(--amber); letter-spacing: 0.2em; }
+.deck-slide-inner { background: var(--bg-soft); border-color: var(--line-strong); }
+.badge, .chip { border-color: var(--line-strong); }
 
 /* ---------- 无障碍：用户开了「减少动画」或系统偏好时，动效全部停掉 ---------- */
 .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
@@ -711,10 +695,8 @@ pre { background: var(--bg-sunk); border: 1px solid var(--line); border-radius: 
   animation-duration: 0.001ms !important;
   animation-iteration-count: 1 !important;
 }
-.reduce-motion .card:hover, .reduce-motion .btn:hover { transform: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
-  .card:hover, .btn:hover { transform: none; }
 }
 
 /* ---------- 高级设置：默认折叠，不打扰普通用户 ---------- */

@@ -19,8 +19,8 @@ export const PRODUCT_TAGLINE = '定制课程 · 精选视频 · 本地进度';
 /** 品牌无障碍标签（导航 logo 与关于页）。 */
 export const BRAND_ARIA_LABEL = `${PRODUCT_NAME} 首页`;
 
-/** 轨道标记的替代文本（原创几何图形，不含任何上游角色形象）。 */
-export const PRODUCT_ORBITAL_LABEL = `${PRODUCT_NAME} 的轨道标记`;
+/** 品牌标记的替代文本（原创几何图形，不含任何上游角色形象）。 */
+export const PRODUCT_MARK_LABEL = `${PRODUCT_NAME} 的品牌标记`;
 
 /** 文档标题：`<页面> · ai自学通`；没有页面名时只显示产品名。 */
 export function brandDocumentTitle(section = '') {
