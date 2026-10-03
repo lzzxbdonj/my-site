@@ -73,7 +73,7 @@ npm run serve
    ```
 
    然后在网站「设置 → AI 通道」填入 Worker 地址。供应商密钥保存在 Worker 机密中，**浏览器不会拿到**；
-  前端等待上线的截止时间是 `src/core/ai-client.js` 的 `WORKER_DEADLINES`（**四个端点统一 120 秒**：`outline` / `lesson` / `generate` / `explain`），刻意**高于** Worker 的 `PROVIDER_TIMEOUT_MS` 默认值（90 秒）并留出网络与校验余量——否则前端会在一次已经计费的有效生成返回前中断。如果你把 `PROVIDER_TIMEOUT_MS` 调大，请同步把 `WORKER_DEADLINES` 调到「新超时 + 至少 30 秒」。另：**模型尝试一旦发出即计入当日额度且可能产生费用**，失败或输出无效也不例外；配额由 Durable Object 原子控制（默认 **60 次/访客/天、200 次/全站/天**，为本项目选定的默认值，可在 Worker 变量中调整）。
+  前端等待上线的截止时间是 `src/core/ai-client.js` 的 `WORKER_DEADLINES`（**四个端点统一 120 秒**：`outline` / `lesson` / `generate` / `explain`），刻意**高于** Worker 的 `PROVIDER_TIMEOUT_MS` 默认值（90 秒）并留出网络与校验余量——否则前端会在一次已经计费的有效生成返回前中断。如果你把 `PROVIDER_TIMEOUT_MS` 调大，请同步把 `WORKER_DEADLINES` 调到「新超时 + 至少 30 秒」。另：**模型尝试一旦发出即计入当日额度且可能产生费用**，失败或输出无效也不例外；配额由 Durable Object 原子控制（默认 **200 次/访客/天、800 次/全站/天**，为本项目选定的默认值，可在 Worker 变量中调整）。
 
 2. **直连模式（次级，仅用于讲解）**：浏览器直接调用你自己填写的 OpenAI 兼容接口。密钥只写入 `sessionStorage`（关闭标签页即失效），导出备份时被剔除；界面上明确提示「密钥会暴露给该接口方，且无法限制调用次数」。
 

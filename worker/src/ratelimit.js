@@ -51,6 +51,15 @@ export class RateLimiter {
         return respond(result);
       }
 
+      if (payload.action === 'charge') {
+        // 只计「模型尝试额度」，不占并发位：
+        // 用于一次请求内部的后续调用（按节生成），否则每个请求会占多个并发位，
+        // 两个并行请求就会把并发上限撑爆。
+        const result = charge(counters, payload, visitor);
+        if (result.allowed) await this.state.storage.put('counters', counters);
+        return respond(result);
+      }
+
       if (payload.action === 'release') {
         const result = release(counters, payload, now);
         if (result.changed) await this.state.storage.put('counters', counters);
@@ -85,6 +94,22 @@ function reserve(counters, payload, visitor, now) {
   counters.attemptDays[counters.day] = counters.attemptDays[counters.day] || {};
   counters.attemptDays[counters.day][visitor] = (counters.attemptDays[counters.day][visitor] || 0) + cost;
   return { ok: true, allowed: true, reservationId, day: counters.day, cost, changed: true };
+}
+
+/** 只增加额度计数、不创建并发预占（用于一次请求内部的后续模型调用）。 */
+function charge(counters, payload, visitor) {
+  const visitorAttemptLimit = limit(payload.visitorAttemptLimit);
+  const siteAttemptLimit = limit(payload.siteAttemptLimit);
+  const cost = Math.max(1, Math.min(limit(payload.cost) || 1, 32));
+
+  if (counters.siteAttempts + cost > siteAttemptLimit) return { ok: false, allowed: false, reason: 'site-attempt-limit' };
+  if ((counters.visitors[visitor] || 0) + cost > visitorAttemptLimit) return { ok: false, allowed: false, reason: 'visitor-attempt-limit' };
+
+  counters.siteAttempts += cost;
+  counters.visitors[visitor] = (counters.visitors[visitor] || 0) + cost;
+  counters.attemptDays[counters.day] = counters.attemptDays[counters.day] || {};
+  counters.attemptDays[counters.day][visitor] = (counters.attemptDays[counters.day][visitor] || 0) + cost;
+  return { ok: true, allowed: true, charged: cost, changed: true };
 }
 
 function release(counters, payload, now) {

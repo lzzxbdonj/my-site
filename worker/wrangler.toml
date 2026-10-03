@@ -21,10 +21,10 @@ PROVIDER_MODEL = "deepseek-chat"
 # 允许调用本 Worker 的前端源，逗号分隔，必须与浏览器地址栏的源完全一致（只写源，不要带仓库路径）
 # 两个源都要登记：GitHub Pages 与 Cloudflare Pages；登录回跳（returnTo）也只会落在这些源上
 ALLOWED_ORIGINS = "https://lzzxbdonj.github.io,https://ai-zixuetong.pages.dev"
-# 额度：项目选定的默认值（60 次/访客/天，200 次/全站/天），不是用户指定值，可自行调整
-# 单位是「模型尝试次数」：分阶段建课下一门课约消耗 1（大纲）+ 知识点个数（正文）次
-VISITOR_DAILY_LIMIT = "60"
-SITE_DAILY_LIMIT = "200"
+# 额度：项目选定的默认值（200 次/访客/天，800 次/全站/天），不是用户指定值，可自行调整
+# 单位是「模型调用次数」：按节生成下一个知识点约 5 次，一门 7 知识点的课约 36 次
+VISITOR_DAILY_LIMIT = "200"
+SITE_DAILY_LIMIT = "800"
 PROVIDER_TIMEOUT_MS = "90000"
 PROVIDER_MAX_OUTPUT_TOKENS = "8000"
 MAX_REQUEST_BYTES = "20000"

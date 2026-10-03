@@ -533,9 +533,9 @@ async function handleLesson({ raw, config, cors, reservation, env, visitorHash =
     throw new SchemaError([`concepts.${concept.id}.sections 模型没有给出任何小节`]);
   }
 
-  // 后续还要发 1 次测验 + 每节 1 次正文：按真实调用次数补一次额度预占。
-  // 额度不足时**必须在发任何后续调用之前**停下来，并如实返回 429（不是 502）。
-  const extra = await reserveQuota(env, config, visitorHash, plannedSections.length + 1);
+  // 后续还要发 1 次测验 + 每节 1 次正文：按真实调用次数**追加计费**。
+  // 用 charge 而不是再占一个并发预占 —— 否则一次请求会占多个并发位，两个并行请求就会撑爆并发上限。
+  const extra = await chargeQuota(env, config, visitorHash, plannedSections.length + 1);
   if (!extra.ok) {
     return {
       outcome: 'quota-exceeded',
@@ -549,24 +549,20 @@ async function handleLesson({ raw, config, cors, reservation, env, visitorHash =
 
   let sections;
   let quiz;
-  try {
-    sections = [];
-    for (let index = 0; index < plannedSections.length; index += 1) {
-      const section = plannedSections[index];
-      const part = await callStage(
-        buildSectionPrompt({ input, outline, concept, skeleton, section, index, total: plannedSections.length }),
-        `第 ${index + 1} 节正文`,
-      );
-      sections.push({
-        heading: section.heading,
-        body: Array.isArray(part.body) ? part.body : [],
-        extraPoints: Array.isArray(part.points) ? part.points : [],
-      });
-    }
-    quiz = await callStage(buildQuizPrompt({ input, outline, concept, skeleton }), '测验');
-  } finally {
-    await releaseQuota(env, config, extra, 'success');
+  sections = [];
+  for (let index = 0; index < plannedSections.length; index += 1) {
+    const section = plannedSections[index];
+    const part = await callStage(
+      buildSectionPrompt({ input, outline, concept, skeleton, section, index, total: plannedSections.length }),
+      `第 ${index + 1} 节正文`,
+    );
+    sections.push({
+      heading: section.heading,
+      body: Array.isArray(part.body) ? part.body : [],
+      extraPoints: Array.isArray(part.points) ? part.points : [],
+    });
   }
+  quiz = await callStage(buildQuizPrompt({ input, outline, concept, skeleton }), '测验');
 
   const rawKeywords = Array.isArray(skeleton.videoSearchKeywords) ? skeleton.videoSearchKeywords : [];
   const keywords = rawKeywords.map((word) => String(word || '').slice(0, 40)).filter(Boolean).slice(0, 5);
@@ -753,8 +749,40 @@ async function reserveQuota(env, config, visitorHash, cost = 1) {
   return { ok: true, reservationId: data.reservationId, day: data.day, counters: data.counters };
 }
 
-async function releaseQuota(env, config, reservation, outcome) {
+/**
+ * 追加计费（不占并发位）：用于一次请求内部的后续模型调用（按节生成）。
+ * 与服务端已有的「尝试额度不可退款」语义一致：先扣额度，再发调用。
+ */
+async function chargeQuota(env, config, visitorHash, cost) {
   const stub = await quotaStub(env);
+  if (!stub) {
+    return { ok: false, status: 503, body: { ok: false, error: 'worker-configuration-error', message: '缺少 RATE_LIMITER Durable Object 绑定，无法保证配额，已拒绝服务。' } };
+  }
+  const response = await stub.fetch('https://ratelimiter/reserve', {
+    method: 'POST',
+    body: JSON.stringify({
+      action: 'charge',
+      visitorHash,
+      cost,
+      visitorAttemptLimit: config.visitorDailyLimit,
+      siteAttemptLimit: config.siteDailyLimit,
+      maxConcurrent: config.maxConcurrentProviderRequests,
+      reservationTtlMs: config.reservationTtlMs,
+    }),
+  });
+  const data = await response.json();
+  if (!data.allowed) {
+    const messages = {
+      'site-attempt-limit': `本站今日的模型尝试额度已用完（${config.siteDailyLimit} 次/天）。`,
+      'visitor-attempt-limit': `你今天的模型尝试额度已用完（${config.visitorDailyLimit} 次/天），明天会重置。`,
+    };
+    const code = String(data.reason || '').startsWith('site') ? 'site-quota-exceeded' : 'visitor-quota-exceeded';
+    return { ok: false, status: 429, body: { ok: false, error: code, message: messages[data.reason] || '额度已用尽。', counters: data.counters } };
+  }
+  return { ok: true, counters: data.counters };
+}
+
+async function releaseQuota(env, config, reservation, outcome) {  const stub = await quotaStub(env);
   if (!stub || !reservation?.reservationId) return;
   await stub.fetch('https://ratelimiter/release', {
     method: 'POST',
