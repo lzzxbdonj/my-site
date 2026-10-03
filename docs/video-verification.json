@@ -1,0 +1,1006 @@
+{
+  "app": "StudyMate-Web",
+  "checkedAt": "2026-10-03T06:31:24.963Z",
+  "baselineDate": "2026-10-03",
+  "method": [
+    "bilibili: https://api.bilibili.com/x/web-interface/view?bvid=... 核对存在性/合集标题/分 P 标题/UP 主/时长（单 P 视频比对 data.title，多 P 视频比对 pages[].part）",
+    "bilibili: https://api.bilibili.com/x/web-interface/card?mid=... 核对账号认证状态",
+    "mit-ocw: 课程页 HTTP 200 与页面 <title>"
+  ],
+  "playbackVerification": "none（本脚本不验证嵌入播放器是否成功播放，也不做任何相关声称）",
+  "items": [
+    {
+      "id": "bili-la-01",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1Ys411k7yQ",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 01 - 向量究竟是什么？",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 592,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 01 - 向量究竟是什么？",
+      "expectedTitle": "【熟肉】线性代数的本质 - 01 - 向量究竟是什么？",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-02",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV12s411k7S5",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 02 - 线性组合、张成的空间与基",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 599,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 02 - 线性组合、张成的空间与基",
+      "expectedTitle": "【熟肉】线性代数的本质 - 02 - 线性组合、张成的空间与基",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-03",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1ns41167b9",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 03 - 矩阵与线性变换",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 658,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 03 - 矩阵与线性变换",
+      "expectedTitle": "【熟肉】线性代数的本质 - 03 - 矩阵与线性变换",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-04",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1ms41167u9",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 04 - 矩阵乘法与线性变换复合",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 603,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 04 - 矩阵乘法与线性变换复合",
+      "expectedTitle": "【熟肉】线性代数的本质 - 04 - 矩阵乘法与线性变换复合",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-05",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1Qs41167bP",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 05 - 行列式",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 603,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 05 - 行列式",
+      "expectedTitle": "【熟肉】线性代数的本质 - 05 - 行列式",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-06",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1ns411r7dE",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 06 - 逆矩阵、列空间与零空间",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 729,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 06 - 逆矩阵、列空间与零空间",
+      "expectedTitle": "【熟肉】线性代数的本质 - 06 - 逆矩阵、列空间与零空间",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-07",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV13s411t7fe",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【熟肉】线性代数的本质 - 07 - 点积与对偶性",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 851,
+        "partTitle": null,
+        "videos": 1
+      },
+      "collectionTitle": "【熟肉】线性代数的本质 - 07 - 点积与对偶性",
+      "expectedTitle": "【熟肉】线性代数的本质 - 07 - 点积与对偶性",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-la-13",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV12K4y1A7NA",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【官方双语】计算二阶矩阵特征值的妙计 -- 线性代数的本质 13",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 793,
+        "partTitle": "计算二阶矩阵特征值的妙计",
+        "videos": 1
+      },
+      "collectionTitle": "【官方双语】计算二阶矩阵特征值的妙计 -- 线性代数的本质 13",
+      "expectedTitle": "【官方双语】计算二阶矩阵特征值的妙计 -- 线性代数的本质 13",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-calc-01",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1qW411N7FU?p=2",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "【官方双语/合集】微积分的本质 - 系列合集",
+        "owner": "3Blue1Brown",
+        "mid": 88461692,
+        "durationSeconds": 1118,
+        "partTitle": "02 - 导数的悖论",
+        "videos": 11
+      },
+      "collectionTitle": "【官方双语/合集】微积分的本质 - 系列合集",
+      "expectedTitle": "02 - 导数的悖论",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      }
+    },
+    {
+      "id": "bili-py-01",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=4",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 633,
+        "partTitle": "04.安装Python解释器（10分钟搞定Python环境）",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "04.安装Python解释器（10分钟搞定Python环境）",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-02",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=10",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 826,
+        "partTitle": "10.变量（让数据能被反复使用）",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "10.变量（让数据能被反复使用）",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-03",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=15",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 508,
+        "partTitle": "15.数据类型（数据也分性格，各有各的脾气）",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "15.数据类型（数据也分性格，各有各的脾气）",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-04",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=19",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1025,
+        "partTitle": "19_字符串_格式化输出",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "19_字符串_格式化输出",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-05",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=33",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 339,
+        "partTitle": "33_多分支",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "33_多分支",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-06",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=37",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 727,
+        "partTitle": "37_for循环",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "37_for循环",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-07",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=46",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 540,
+        "partTitle": "46_函数_参数的使用",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "46_函数_参数的使用",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-08",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1tDsgzxECr?p=61",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 334,
+        "partTitle": "61_列表_定义列表",
+        "videos": 172
+      },
+      "collectionTitle": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "expectedTitle": "61_列表_定义列表",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-09",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1eZ421b7ag?p=63",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1466,
+        "partTitle": "063-组合数据类型-字典",
+        "videos": 139
+      },
+      "collectionTitle": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+      "expectedTitle": "063-组合数据类型-字典",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-10",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1eZ421b7ag?p=73",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 956,
+        "partTitle": "073-异常处理-try语句",
+        "videos": 139
+      },
+      "collectionTitle": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+      "expectedTitle": "073-异常处理-try语句",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-py-11",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1qW4y1a7fU?p=4",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+        "owner": "黑马程序员",
+        "mid": 37974444,
+        "durationSeconds": 396,
+        "partTitle": "第一阶段-第一章-03-Python环境安装(Windows)",
+        "videos": 164
+      },
+      "collectionTitle": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+      "expectedTitle": "第一阶段-第一章-03-Python环境安装(Windows)",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    },
+    {
+      "id": "bili-py-12",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1qW4y1a7fU?p=63",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+        "owner": "黑马程序员",
+        "mid": 37974444,
+        "durationSeconds": 637,
+        "partTitle": "第一阶段-第六章-02-列表的定义语法",
+        "videos": 164
+      },
+      "collectionTitle": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+      "expectedTitle": "第一阶段-第六章-02-列表的定义语法",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    },
+    {
+      "id": "bili-ml-01",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=21",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 868,
+        "partTitle": "021_机器学习_概述",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "021_机器学习_概述",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-02",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=26",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 872,
+        "partTitle": "026_机器学习_分类",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "026_机器学习_分类",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-03",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=29",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1877,
+        "partTitle": "029_核心原理_特征工程_整体介绍",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "029_核心原理_特征工程_整体介绍",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-04",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=36",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1369,
+        "partTitle": "036_核心原理_欠拟合和过拟合",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "036_核心原理_欠拟合和过拟合",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-05",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=41",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1252,
+        "partTitle": "041_核心原理_正则化",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "041_核心原理_正则化",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-06",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=45",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1155,
+        "partTitle": "045_核心原理_模型求解_梯度下降法",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "045_核心原理_模型求解_梯度下降法",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-07",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=43",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 749,
+        "partTitle": "043_核心原理_交叉验证",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "043_核心原理_交叉验证",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-08",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1BYe4z5E9z?p=53",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 1097,
+        "partTitle": "053_核心原理_分类评价指标_准确率、精确率、召回率和F1",
+        "videos": 120
+      },
+      "collectionTitle": "机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）",
+      "expectedTitle": "053_核心原理_分类评价指标_准确率、精确率、召回率和F1",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-09",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1Fzszz4Ek7?p=33",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+        "owner": "黑马程序员",
+        "mid": 37974444,
+        "durationSeconds": 1448,
+        "partTitle": "第三章-线性回归-02.线性回归简介",
+        "videos": 130
+      },
+      "collectionTitle": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+      "expectedTitle": "第三章-线性回归-02.线性回归简介",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    },
+    {
+      "id": "bili-ml-10",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1Fzszz4Ek7?p=58",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+        "owner": "黑马程序员",
+        "mid": 37974444,
+        "durationSeconds": 1369,
+        "partTitle": "第五章-逻辑回归-04.逻辑回归_原理介绍",
+        "videos": 130
+      },
+      "collectionTitle": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+      "expectedTitle": "第五章-逻辑回归-04.逻辑回归_原理介绍",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    },
+    {
+      "id": "bili-ml-11",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1Fzszz4Ek7?p=14",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+        "owner": "黑马程序员",
+        "mid": 37974444,
+        "durationSeconds": 1923,
+        "partTitle": "第一章-机器学习概述-13.KNN算法_简介",
+        "videos": 130
+      },
+      "collectionTitle": "黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等",
+      "expectedTitle": "第一章-机器学习概述-13.KNN算法_简介",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    },
+    {
+      "id": "bili-ml-12",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1zb411P7iV?p=10",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "尚硅谷AI人工智能视频教程(机器学习&深度学习)",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 954,
+        "partTitle": "10_尚硅谷_人工智能_决策树ID3-C4.5算法",
+        "videos": 23
+      },
+      "collectionTitle": "尚硅谷AI人工智能视频教程(机器学习&深度学习)",
+      "expectedTitle": "10_尚硅谷_人工智能_决策树ID3-C4.5算法",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "bili-ml-13",
+      "provider": "bilibili",
+      "watchUrl": "https://www.bilibili.com/video/BV1R4411N78S?p=27",
+      "ok": true,
+      "httpStatus": 200,
+      "apiCode": 0,
+      "actual": {
+        "title": "尚硅谷机器学习和推荐系统项目实战教程(初学者零基础快速入门)",
+        "owner": "尚硅谷",
+        "mid": 302417610,
+        "durationSeconds": 608,
+        "partTitle": "027_尚硅谷_机器学习模型和算法_K均值聚类",
+        "videos": 66
+      },
+      "collectionTitle": "尚硅谷机器学习和推荐系统项目实战教程(初学者零基础快速入门)",
+      "expectedTitle": "027_尚硅谷_机器学习模型和算法_K均值聚类",
+      "titleMatch": true,
+      "ownerMatch": true,
+      "durationMatch": true,
+      "creatorVerification": {
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      }
+    },
+    {
+      "id": "ocw-1806",
+      "provider": "mit-ocw",
+      "watchUrl": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "ok": true,
+      "httpStatus": 200,
+      "actual": {
+        "pageTitle": "Linear Algebra | Mathematics | MIT OpenCourseWare"
+      }
+    },
+    {
+      "id": "ocw-6001",
+      "provider": "mit-ocw",
+      "watchUrl": "https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/",
+      "ok": true,
+      "httpStatus": 200,
+      "actual": {
+        "pageTitle": "Introduction to Computer Science and Programming in Python | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+      }
+    },
+    {
+      "id": "ocw-6036",
+      "provider": "mit-ocw",
+      "watchUrl": "https://ocw.mit.edu/courses/6-036-introduction-to-machine-learning-fall-2020/",
+      "ok": true,
+      "httpStatus": 200,
+      "actual": {
+        "pageTitle": "Introduction to Machine Learning | Electrical Engineering and Computer Science | MIT OpenCourseWare"
+      }
+    }
+  ],
+  "problems": [],
+  "notes": [
+    "bili-py-11: 短标签「黑马程序员python零基础全套教程，8天python从入门到精通」对应的合集全名是「黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了」",
+    "bili-py-12: 短标签「黑马程序员python零基础全套教程，8天python从入门到精通」对应的合集全名是「黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了」",
+    "bili-ml-01: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-02: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-03: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-04: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-05: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-06: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-07: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-08: 短标签「机器学习教程、机器学习入门到实战」对应的合集全名是「机器学习教程、机器学习入门到实战（KNN算法、线性回归、逻辑回归、决策树、贝叶斯、感知机、集成学习、无监督学习）」",
+    "bili-ml-09: 短标签「黑马程序员AI大模型必备《机器学习》全套视频教程」对应的合集全名是「黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等」",
+    "bili-ml-10: 短标签「黑马程序员AI大模型必备《机器学习》全套视频教程」对应的合集全名是「黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等」",
+    "bili-ml-11: 短标签「黑马程序员AI大模型必备《机器学习》全套视频教程」对应的合集全名是「黑马程序员AI大模型必备《机器学习》全套视频教程，从算法到实战项目，覆盖KNN算法、线性回归、逻辑回归、决策树、集成学习、KMeans算法、数据挖掘等」",
+    "bili-ml-13: 短标签「尚硅谷机器学习和推荐系统项目实战教程」对应的合集全名是「尚硅谷机器学习和推荐系统项目实战教程(初学者零基础快速入门)」"
+  ],
+  "summary": {
+    "total": 37,
+    "verified": 37,
+    "failed": 0,
+    "creators": [
+      {
+        "mid": 88461692,
+        "name": "3Blue1Brown",
+        "officialVerify": "bilibili 知名UP主，3Blue1Brown官方账号",
+        "officialType": 0,
+        "fans": 2757801
+      },
+      {
+        "mid": 302417610,
+        "name": "尚硅谷",
+        "officialVerify": "尚硅谷官方账号",
+        "officialType": 1,
+        "fans": 1803051
+      },
+      {
+        "mid": 37974444,
+        "name": "黑马程序员",
+        "officialVerify": "传智教育旗下官方账号",
+        "officialType": 1,
+        "fans": 4975316
+      }
+    ]
+  }
+}

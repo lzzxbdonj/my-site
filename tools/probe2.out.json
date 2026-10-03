@@ -1,0 +1,57 @@
+{
+  "fetchedAt": "2026-10-03T05:49:46.265Z",
+  "results": [
+    {
+      "key": "search-type",
+      "url": "search/type?keyword=%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%20MIT%20%E5%85%AC%E5%BC%80%E8%AF%BE",
+      "status": 412,
+      "error": null,
+      "bytes": 3286
+    },
+    {
+      "key": "search-all",
+      "url": "search/all/v2",
+      "status": 200,
+      "error": null,
+      "bytes": 32246
+    },
+    {
+      "key": "search-type-cookie",
+      "url": "search/type with buvid3",
+      "status": 412,
+      "error": null,
+      "bytes": 3286
+    },
+    {
+      "key": "view-ok",
+      "url": "view?bvid=BV1dK4y1C7Km",
+      "status": 200,
+      "error": null,
+      "bytes": 1800,
+      "title": "Cyndi Lauper Solo Recording We are the World 1985 录制现场",
+      "owner": "BonBonCatClub",
+      "durationSeconds": 509
+    },
+    {
+      "key": "player-embed",
+      "url": "player.bilibili.com/player.html",
+      "status": 200,
+      "error": null,
+      "bytes": 6636
+    },
+    {
+      "key": "icourse163-search",
+      "url": "icourse163 search",
+      "status": 200,
+      "error": null,
+      "bytes": 68466
+    },
+    {
+      "key": "xuetangx-search",
+      "url": "xuetangx search",
+      "status": 200,
+      "error": null,
+      "bytes": 9514
+    }
+  ]
+}

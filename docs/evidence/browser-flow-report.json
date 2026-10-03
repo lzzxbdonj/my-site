@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-10-03T08:29:07.622Z",
+  "browser": "Edg/154.0.4258.48",
+  "baseUrl": "http://127.0.0.1:50021",
+  "evidence": [
+    "docs/evidence/dashboard-desktop.png",
+    "docs/evidence/lesson-desktop.png",
+    "docs/evidence/explore-mobile.png",
+    "docs/evidence/lesson-mobile.png"
+  ],
+  "note": "以上流程均由真实浏览器执行；视频播放器仅在点击后加载，测试未对第三方播放成功与否做任何断言。"
+}

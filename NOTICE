@@ -1,0 +1,49 @@
+StudyMate Web —— 第三方许可与归属说明
+==========================================
+
+1) 上游灵感与功能参考
+---------------------
+本项目的想法与功能对照来自上游项目 Study-Mate：
+    https://github.com/Miaotofu01/Study-Mate
+
+上游项目以 MIT 许可证发布，原始版权声明如下（完整保留）：
+
+    MIT License
+
+    Copyright (c) 2026 Cattofu
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+本项目为独立重写：未复制上游的角色形象、美术资源、桌面端或插件代码；
+课程文字、测验题目、路线图、界面设计与代码均为本项目原创。
+
+2) 教学视频
+-----------
+本站通过外链引用第三方平台上的公开教学视频，版权归原作者/发布机构所有：
+
+    - 哔哩哔哩（bilibili）：3Blue1Brown（官方账号）、尚硅谷（官方账号）、黑马程序员（官方账号）
+    - MIT OpenCourseWare：https://ocw.mit.edu/ （CC BY-NC-SA 4.0）
+
+本站不下载、不转存、不二次分发任何视频内容；仅在用户主动点击后加载第三方播放器，
+并始终提供指向来源页面的链接。视频元数据（标题/作者/时长）的核实方式见
+docs/video-sources.md 与 docs/video-verification.json。
+
+3) 第三方商标
+-------------
+bilibili、MIT OpenCourseWare 等名称与标识归其各自所有者，本项目仅作事实性引用。

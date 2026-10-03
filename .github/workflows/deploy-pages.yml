@@ -1,0 +1,51 @@
+# 把静态站点发布到 GitHub Pages。
+# 前提：本目录（StudyMate-Web/）是仓库根目录，或在仓库设置里把 Pages 的构建产物指向本目录的 dist。
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: 运行测试（单元 + 集成）
+        run: npm test
+      - name: 构建静态站点
+        run: npm run build
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+# 说明：
+# - 站点使用相对资源路径 + hash 路由，因此在 https://<user>.github.io/<任意仓库名>/ 下都能运行。
+# - 浏览器端到端测试需要真实浏览器，CI 中可用 `npx playwright install chromium` 或跳过（本地已覆盖）。
+# - AI 功能由独立的 Cloudflare Worker 提供，相关部署见 worker/README.md；本工作流不接触任何密钥。

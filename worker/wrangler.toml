@@ -1,0 +1,53 @@
+# StudyMate AI 代理 Worker 配置
+# 部署前请阅读 worker/README.md：需要设置非机密变量（这里）与机密（wrangler secret put）。
+name = "studymate-ai-proxy"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+# 默认开启 workers.dev 子域，部署后立刻有一个可调用的 HTTPS 地址；
+# 想用自定义域就设为 false 并配置下面的 routes。
+workers_dev = true
+
+# 自定义域示例（把注释去掉并改成你自己的域名与区域）：
+# routes = [
+#   { pattern = "api.example.com/*", zone_name = "example.com" },
+# ]
+
+# 非机密变量：按你的实际情况修改
+[vars]
+ENVIRONMENT = "production"
+# 固定服务端 HTTPS 端点（OpenAI 兼容），客户端无法指定目标
+PROVIDER_BASE_URL = "https://api.deepseek.com"
+PROVIDER_MODEL = "deepseek-chat"
+# 允许调用本 Worker 的前端源，逗号分隔，必须与浏览器地址栏的源完全一致
+ALLOWED_ORIGINS = "https://your-name.github.io"
+# 额度：项目选定的默认值（60 次/访客/天，200 次/全站/天），不是用户指定值，可自行调整
+# 单位是「模型尝试次数」：分阶段建课下一门课约消耗 1（大纲）+ 知识点个数（正文）次
+VISITOR_DAILY_LIMIT = "60"
+SITE_DAILY_LIMIT = "200"
+PROVIDER_TIMEOUT_MS = "90000"
+PROVIDER_MAX_OUTPUT_TOKENS = "8000"
+MAX_REQUEST_BYTES = "20000"
+MAX_PROVIDER_RESPONSE_BYTES = "262144"
+MAX_CONCURRENT_PROVIDER_REQUESTS = "2"
+RESERVATION_TTL_MS = "180000"
+
+# ---- GitHub 登录（可选）----
+# 三个变量必须同时设置才会启用登录；缺任意一个，登录端点返回 503，但 AI 建课等既有能力不受影响。
+# GITHUB_CLIENT_ID = "Iv1.xxxxxxxxxxxx"          # 来自 GitHub OAuth App 的 Client ID（非机密）
+# AUTH_REDIRECT_URI = "https://studymate-ai-proxy.<你的子域>.workers.dev/api/auth/callback"
+#   必须与 GitHub OAuth App 里填的 Authorization callback URL 完全一致；不设置则按请求来源自动推导。
+
+# 机密（不要写在此文件里，用 wrangler secret put 设置）：
+#   PROVIDER_API_KEY   供应商密钥
+#   IP_SALT            用于对访客 IP 加盐哈希的随机串（≥16 位）
+#   GITHUB_CLIENT_SECRET  GitHub OAuth App 的 Client Secret（仅启用登录时需要）
+#   AUTH_TOKEN_SECRET     给会话令牌签名的随机串（≥32 位；更换它可让所有旧令牌立即失效）
+
+# 原子配额使用 Durable Object；首次部署需要迁移声明
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter"]

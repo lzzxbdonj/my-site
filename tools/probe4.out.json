@@ -1,0 +1,3505 @@
+{
+  "fetchedAt": "2026-10-03T05:50:14.626Z",
+  "cards": {
+    "37974444": {
+      "status": 200,
+      "code": 0,
+      "name": "黑马程序员",
+      "fans": 4975279,
+      "official_verify": {
+        "type": 1,
+        "desc": "传智教育旗下官方账号"
+      },
+      "sign": "咨询课程1对1就业指导、技术提升直接私信，周一到周五晚7点直播答疑求职技术干货，领取课程源码+资料，关注黑马程序员公众号"
+    },
+    "40323036": {
+      "status": 200,
+      "code": 0,
+      "name": "王卓老师",
+      "fans": 92851,
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "sign": "知识改变命运！"
+    },
+    "66607740": {
+      "status": 200,
+      "code": 0,
+      "name": "宋浩老师官方",
+      "fans": 10774733,
+      "official_verify": {
+        "type": 0,
+        "desc": "2025百大UP主、山东财经大学数学老师、课堂优质讲师"
+      },
+      "sign": "《高等数学750题》上下册出版了！"
+    },
+    "88461692": {
+      "status": 200,
+      "code": 0,
+      "name": "3Blue1Brown",
+      "fans": 2757779,
+      "official_verify": {
+        "type": 0,
+        "desc": "bilibili 知名UP主，3Blue1Brown官方账号"
+      },
+      "sign": "中国官方账号。深入浅出、直观明了地分享数学之美。资助页面：www.patreon.com/3blue1brown"
+    },
+    "95228778": {
+      "status": 200,
+      "code": 0,
+      "name": "王道计算机教育",
+      "fans": 759889,
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "sign": "28考研交流企鹅群：1071630785"
+    },
+    "302417610": {
+      "status": 200,
+      "code": 0,
+      "name": "尚硅谷",
+      "fans": 1803042,
+      "official_verify": {
+        "type": 1,
+        "desc": "尚硅谷官方账号"
+      },
+      "sign": "1V1就业指导、简历模板、毕设，加小谷姐姐秋:3276742687"
+    },
+    "1232187625": {
+      "status": 200,
+      "code": 0,
+      "name": "吴恩达机器学习",
+      "fans": 192455,
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "sign": "助力技术人的每一次成长｜提供晚间技术公开直播！欢迎咨询：人工智能基础课程/大模型课程/论文发表"
+    },
+    "2061186491": {
+      "status": 200,
+      "code": 0,
+      "name": "名校课程-顶级中配",
+      "fans": 102377,
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "sign": "最全的名校课库，每人每月可以指定翻译一门名校课程"
+    },
+    "3493134768016008": {
+      "status": 200,
+      "code": 0,
+      "name": "吴恩达AI_AndrewNg",
+      "fans": 38834,
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "sign": "gong众号【坚持打代码】回复【22】自取资源"
+    }
+  },
+  "videos": {
+    "BV1Ys411k7yQ": {
+      "status": 200,
+      "title": "【熟肉】线性代数的本质 - 01 - 向量究竟是什么？",
+      "owner": "3Blue1Brown",
+      "mid": 88461692,
+      "pubdate": 1472030546,
+      "duration": 592,
+      "videos": 1,
+      "pages": [
+        {
+          "page": 1,
+          "part": "",
+          "duration": 592
+        }
+      ]
+    },
+    "BV1ns41167b9": {
+      "status": 200,
+      "title": "【熟肉】线性代数的本质 - 03 - 矩阵与线性变换",
+      "owner": "3Blue1Brown",
+      "mid": 88461692,
+      "pubdate": 1472312856,
+      "duration": 658,
+      "videos": 1,
+      "pages": [
+        {
+          "page": 1,
+          "part": "",
+          "duration": 658
+        }
+      ]
+    },
+    "BV1rs411k7ru": {
+      "status": 200,
+      "title": "【熟肉】线性代数的本质 - 00 - “线性代数的本质”系列预览",
+      "owner": "3Blue1Brown",
+      "mid": 88461692,
+      "pubdate": 1471969311,
+      "duration": 309,
+      "videos": 1,
+      "pages": [
+        {
+          "page": 1,
+          "part": "",
+          "duration": 309
+        }
+      ]
+    },
+    "BV1qW411N7FU": {
+      "status": 200,
+      "title": "【官方双语/合集】微积分的本质 - 系列合集",
+      "owner": "3Blue1Brown",
+      "mid": 88461692,
+      "pubdate": 1528012990,
+      "duration": 10829,
+      "videos": 11,
+      "pages": [
+        {
+          "page": 1,
+          "part": "01",
+          "duration": 1025
+        },
+        {
+          "page": 2,
+          "part": "02 - 导数的悖论",
+          "duration": 1118
+        },
+        {
+          "page": 3,
+          "part": "03 - 用几何来求导",
+          "duration": 1123
+        },
+        {
+          "page": 4,
+          "part": "04 - 直观理解链式法则和乘积法则",
+          "duration": 1012
+        },
+        {
+          "page": 5,
+          "part": "05 - 指数函数求导",
+          "duration": 830
+        },
+        {
+          "page": 6,
+          "part": "06 - 隐函数求导是怎么回事？",
+          "duration": 933
+        },
+        {
+          "page": 7,
+          "part": "07 - 极限",
+          "duration": 1106
+        },
+        {
+          "page": 8,
+          "part": "08 - 积分与微积分基本定理",
+          "duration": 1246
+        },
+        {
+          "page": 9,
+          "part": "09 - 面积和斜率有什么联系？",
+          "duration": 759
+        },
+        {
+          "page": 10,
+          "part": "09脚注 - 高阶导数",
+          "duration": 338
+        },
+        {
+          "page": 11,
+          "part": "10 - 泰勒级数",
+          "duration": 1339
+        }
+      ]
+    },
+    "BV1tDsgzxECr": {
+      "status": 200,
+      "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+      "owner": "尚硅谷",
+      "mid": 302417610,
+      "pubdate": 1761012000,
+      "duration": 141589,
+      "videos": 172,
+      "pages": [
+        {
+          "page": 1,
+          "part": "001_课程简介（Python叕火了？）",
+          "duration": 289
+        },
+        {
+          "page": 2,
+          "part": "02.Python概述（Python到底强在哪？）",
+          "duration": 519
+        },
+        {
+          "page": 3,
+          "part": "03.编译型 vs 解释型（编程语言的两大门派）",
+          "duration": 427
+        },
+        {
+          "page": 4,
+          "part": "04.安装Python解释器（10分钟搞定Python环境）",
+          "duration": 633
+        },
+        {
+          "page": 5,
+          "part": "05.先来个打印吧（第一个Python程序）",
+          "duration": 471
+        },
+        {
+          "page": 6,
+          "part": "06.安装PyCharm（最强的Python IDE长啥样？）",
+          "duration": 543
+        },
+        {
+          "page": 7,
+          "part": "07.设置PyCharm（超贴心的设置方案）",
+          "duration": 912
+        },
+        {
+          "page": 8,
+          "part": "08.PyCharm快捷键（最全的快捷键设置指南）",
+          "duration": 953
+        },
+        {
+          "page": 9,
+          "part": "09.字面量（Python世界的第一块砖）",
+          "duration": 777
+        },
+        {
+          "page": 10,
+          "part": "10.变量（让数据能被反复使用）",
+          "duration": 826
+        },
+        {
+          "page": 11,
+          "part": "11.标识符命名规则（程序中起名要有规矩）",
+          "duration": 516
+        },
+        {
+          "page": 12,
+          "part": "12.常量（让重要的值不再被误改）",
+          "duration": 275
+        },
+        {
+          "page": 13,
+          "part": "13.注释（未来的你会感谢现在写注释的你）",
+          "duration": 634
+        },
+        {
+          "page": 14,
+          "part": "14.字符编码（别再怕乱码了，原理就这么回事）",
+          "duration": 639
+        },
+        {
+          "page": 15,
+          "part": "15.数据类型（数据也分性格，各有各的脾气）",
+          "duration": 508
+        },
+        {
+          "page": 16,
+          "part": "16.整型（大整数分组，整数没有上限）",
+          "duration": 508
+        },
+        {
+          "page": 17,
+          "part": "17.浮点型（科学计数法）",
+          "duration": 319
+        },
+        {
+          "page": 18,
+          "part": "18_字符串_四种定义方式",
+          "duration": 310
+        },
+        {
+          "page": 19,
+          "part": "19_字符串_格式化输出",
+          "duration": 1025
+        },
+        {
+          "page": 20,
+          "part": "20_字符串_占位符精度控制",
+          "duration": 802
+        },
+        {
+          "page": 21,
+          "part": "21_字符串_转义字符",
+          "duration": 1033
+        },
+        {
+          "page": 22,
+          "part": "22_数据类型转换",
+          "duration": 709
+        },
+        {
+          "page": 23,
+          "part": "23_算数运算符",
+          "duration": 196
+        },
+        {
+          "page": 24,
+          "part": "24_赋值_复合赋值运算符",
+          "duration": 445
+        },
+        {
+          "page": 25,
+          "part": "25_比较运算符",
+          "duration": 973
+        },
+        {
+          "page": 26,
+          "part": "26_布尔类型",
+          "duration": 480
+        },
+        {
+          "page": 27,
+          "part": "27_逻辑运算符",
+          "duration": 811
+        },
+        {
+          "page": 28,
+          "part": "28_进制（概念）",
+          "duration": 741
+        },
+        {
+          "page": 29,
+          "part": "29_进制（代码）",
+          "duration": 489
+        },
+        {
+          "page": 30,
+          "part": "30_输入语句",
+          "duration": 376
+        },
+        {
+          "page": 31,
+          "part": "31_单分支",
+          "duration": 677
+        },
+        {
+          "page": 32,
+          "part": "32_双分支",
+          "duration": 184
+        },
+        {
+          "page": 33,
+          "part": "33_多分支",
+          "duration": 339
+        },
+        {
+          "page": 34,
+          "part": "34_嵌套分支",
+          "duration": 845
+        },
+        {
+          "page": 35,
+          "part": "35_while循环",
+          "duration": 732
+        },
+        {
+          "page": 36,
+          "part": "36_while循环案例",
+          "duration": 262
+        },
+        {
+          "page": 37,
+          "part": "37_for循环",
+          "duration": 727
+        },
+        {
+          "page": 38,
+          "part": "38_for循环案例",
+          "duration": 352
+        },
+        {
+          "page": 39,
+          "part": "39_对比while与for",
+          "duration": 302
+        },
+        {
+          "page": 40,
+          "part": "40_嵌套循环",
+          "duration": 652
+        },
+        {
+          "page": 41,
+          "part": "41_九九乘法表",
+          "duration": 525
+        },
+        {
+          "page": 42,
+          "part": "42_continu与break",
+          "duration": 733
+        },
+        {
+          "page": 43,
+          "part": "43_流程控制_综合案例",
+          "duration": 1547
+        },
+        {
+          "page": 44,
+          "part": "44_函数_概念及分类",
+          "duration": 341
+        },
+        {
+          "page": 45,
+          "part": "45_函数_基本使用",
+          "duration": 366
+        },
+        {
+          "page": 46,
+          "part": "46_函数_参数的使用",
+          "duration": 540
+        },
+        {
+          "page": 47,
+          "part": "47_函数_位置参数",
+          "duration": 379
+        },
+        {
+          "page": 48,
+          "part": "48_函数_关键字参数",
+          "duration": 592
+        },
+        {
+          "page": 49,
+          "part": "49_函数_限制传参方式",
+          "duration": 337
+        },
+        {
+          "page": 50,
+          "part": "50_函数_参数默认值",
+          "duration": 375
+        },
+        {
+          "page": 51,
+          "part": "51_函数_可变参数",
+          "duration": 701
+        },
+        {
+          "page": 52,
+          "part": "52_特殊的字面量_None",
+          "duration": 365
+        },
+        {
+          "page": 53,
+          "part": "53_函数_返回值",
+          "duration": 565
+        },
+        {
+          "page": 54,
+          "part": "54_全局作用域_局部作用域",
+          "duration": 1070
+        },
+        {
+          "page": 55,
+          "part": "55_函数_嵌套调用",
+          "duration": 690
+        },
+        {
+          "page": 56,
+          "part": "56_函数_递归调用",
+          "duration": 743
+        },
+        {
+          "page": 57,
+          "part": "57_函数_递归的应用",
+          "duration": 500
+        },
+        {
+          "page": 58,
+          "part": "58_函数_说明文档",
+          "duration": 254
+        },
+        {
+          "page": 59,
+          "part": "59_函数_综合案例",
+          "duration": 995
+        },
+        {
+          "page": 60,
+          "part": "60_何为数据容器",
+          "duration": 229
+        },
+        {
+          "page": 61,
+          "part": "61_列表_定义列表",
+          "duration": 334
+        },
+        {
+          "page": 62,
+          "part": "62_列表_下标（索引值）",
+          "duration": 250
+        },
+        {
+          "page": 63,
+          "part": "63_列表_增删改查",
+          "duration": 980
+        },
+        {
+          "page": 64,
+          "part": "64_列表_常用方法",
+          "duration": 751
+        },
+        {
+          "page": 65,
+          "part": "65_列表_常用内置函数",
+          "duration": 732
+        },
+        {
+          "page": 66,
+          "part": "66_列表_循环遍历",
+          "duration": 627
+        },
+        {
+          "page": 67,
+          "part": "67_列表_小练习",
+          "duration": 462
+        },
+        {
+          "page": 68,
+          "part": "68_列表_总结",
+          "duration": 86
+        },
+        {
+          "page": 69,
+          "part": "69_元组",
+          "duration": 1067
+        },
+        {
+          "page": 70,
+          "part": "70_函数_解包列表或元组传参",
+          "duration": 589
+        },
+        {
+          "page": 71,
+          "part": "71_元组_总结",
+          "duration": 45
+        },
+        {
+          "page": 72,
+          "part": "72_字符串",
+          "duration": 1210
+        },
+        {
+          "page": 73,
+          "part": "73_序列的切片操作",
+          "duration": 912
+        },
+        {
+          "page": 74,
+          "part": "74_序列的其他操作",
+          "duration": 339
+        },
+        {
+          "page": 75,
+          "part": "75_集合_定义集合",
+          "duration": 1058
+        },
+        {
+          "page": 76,
+          "part": "76_集合_增删改查",
+          "duration": 664
+        },
+        {
+          "page": 77,
+          "part": "77_集合_常用方法",
+          "duration": 555
+        },
+        {
+          "page": 78,
+          "part": "78_集合_数学运算",
+          "duration": 244
+        },
+        {
+          "page": 79,
+          "part": "79_集合_循环遍历",
+          "duration": 125
+        },
+        {
+          "page": 80,
+          "part": "80_集合_总结",
+          "duration": 82
+        }
+      ]
+    },
+    "BV1eZ421b7ag": {
+      "status": 200,
+      "title": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+      "owner": "尚硅谷",
+      "mid": 302417610,
+      "pubdate": 1710831600,
+      "duration": 102404,
+      "videos": 139,
+      "pages": [
+        {
+          "page": 1,
+          "part": "001-课程简介",
+          "duration": 209
+        },
+        {
+          "page": 2,
+          "part": "002-初识python-python介绍",
+          "duration": 988
+        },
+        {
+          "page": 3,
+          "part": "003-初识python-软件安装",
+          "duration": 678
+        },
+        {
+          "page": 4,
+          "part": "004-初识python-windows软件安装",
+          "duration": 1206
+        },
+        {
+          "page": 5,
+          "part": "005-初识python-mac软件安装",
+          "duration": 1436
+        },
+        {
+          "page": 6,
+          "part": "006-第1个程序-新建项目",
+          "duration": 489
+        },
+        {
+          "page": 7,
+          "part": "007-第1个程序-注释",
+          "duration": 1194
+        },
+        {
+          "page": 8,
+          "part": "008-第1个程序-打印变量",
+          "duration": 812
+        },
+        {
+          "page": 9,
+          "part": "009-第1个程序-一行打印多个内容",
+          "duration": 1262
+        },
+        {
+          "page": 10,
+          "part": "010-第1个程序-格式化输出",
+          "duration": 841
+        },
+        {
+          "page": 11,
+          "part": "011-第1个程序-input",
+          "duration": 1000
+        },
+        {
+          "page": 12,
+          "part": "012-初识python-流程图",
+          "duration": 501
+        },
+        {
+          "page": 13,
+          "part": "013-初识python-知识总结",
+          "duration": 399
+        },
+        {
+          "page": 14,
+          "part": "014-初识python-练习题",
+          "duration": 610
+        },
+        {
+          "page": 15,
+          "part": "015-变量-变量的创建",
+          "duration": 692
+        },
+        {
+          "page": 16,
+          "part": "016-变量-变量的修改",
+          "duration": 508
+        },
+        {
+          "page": 17,
+          "part": "017-变量-变量的命名",
+          "duration": 547
+        },
+        {
+          "page": 18,
+          "part": "018-变量-变量的类型",
+          "duration": 410
+        },
+        {
+          "page": 19,
+          "part": "019-数据类型-整数",
+          "duration": 316
+        },
+        {
+          "page": 20,
+          "part": "020-数据类型-浮点数",
+          "duration": 674
+        },
+        {
+          "page": 21,
+          "part": "021-数据类型-布尔型",
+          "duration": 199
+        },
+        {
+          "page": 22,
+          "part": "022-数据类型-字符串",
+          "duration": 1025
+        },
+        {
+          "page": 23,
+          "part": "023-数据类型-字符串索引",
+          "duration": 1093
+        },
+        {
+          "page": 24,
+          "part": "024-数据类型-类型转换",
+          "duration": 1547
+        },
+        {
+          "page": 25,
+          "part": "025-数据类型-小整数地址",
+          "duration": 439
+        },
+        {
+          "page": 26,
+          "part": "026-数据类型-知识总结",
+          "duration": 211
+        },
+        {
+          "page": 27,
+          "part": "027-数据类型-本章练习",
+          "duration": 518
+        },
+        {
+          "page": 28,
+          "part": "028-运算符-算数运算符",
+          "duration": 519
+        },
+        {
+          "page": 29,
+          "part": "029-运算符-赋值运算符",
+          "duration": 242
+        },
+        {
+          "page": 30,
+          "part": "030-运算符-比较运算符",
+          "duration": 550
+        },
+        {
+          "page": 31,
+          "part": "031-运算符-逻辑运算符",
+          "duration": 893
+        },
+        {
+          "page": 32,
+          "part": "032-运算符-位运算符",
+          "duration": 646
+        },
+        {
+          "page": 33,
+          "part": "033-运算符-成员运算符",
+          "duration": 269
+        },
+        {
+          "page": 34,
+          "part": "034-运算符-优先级",
+          "duration": 161
+        },
+        {
+          "page": 35,
+          "part": "035-运算符-本章总结",
+          "duration": 91
+        },
+        {
+          "page": 36,
+          "part": "036-运算符-章节练习",
+          "duration": 549
+        },
+        {
+          "page": 37,
+          "part": "037-条件判断-单分支",
+          "duration": 842
+        },
+        {
+          "page": 38,
+          "part": "038-条件判断-双分支",
+          "duration": 392
+        },
+        {
+          "page": 39,
+          "part": "039-条件判断-多分支",
+          "duration": 1217
+        },
+        {
+          "page": 40,
+          "part": "040-条件判断-嵌套选择",
+          "duration": 86
+        },
+        {
+          "page": 41,
+          "part": "041-条件判断-match",
+          "duration": 528
+        },
+        {
+          "page": 42,
+          "part": "042-条件判断-本章总结",
+          "duration": 182
+        },
+        {
+          "page": 43,
+          "part": "043-条件判断-本章练习",
+          "duration": 960
+        },
+        {
+          "page": 44,
+          "part": "044-条件判断-闰年判断",
+          "duration": 367
+        },
+        {
+          "page": 45,
+          "part": "045-循环-while",
+          "duration": 1061
+        },
+        {
+          "page": 46,
+          "part": "046-循环-for循环",
+          "duration": 980
+        },
+        {
+          "page": 47,
+          "part": "047-循环-break",
+          "duration": 889
+        },
+        {
+          "page": 48,
+          "part": "048-循环-continue",
+          "duration": 266
+        },
+        {
+          "page": 49,
+          "part": "049-循环-指数爆炸",
+          "duration": 783
+        },
+        {
+          "page": 50,
+          "part": "050-循环-本章总结",
+          "duration": 72
+        },
+        {
+          "page": 51,
+          "part": "051-循环-本章练习",
+          "duration": 1143
+        },
+        {
+          "page": 52,
+          "part": "052-循环-九九乘法表",
+          "duration": 505
+        },
+        {
+          "page": 53,
+          "part": "053-组合数据类型-序列",
+          "duration": 272
+        },
+        {
+          "page": 54,
+          "part": "054-组合数据类型-列表的创建",
+          "duration": 456
+        },
+        {
+          "page": 55,
+          "part": "055-组合数据类型-列表的常用操作",
+          "duration": 552
+        },
+        {
+          "page": 56,
+          "part": "056-组合数据类型-列表的遍历",
+          "duration": 308
+        },
+        {
+          "page": 57,
+          "part": "057-组合数据类型-列表的常用方法",
+          "duration": 1083
+        },
+        {
+          "page": 58,
+          "part": "058-组合数据类型-元组的创建",
+          "duration": 804
+        },
+        {
+          "page": 59,
+          "part": "059-组合数据类型-元组的常用操作",
+          "duration": 613
+        },
+        {
+          "page": 60,
+          "part": "060-组合数据类型-元组的遍历",
+          "duration": 297
+        },
+        {
+          "page": 61,
+          "part": "061-组合数据类型-range",
+          "duration": 1034
+        },
+        {
+          "page": 62,
+          "part": "062-组合数据类型-字符串",
+          "duration": 1255
+        },
+        {
+          "page": 63,
+          "part": "063-组合数据类型-字典",
+          "duration": 1466
+        },
+        {
+          "page": 64,
+          "part": "064-组合数据类型-集合",
+          "duration": 1182
+        },
+        {
+          "page": 65,
+          "part": "065-组合数据类型-可变与不可变",
+          "duration": 290
+        },
+        {
+          "page": 66,
+          "part": "066-组合数据类型-本章总结",
+          "duration": 226
+        },
+        {
+          "page": 67,
+          "part": "067-组合数据类型-本章练习",
+          "duration": 419
+        },
+        {
+          "page": 68,
+          "part": "068-案例实战-用户登录系统1",
+          "duration": 931
+        },
+        {
+          "page": 69,
+          "part": "069-案例实战-用户登录系统2",
+          "duration": 1196
+        },
+        {
+          "page": 70,
+          "part": "070-案例实战-计算天数",
+          "duration": 841
+        },
+        {
+          "page": 71,
+          "part": "071-异常处理-基本概念",
+          "duration": 414
+        },
+        {
+          "page": 72,
+          "part": "072-异常处理-常见错误类型",
+          "duration": 664
+        },
+        {
+          "page": 73,
+          "part": "073-异常处理-try语句",
+          "duration": 956
+        },
+        {
+          "page": 74,
+          "part": "074-异常处理-raise关键字",
+          "duration": 398
+        },
+        {
+          "page": 75,
+          "part": "075-异常处理-代码调试",
+          "duration": 411
+        },
+        {
+          "page": 76,
+          "part": "076-异常处理-本章总结",
+          "duration": 125
+        },
+        {
+          "page": 77,
+          "part": "077-异常处理-本章练习",
+          "duration": 295
+        },
+        {
+          "page": 78,
+          "part": "078-异常处理-简单计算器",
+          "duration": 1388
+        },
+        {
+          "page": 79,
+          "part": "079-函数-基本概念",
+          "duration": 1160
+        },
+        {
+          "page": 80,
+          "part": "080-函数-默认参数",
+          "duration": 776
+        }
+      ]
+    },
+    "BV1qW4y1a7fU": {
+      "status": 200,
+      "title": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+      "owner": "黑马程序员",
+      "mid": 37974444,
+      "pubdate": 1659920400,
+      "duration": 114020,
+      "videos": 164,
+      "pages": [
+        {
+          "page": 1,
+          "part": "Python导学视频",
+          "duration": 414
+        },
+        {
+          "page": 2,
+          "part": "第一阶段-第一章-01-初识Python",
+          "duration": 416
+        },
+        {
+          "page": 3,
+          "part": "第一阶段-第一章-02-什么是编程语言",
+          "duration": 422
+        },
+        {
+          "page": 4,
+          "part": "第一阶段-第一章-03-Python环境安装(Windows)",
+          "duration": 396
+        },
+        {
+          "page": 5,
+          "part": "第一阶段-第一章-04-【拓展】-Python环境安装(MacOS)",
+          "duration": 379
+        },
+        {
+          "page": 6,
+          "part": "第一阶段-第一章-05-【拓展】-Python环境安装(Linux)",
+          "duration": 727
+        },
+        {
+          "page": 7,
+          "part": "第一阶段-第一章-06-第一个Python程序-HelloWorld",
+          "duration": 308
+        },
+        {
+          "page": 8,
+          "part": "第一阶段-第一章-07-第一个Python程序-练习讲解",
+          "duration": 106
+        },
+        {
+          "page": 9,
+          "part": "第一阶段-第一章-08-第一个Python程序-常见问题解答",
+          "duration": 316
+        },
+        {
+          "page": 10,
+          "part": "第一阶段-第一章-09-Python解释器",
+          "duration": 684
+        },
+        {
+          "page": 11,
+          "part": "第一阶段-第一章-10-PyCharm开发工具的安装和基础使用",
+          "duration": 706
+        },
+        {
+          "page": 12,
+          "part": "第一阶段-第一章-11-【拓展】PyCharm的基础使用",
+          "duration": 540
+        },
+        {
+          "page": 13,
+          "part": "第一阶段-第一章-12-第一章内容重点回顾",
+          "duration": 582
+        },
+        {
+          "page": 14,
+          "part": "第一阶段-第二章-01-字面量",
+          "duration": 520
+        },
+        {
+          "page": 15,
+          "part": "第一阶段-第二章-02-注释",
+          "duration": 531
+        },
+        {
+          "page": 16,
+          "part": "第一阶段-第二章-03-变量",
+          "duration": 735
+        },
+        {
+          "page": 17,
+          "part": "第一阶段-第二章-04-数据类型",
+          "duration": 602
+        },
+        {
+          "page": 18,
+          "part": "第一阶段-第二章-05-数据类型转换",
+          "duration": 792
+        },
+        {
+          "page": 19,
+          "part": "第一阶段-第二章-06-标识符",
+          "duration": 881
+        },
+        {
+          "page": 20,
+          "part": "第一阶段-第二章-07-运算符",
+          "duration": 689
+        },
+        {
+          "page": 21,
+          "part": "第一阶段-第二章-08-字符串的三种定义方式",
+          "duration": 554
+        },
+        {
+          "page": 22,
+          "part": "第一阶段-第二章-09-字符串的拼接",
+          "duration": 321
+        },
+        {
+          "page": 23,
+          "part": "第一阶段-第二章-10-字符串格式化",
+          "duration": 775
+        },
+        {
+          "page": 24,
+          "part": "第一阶段-第二章-11-字符串格式化的精度控制",
+          "duration": 437
+        },
+        {
+          "page": 25,
+          "part": "第一阶段-第二章-12-字符串格式化的方式2",
+          "duration": 291
+        },
+        {
+          "page": 26,
+          "part": "第一阶段-第二章-13-对表达式进行格式化",
+          "duration": 538
+        },
+        {
+          "page": 27,
+          "part": "第一阶段-第二章-14-字符串格式化练习题讲解",
+          "duration": 404
+        },
+        {
+          "page": 28,
+          "part": "第一阶段-第二章-15-数据输入(input语句)",
+          "duration": 639
+        },
+        {
+          "page": 29,
+          "part": "第一阶段-第三章-01-布尔类型和比较运算符",
+          "duration": 1064
+        },
+        {
+          "page": 30,
+          "part": "第一阶段-第三章-02-if语句的基本格式",
+          "duration": 628
+        },
+        {
+          "page": 31,
+          "part": "第一阶段-第三章-03-案例-成年人判断讲解",
+          "duration": 211
+        },
+        {
+          "page": 32,
+          "part": "第一阶段-第三章-04-if else组合判断语句",
+          "duration": 465
+        },
+        {
+          "page": 33,
+          "part": "第一阶段-第三章-05-案例-我要买票吗讲解",
+          "duration": 221
+        },
+        {
+          "page": 34,
+          "part": "第一阶段-第三章-06-if_elif_else组合使用的语法",
+          "duration": 1029
+        },
+        {
+          "page": 35,
+          "part": "第一阶段-第三章-07-案例-猜猜心里数字讲解",
+          "duration": 264
+        },
+        {
+          "page": 36,
+          "part": "第一阶段-第三章-08-判断语句的嵌套",
+          "duration": 1077
+        },
+        {
+          "page": 37,
+          "part": "第一阶段-第三章-09-判断语句综合案例",
+          "duration": 480
+        },
+        {
+          "page": 38,
+          "part": "第一阶段-第四章-01-while循环的基础应用",
+          "duration": 745
+        },
+        {
+          "page": 39,
+          "part": "第一阶段-第四章-02-案例求1-100的和讲解",
+          "duration": 261
+        },
+        {
+          "page": 40,
+          "part": "第一阶段-第四章-03-while循环猜数字案例",
+          "duration": 583
+        },
+        {
+          "page": 41,
+          "part": "第一阶段-第四章-04-while循环的嵌套应用",
+          "duration": 737
+        },
+        {
+          "page": 42,
+          "part": "第一阶段-第四章-05-while循环案例-九九乘法表",
+          "duration": 1201
+        },
+        {
+          "page": 43,
+          "part": "第一阶段-第四章-06-for循环的基础语法",
+          "duration": 616
+        },
+        {
+          "page": 44,
+          "part": "第一阶段-第四章-07-for循环案例-数一数多少字母a讲解",
+          "duration": 233
+        },
+        {
+          "page": 45,
+          "part": "第一阶段-第四章-08-range语句",
+          "duration": 690
+        },
+        {
+          "page": 46,
+          "part": "第一阶段-第四章-09-for循环临时变量作用域",
+          "duration": 381
+        },
+        {
+          "page": 47,
+          "part": "第一阶段-第四章-10-for循环的嵌套使用",
+          "duration": 563
+        },
+        {
+          "page": 48,
+          "part": "第一阶段-第四章-11-for循环打印九九乘法表",
+          "duration": 270
+        },
+        {
+          "page": 49,
+          "part": "第一阶段-第四章-12-continue和break",
+          "duration": 748
+        },
+        {
+          "page": 50,
+          "part": "第一阶段-第四章-13-循环综合案例",
+          "duration": 475
+        },
+        {
+          "page": 51,
+          "part": "第一阶段-第五章-01-函数的初体验",
+          "duration": 707
+        },
+        {
+          "page": 52,
+          "part": "第一阶段-第五章-02-函数的基础定义语法",
+          "duration": 543
+        },
+        {
+          "page": 53,
+          "part": "第一阶段-第五章-03-函数基础定义练习案例",
+          "duration": 170
+        },
+        {
+          "page": 54,
+          "part": "第一阶段-第五章-04-函数的传入参数",
+          "duration": 606
+        },
+        {
+          "page": 55,
+          "part": "第一阶段-第五章-05-函数的参数练习案例",
+          "duration": 190
+        },
+        {
+          "page": 56,
+          "part": "第一阶段-第五章-06-函数的返回值定义语法",
+          "duration": 486
+        },
+        {
+          "page": 57,
+          "part": "第一阶段-第五章-07-函数返回值之None类型",
+          "duration": 552
+        },
+        {
+          "page": 58,
+          "part": "第一阶段-第五章-08-函数的说明文档",
+          "duration": 371
+        },
+        {
+          "page": 59,
+          "part": "第一阶段-第五章-09-函数的嵌套调用",
+          "duration": 254
+        },
+        {
+          "page": 60,
+          "part": "第一阶段-第五章-10-变量在函数中的作用域",
+          "duration": 587
+        },
+        {
+          "page": 61,
+          "part": "第一阶段-第五章-11-函数综合案例",
+          "duration": 1126
+        },
+        {
+          "page": 62,
+          "part": "第一阶段-第六章-01-数据容器入门",
+          "duration": 283
+        },
+        {
+          "page": 63,
+          "part": "第一阶段-第六章-02-列表的定义语法",
+          "duration": 637
+        },
+        {
+          "page": 64,
+          "part": "第一阶段-第六章-03-列表的下标索引",
+          "duration": 721
+        },
+        {
+          "page": 65,
+          "part": "第一阶段-第六章-04-列表的常用操作方法",
+          "duration": 1799
+        },
+        {
+          "page": 66,
+          "part": "第一阶段-第六章-05-列表的常用操作课后练习讲解",
+          "duration": 343
+        },
+        {
+          "page": 67,
+          "part": "第一阶段-第六章-06-列表的循环遍历",
+          "duration": 866
+        },
+        {
+          "page": 68,
+          "part": "第一阶段-第六章-07-元组的定义和操作",
+          "duration": 1249
+        },
+        {
+          "page": 69,
+          "part": "第一阶段-第六章-08-字符串的定义和操作",
+          "duration": 1344
+        },
+        {
+          "page": 70,
+          "part": "第一阶段-第六章-09-字符串的课后练习讲解",
+          "duration": 218
+        },
+        {
+          "page": 71,
+          "part": "第一阶段-第六章-10-数据容器（序列）的切片",
+          "duration": 780
+        },
+        {
+          "page": 72,
+          "part": "第一阶段-第六章-11-序列的切片课后练习讲解",
+          "duration": 316
+        },
+        {
+          "page": 73,
+          "part": "第一阶段-第六章-12-集合的定义和操作",
+          "duration": 1450
+        },
+        {
+          "page": 74,
+          "part": "第一阶段-第六章-13-集合的课后练习",
+          "duration": 171
+        },
+        {
+          "page": 75,
+          "part": "第一阶段-第六章-14-字典的定义",
+          "duration": 1408
+        },
+        {
+          "page": 76,
+          "part": "第一阶段-第六章-15-字典的常用操作",
+          "duration": 953
+        },
+        {
+          "page": 77,
+          "part": "第一阶段-第六章-16-字典课后练习讲解",
+          "duration": 553
+        },
+        {
+          "page": 78,
+          "part": "第一阶段-第六章-17-5类数据容器的总结对比",
+          "duration": 247
+        },
+        {
+          "page": 79,
+          "part": "第一阶段-第六章-18-数据容器的通用操作",
+          "duration": 984
+        },
+        {
+          "page": 80,
+          "part": "第一阶段-第六章-19-拓展-字符串大小比较的方式",
+          "duration": 435
+        }
+      ]
+    },
+    "BV1ex411x7Em": {
+      "status": 200,
+      "title": "黑马程序员Python教程_600集Python从入门到精通教程（懂中文就能学会）",
+      "owner": "黑马程序员",
+      "mid": 37974444,
+      "pubdate": 1504581916,
+      "duration": 198186,
+      "videos": 536,
+      "pages": [
+        {
+          "page": 1,
+          "part": "01-课程安排",
+          "duration": 231
+        },
+        {
+          "page": 2,
+          "part": "02-励志公式和python体验",
+          "duration": 499
+        },
+        {
+          "page": 3,
+          "part": "03-什么是操作系统",
+          "duration": 460
+        },
+        {
+          "page": 4,
+          "part": "04-不同领域的主流操作系统-01-桌面操作系统",
+          "duration": 273
+        },
+        {
+          "page": 5,
+          "part": "05-不同领域的主流操作系统-02-服务器操作系统",
+          "duration": 385
+        },
+        {
+          "page": 6,
+          "part": "06-不同领域的主流操作系统-03-嵌入式操作系统",
+          "duration": 173
+        },
+        {
+          "page": 7,
+          "part": "07-虚拟机简介",
+          "duration": 303
+        },
+        {
+          "page": 8,
+          "part": "08-操作系统发展简史",
+          "duration": 807
+        },
+        {
+          "page": 9,
+          "part": "09-Linux的内核版和发行版",
+          "duration": 468
+        },
+        {
+          "page": 10,
+          "part": "10-Linux系统下的文件目录结构",
+          "duration": 479
+        },
+        {
+          "page": 11,
+          "part": "11-Ubuntu系统目录结构演示和简介",
+          "duration": 515
+        },
+        {
+          "page": 12,
+          "part": "12-Ubuntu图形界面基本使用",
+          "duration": 705
+        },
+        {
+          "page": 13,
+          "part": "13-Linux命令-01-明确学习目标",
+          "duration": 317
+        },
+        {
+          "page": 14,
+          "part": "14-Linux命令-02-放大缩小终端窗口字体",
+          "duration": 180
+        },
+        {
+          "page": 15,
+          "part": "15-Linux命令-03-明确6个常见终端命令的操作效果",
+          "duration": 333
+        },
+        {
+          "page": 16,
+          "part": "16-Linux命令-04-6个常见终端命令简单演练",
+          "duration": 679
+        },
+        {
+          "page": 17,
+          "part": "17-Linux命令-05-终端命令格式",
+          "duration": 479
+        },
+        {
+          "page": 18,
+          "part": "18-Linux命令-06-查阅终端命令帮助信息",
+          "duration": 630
+        },
+        {
+          "page": 19,
+          "part": "19-文件和目录命令-01-明确命令分类和学习目标",
+          "duration": 89
+        },
+        {
+          "page": 20,
+          "part": "20-文件和目录命令-02-分享自动补全和命令选择技巧",
+          "duration": 430
+        },
+        {
+          "page": 21,
+          "part": "21-文件和目录命令-03-查看隐藏文件和返回上一级目录",
+          "duration": 639
+        },
+        {
+          "page": 22,
+          "part": "22-文件和目录命令-04-ls的列表和文件大小选项",
+          "duration": 678
+        },
+        {
+          "page": 23,
+          "part": "23-文件和目录命令-05-ls和通配符的联合使用",
+          "duration": 510
+        },
+        {
+          "page": 24,
+          "part": "24-文件和目录命令-06-通配符的字符组",
+          "duration": 168
+        },
+        {
+          "page": 25,
+          "part": "25-文件和目录命令-07-cd命令的常用参数",
+          "duration": 482
+        },
+        {
+          "page": 26,
+          "part": "26-文件和目录命令-08-相对路径和绝对路径",
+          "duration": 298
+        },
+        {
+          "page": 27,
+          "part": "27-文件和目录命令-09-touch和mkdir命令的扩展",
+          "duration": 364
+        },
+        {
+          "page": 28,
+          "part": "28-文件和目录命令-10-rm命令的扩展",
+          "duration": 380
+        },
+        {
+          "page": 29,
+          "part": "29-拷贝和移动命令-01-目标确定和图形界面演示",
+          "duration": 140
+        },
+        {
+          "page": 30,
+          "part": "30-拷贝和移动命令-02-tree以树状图查看目录结构",
+          "duration": 337
+        },
+        {
+          "page": 31,
+          "part": "31-拷贝和移动命令-03-cp命令复制文件",
+          "duration": 335
+        },
+        {
+          "page": 32,
+          "part": "32-拷贝和移动命令-04-cp命令-i选项覆盖前提示",
+          "duration": 295
+        },
+        {
+          "page": 33,
+          "part": "33-拷贝和移动命令-05-cp命令-r选项复制目录",
+          "duration": 184
+        },
+        {
+          "page": 34,
+          "part": "34-拷贝和移动命令-06-mv命令移动文件或者目录",
+          "duration": 241
+        },
+        {
+          "page": 35,
+          "part": "35-拷贝和移动命令-07-mv命令给文件或者目录重命名",
+          "duration": 456
+        },
+        {
+          "page": 36,
+          "part": "36-文件内容命令-01-cat和more的基本使用和对比",
+          "duration": 439
+        },
+        {
+          "page": 37,
+          "part": "37-文件内容命令-02-cat命令的-b和-n选项输出行号",
+          "duration": 221
+        },
+        {
+          "page": 38,
+          "part": "38-文件内容命令-03-grep查找文件内容",
+          "duration": 451
+        },
+        {
+          "page": 39,
+          "part": "39-文件内容命令-04-grep行首／行尾的模式查找",
+          "duration": 315
+        },
+        {
+          "page": 40,
+          "part": "40-其他命令-01-echo和重定向",
+          "duration": 586
+        },
+        {
+          "page": 41,
+          "part": "41-其他命令-02-管道的概念和基本使用",
+          "duration": 363
+        },
+        {
+          "page": 42,
+          "part": "42-远程管理命令-01-关机和重启",
+          "duration": 289
+        },
+        {
+          "page": 43,
+          "part": "43-远程管理命令-02-网卡和IP地址的概念",
+          "duration": 518
+        },
+        {
+          "page": 44,
+          "part": "44-远程管理命令-03-ifconfig和ping作用的介绍",
+          "duration": 165
+        },
+        {
+          "page": 45,
+          "part": "45-远程管理命令-04-ifconfig查询网卡信息",
+          "duration": 341
+        },
+        {
+          "page": 46,
+          "part": "46-远程管理命令-05-ping测试网络连接",
+          "duration": 478
+        },
+        {
+          "page": 47,
+          "part": "47-远程管理命令-06-SSH工作方式简介",
+          "duration": 278
+        },
+        {
+          "page": 48,
+          "part": "48-远程管理命令-07-域名和端口号的概念",
+          "duration": 593
+        },
+        {
+          "page": 49,
+          "part": "49-远程管理命令-08-ssh命令格式介绍和演练目标确定",
+          "duration": 240
+        },
+        {
+          "page": 50,
+          "part": "50-远程管理命令-09-Mac电脑使用ssh连接ubuntu",
+          "duration": 400
+        },
+        {
+          "page": 51,
+          "part": "51-远程管理命令-10-PuTTY的安装和exit退出登录",
+          "duration": 235
+        },
+        {
+          "page": 52,
+          "part": "52-远程管理命令-11-XShell的安装-免费和设置语言",
+          "duration": 272
+        },
+        {
+          "page": 53,
+          "part": "53-远程管理命令-12-scp作用以及命令格式",
+          "duration": 374
+        },
+        {
+          "page": 54,
+          "part": "54-远程管理命令-13-scp在Mac终端中的演示",
+          "duration": 441
+        },
+        {
+          "page": 55,
+          "part": "55-远程管理命令-14-FileZilla在Windows下文件传输",
+          "duration": 337
+        },
+        {
+          "page": 56,
+          "part": "56-SSH高级-01-确定目标／认识.ssh目录",
+          "duration": 465
+        },
+        {
+          "page": 57,
+          "part": "57-SSH高级-02-免密码登录设置步骤",
+          "duration": 558
+        },
+        {
+          "page": 58,
+          "part": "58-SSH高级-03-免密码登录工作原理",
+          "duration": 234
+        },
+        {
+          "page": 59,
+          "part": "59-SSH高级-04-配置远程计算机的别名",
+          "duration": 522
+        },
+        {
+          "page": 60,
+          "part": "60-用户权限-01-学习目标",
+          "duration": 73
+        },
+        {
+          "page": 61,
+          "part": "61-用户权限-02-用户／权限／组的基本概念",
+          "duration": 179
+        },
+        {
+          "page": 62,
+          "part": "62-用户权限-03-ls -l输出信息介绍",
+          "duration": 364
+        },
+        {
+          "page": 63,
+          "part": "63-用户权限-03-ls -l硬链接数含义的扩展",
+          "duration": 461
+        },
+        {
+          "page": 64,
+          "part": "64-用户权限-04-chmod修改文件权限",
+          "duration": 574
+        },
+        {
+          "page": 65,
+          "part": "65-用户权限-05-chmod修改目录权限",
+          "duration": 359
+        },
+        {
+          "page": 66,
+          "part": "66-用户权限-06-超级用户介绍",
+          "duration": 240
+        },
+        {
+          "page": 67,
+          "part": "67-组管理-01-添加组／删除组／确认组信息",
+          "duration": 395
+        },
+        {
+          "page": 68,
+          "part": "68-组管理-02-群组演练目标确定",
+          "duration": 147
+        },
+        {
+          "page": 69,
+          "part": "69-组管理-03-chgrp修改目录所属组的演练",
+          "duration": 342
+        },
+        {
+          "page": 70,
+          "part": "70-用户管理-01-新建用户useradd和passwd",
+          "duration": 651
+        },
+        {
+          "page": 71,
+          "part": "71-用户管理-02--m选项的作用以及删除用户userdel",
+          "duration": 413
+        },
+        {
+          "page": 72,
+          "part": "72-用户管理-03-id查看UID和GID以及passwd文件介绍",
+          "duration": 598
+        },
+        {
+          "page": 73,
+          "part": "73-用户管理-04-who和whoami",
+          "duration": 208
+        },
+        {
+          "page": 74,
+          "part": "74-用户管理-05-usermod设置主组和附加组",
+          "duration": 703
+        },
+        {
+          "page": 75,
+          "part": "75-用户管理-06-usermod指定用户登录shell",
+          "duration": 442
+        },
+        {
+          "page": 76,
+          "part": "76-用户管理-07-which查看命令所在位置",
+          "duration": 408
+        },
+        {
+          "page": 77,
+          "part": "77-用户管理-08-su切换用户",
+          "duration": 550
+        },
+        {
+          "page": 78,
+          "part": "78-用户管理-09-权限命令介绍和chown／chgrp演练",
+          "duration": 332
+        },
+        {
+          "page": 79,
+          "part": "79-用户管理-10-chmod的数字表示法介绍",
+          "duration": 438
+        },
+        {
+          "page": 80,
+          "part": "80-用户管理-11-chmod演练-R递归修改目录权限",
+          "duration": 383
+        }
+      ]
+    },
+    "BV1owrpYKEtP": {
+      "status": 200,
+      "title": "【官方中英】2025年公认最好的【吴恩达机器学习课程】附课件、代码及实战项目！！！--人工智能/机器学习/深度学习",
+      "owner": "吴恩达AI_AndrewNg",
+      "mid": 3493134768016008,
+      "pubdate": 1735979927,
+      "duration": 83096,
+      "videos": 146,
+      "pages": [
+        {
+          "page": 1,
+          "part": "1.欢迎来到机器学习（课程配套作业与习题见评论区）",
+          "duration": 401
+        },
+        {
+          "page": 2,
+          "part": "2.什么是机器学习（建议学习本课程一定要）",
+          "duration": 321
+        },
+        {
+          "page": 3,
+          "part": "3.监督学习部分（完成代码作业与课后习题）",
+          "duration": 841
+        },
+        {
+          "page": 4,
+          "part": "4.无监督学习部分",
+          "duration": 751
+        },
+        {
+          "page": 5,
+          "part": "5.jupyter笔记本",
+          "duration": 271
+        },
+        {
+          "page": 6,
+          "part": "6.线性回归模型",
+          "duration": 1001
+        },
+        {
+          "page": 7,
+          "part": "7.成本函数及其直觉",
+          "duration": 1439
+        },
+        {
+          "page": 8,
+          "part": "8.可视化成本函数",
+          "duration": 514
+        },
+        {
+          "page": 9,
+          "part": "9.可视化示例",
+          "duration": 361
+        },
+        {
+          "page": 10,
+          "part": "10.梯度下降",
+          "duration": 484
+        },
+        {
+          "page": 11,
+          "part": "11.实现梯度下降",
+          "duration": 600
+        },
+        {
+          "page": 12,
+          "part": "12.梯度下降直觉",
+          "duration": 422
+        },
+        {
+          "page": 13,
+          "part": "13.学习率",
+          "duration": 544
+        },
+        {
+          "page": 14,
+          "part": "14.线性回归的梯度下降",
+          "duration": 397
+        },
+        {
+          "page": 15,
+          "part": "15.运行梯度下降",
+          "duration": 349
+        },
+        {
+          "page": 16,
+          "part": "16.多特征",
+          "duration": 592
+        },
+        {
+          "page": 17,
+          "part": "17.向量化（第一部分）",
+          "duration": 415
+        },
+        {
+          "page": 18,
+          "part": "18.向量化（第二部分）",
+          "duration": 413
+        },
+        {
+          "page": 19,
+          "part": "19.多重线性回归的梯度下降",
+          "duration": 466
+        },
+        {
+          "page": 20,
+          "part": "20.特征缩放（第一部分）",
+          "duration": 396
+        },
+        {
+          "page": 21,
+          "part": "21.特征缩放（第二部分）",
+          "duration": 455
+        },
+        {
+          "page": 22,
+          "part": "22.检查梯度下降是否收敛.",
+          "duration": 340
+        },
+        {
+          "page": 23,
+          "part": "23._选择学习率",
+          "duration": 367
+        },
+        {
+          "page": 24,
+          "part": "24.特征工程",
+          "duration": 185
+        },
+        {
+          "page": 25,
+          "part": "25.多项式回归.",
+          "duration": 352
+        },
+        {
+          "page": 26,
+          "part": "26.动机",
+          "duration": 588
+        },
+        {
+          "page": 27,
+          "part": "27.逻辑回归",
+          "duration": 589
+        },
+        {
+          "page": 28,
+          "part": "28.决策边界",
+          "duration": 643
+        },
+        {
+          "page": 29,
+          "part": "29.逻辑回归的成本函数.",
+          "duration": 720
+        },
+        {
+          "page": 30,
+          "part": "30.简化后的逻辑回归成本函数",
+          "duration": 345
+        },
+        {
+          "page": 31,
+          "part": "31.梯度下降实现",
+          "duration": 392
+        },
+        {
+          "page": 32,
+          "part": "32.过拟合问题",
+          "duration": 713
+        },
+        {
+          "page": 33,
+          "part": "33.解决过拟合",
+          "duration": 496
+        },
+        {
+          "page": 34,
+          "part": "34.带正则化的成本函数",
+          "duration": 544
+        },
+        {
+          "page": 35,
+          "part": "35.正则化线性回归",
+          "duration": 533
+        },
+        {
+          "page": 36,
+          "part": "36.正则化逻辑回归",
+          "duration": 333
+        },
+        {
+          "page": 37,
+          "part": "37.吴恩达与李飞飞谈以人为本的AI",
+          "duration": 2503
+        },
+        {
+          "page": 38,
+          "part": "38.欢迎来到深度学习部分",
+          "duration": 174
+        },
+        {
+          "page": 39,
+          "part": "39.神经元与大脑",
+          "duration": 653
+        },
+        {
+          "page": 40,
+          "part": "40.需求预测",
+          "duration": 984
+        },
+        {
+          "page": 41,
+          "part": "41.示例：图像识别",
+          "duration": 396
+        },
+        {
+          "page": 42,
+          "part": "42.神经网络层",
+          "duration": 590
+        },
+        {
+          "page": 43,
+          "part": "43.更复杂的神经网络",
+          "duration": 490
+        },
+        {
+          "page": 44,
+          "part": "44.推理：预测与前向传播",
+          "duration": 324
+        },
+        {
+          "page": 45,
+          "part": "45.代码中的推理",
+          "duration": 401
+        },
+        {
+          "page": 46,
+          "part": "46.TensorFlow中的数据",
+          "duration": 679
+        },
+        {
+          "page": 47,
+          "part": "47.构建神经网络",
+          "duration": 502
+        },
+        {
+          "page": 48,
+          "part": "48.单层前向传播",
+          "duration": 307
+        },
+        {
+          "page": 49,
+          "part": "49.前向传播的通用实现",
+          "duration": 472
+        },
+        {
+          "page": 50,
+          "part": "50.是否存在通往AGI的路径",
+          "duration": 635
+        },
+        {
+          "page": 51,
+          "part": "51.神经网络的高效实现方式",
+          "duration": 262
+        },
+        {
+          "page": 52,
+          "part": "52.矩阵乘法",
+          "duration": 569
+        },
+        {
+          "page": 53,
+          "part": "53.矩阵乘法规则",
+          "duration": 571
+        },
+        {
+          "page": 54,
+          "part": "54.矩阵乘法代码",
+          "duration": 386
+        },
+        {
+          "page": 55,
+          "part": "55.TensorFlow实现",
+          "duration": 216
+        },
+        {
+          "page": 56,
+          "part": "56.训练细节",
+          "duration": 808
+        },
+        {
+          "page": 57,
+          "part": "57.Sigmoid激活函数的替代方案",
+          "duration": 330
+        },
+        {
+          "page": 58,
+          "part": "58.选择激活函数",
+          "duration": 505
+        },
+        {
+          "page": 59,
+          "part": "59.为什么需要激活函数",
+          "duration": 331
+        },
+        {
+          "page": 60,
+          "part": "60.多类别",
+          "duration": 209
+        },
+        {
+          "page": 61,
+          "part": "61.Softmax",
+          "duration": 692
+        },
+        {
+          "page": 62,
+          "part": "62.带有Softmax输出的神经网络",
+          "duration": 445
+        },
+        {
+          "page": 63,
+          "part": "63.Softmax的改进实现",
+          "duration": 552
+        },
+        {
+          "page": 64,
+          "part": "64.多输出分类（可选）",
+          "duration": 260
+        },
+        {
+          "page": 65,
+          "part": "65.高级优化",
+          "duration": 386
+        },
+        {
+          "page": 66,
+          "part": "66.额外的层类型",
+          "duration": 536
+        },
+        {
+          "page": 67,
+          "part": "67.什么是导数（可选）",
+          "duration": 1377
+        },
+        {
+          "page": 68,
+          "part": "68.计算图（可选）",
+          "duration": 1160
+        },
+        {
+          "page": 69,
+          "part": "69.更大的神经网络示例（可选）",
+          "duration": 593
+        },
+        {
+          "page": 70,
+          "part": "70.决定下一步尝试什",
+          "duration": 222
+        },
+        {
+          "page": 71,
+          "part": "71.模型评估",
+          "duration": 625
+        },
+        {
+          "page": 72,
+          "part": "72.模型选择与训练、交叉验证、测试集",
+          "duration": 838
+        },
+        {
+          "page": 73,
+          "part": "73.诊断偏差与方差",
+          "duration": 667
+        },
+        {
+          "page": 74,
+          "part": "74.正则化与偏差方差",
+          "duration": 628
+        },
+        {
+          "page": 75,
+          "part": "75.建立基准性能水平",
+          "duration": 562
+        },
+        {
+          "page": 76,
+          "part": "76.学习曲线.",
+          "duration": 708
+        },
+        {
+          "page": 77,
+          "part": "77.决定下一步尝试什么（再谈）",
+          "duration": 527
+        },
+        {
+          "page": 78,
+          "part": "78.偏差、方差与神经网络.",
+          "duration": 645
+        },
+        {
+          "page": 79,
+          "part": "79.机器学习开发的迭代循环.",
+          "duration": 463
+        },
+        {
+          "page": 80,
+          "part": "80.错误分析.",
+          "duration": 501
+        }
+      ]
+    },
+    "BV1DTxXzUEvW": {
+      "status": 200,
+      "title": "【2026版】李宏毅机器学习课程，内容涵盖机器学习、深度学习、强化学习、神经网络、计算机视觉、自然语言处理、大模型等人工智能核心知识点！",
+      "owner": "李宏毅-机器学习",
+      "mid": 3546866876680925,
+      "pubdate": 1759832560,
+      "duration": 126284,
+      "videos": 52,
+      "pages": [
+        {
+          "page": 1,
+          "part": "1、第一节   上  机器学习基本概念简介",
+          "duration": 2999
+        },
+        {
+          "page": 2,
+          "part": "2、 下  深度学习基本概念简介",
+          "duration": 3515
+        },
+        {
+          "page": 3,
+          "part": "3、第二节   机器学习任务攻略",
+          "duration": 3083
+        },
+        {
+          "page": 4,
+          "part": "4、  类神经网络训练不起来怎么办一 局部最小值 local",
+          "duration": 2025
+        },
+        {
+          "page": 5,
+          "part": "5、  类神经网络训练不起来怎么办二 批次 batch 与动",
+          "duration": 1859
+        },
+        {
+          "page": 6,
+          "part": "6、  类神经网络训练不起来怎么办三 自动调整学习率 Lear",
+          "duration": 2262
+        },
+        {
+          "page": 7,
+          "part": "7、  类神经网络训练不起来怎么办四 损失函数 Loss 也",
+          "duration": 1168
+        },
+        {
+          "page": 8,
+          "part": "8、  再探宝可梦、数码宝贝分类器 — 浅谈机器学习原理",
+          "duration": 4440
+        },
+        {
+          "page": 9,
+          "part": "9、第三节   卷积神经网络CNN",
+          "duration": 3339
+        },
+        {
+          "page": 10,
+          "part": "10、  为什么用了验证集 validation set 结果却还",
+          "duration": 536
+        },
+        {
+          "page": 11,
+          "part": "11、  鱼与熊掌可以兼得的机器学习",
+          "duration": 2495
+        },
+        {
+          "page": 12,
+          "part": "12、第四节   自注意力机制Selfattention上",
+          "duration": 1698
+        },
+        {
+          "page": 13,
+          "part": "13、  自注意力机制 Selfattention 下",
+          "duration": 2758
+        },
+        {
+          "page": 14,
+          "part": "14、第五节   类神经网络训练不起来怎么办 五 批次标准化 B",
+          "duration": 1856
+        },
+        {
+          "page": 15,
+          "part": "15、  Transformer 上",
+          "duration": 1968
+        },
+        {
+          "page": 16,
+          "part": "16、  Transformer 下",
+          "duration": 3634
+        },
+        {
+          "page": 17,
+          "part": "17、  各式各样神奇的自注意力机制 Selfattention",
+          "duration": 4276
+        },
+        {
+          "page": 18,
+          "part": "生成式对抗网络GAN 一 – 基本概念介紹",
+          "duration": 2349
+        },
+        {
+          "page": 19,
+          "part": "19、  生成式对抗网络GAN 二 – 理论介绍与WGAN",
+          "duration": 2801
+        },
+        {
+          "page": 20,
+          "part": "20、  生成式对抗网络GAN 三 – 生成器效能评估与条件式",
+          "duration": 2987
+        },
+        {
+          "page": 21,
+          "part": "21、  生成式对抗网络GAN 四 – Cycle GAN",
+          "duration": 1421
+        },
+        {
+          "page": 22,
+          "part": "22、第七节   自监督式学习  一 – 芝麻街与进击的巨人",
+          "duration": 430
+        },
+        {
+          "page": 23,
+          "part": "23、  自监督式学习 二 – BERT简介",
+          "duration": 3041
+        },
+        {
+          "page": 24,
+          "part": "24、  自监督式学习 三 –  BERT的奇闻轶事",
+          "duration": 1454
+        },
+        {
+          "page": 25,
+          "part": "25、  自监督式学习 四 – GPT的野望",
+          "duration": 1024
+        },
+        {
+          "page": 26,
+          "part": "26、  如何有效的使用自督导式模型  DataEfficient",
+          "duration": 4929
+        },
+        {
+          "page": 27,
+          "part": "27、  语音与影像上的神奇自督导式学习模型",
+          "duration": 4919
+        },
+        {
+          "page": 28,
+          "part": "28、第八节   自编码器 Autoencoder 上 –",
+          "duration": 1141
+        },
+        {
+          "page": 29,
+          "part": "30、选修To Learn More  Unsupervised Lear",
+          "duration": 6021
+        },
+        {
+          "page": 30,
+          "part": "31、To Learn More  Unsupervised Lear",
+          "duration": 1859
+        },
+        {
+          "page": 31,
+          "part": "32、第九节   机器学习的可解释性 上 – 为什么神经网络可以正",
+          "duration": 2948
+        },
+        {
+          "page": 32,
+          "part": "33、  机器学习的可解释性  下 –机器心中的猫长什么样子",
+          "duration": 1365
+        },
+        {
+          "page": 33,
+          "part": "34、  自然语言处理上的对抗式攻击 由姜成翰助教讲授  Par",
+          "duration": 3366
+        },
+        {
+          "page": 34,
+          "part": "35、第十节   来自人类的恶意攻击 Adversarial AtA",
+          "duration": 1789
+        },
+        {
+          "page": 35,
+          "part": "36、  来自人类的恶意攻击 Adversarial AttackA",
+          "duration": 2793
+        },
+        {
+          "page": 36,
+          "part": "37、第十一节   概述领域自适应 Domain AdaptatiA",
+          "duration": 2073
+        },
+        {
+          "page": 37,
+          "part": "38、  恶搞自督导式学习模型 BERT的三个故事A",
+          "duration": 3223
+        },
+        {
+          "page": 38,
+          "part": "39、第十二节   概述增強式學習一 – 增强式学习和机器学习一A",
+          "duration": 2702
+        },
+        {
+          "page": 39,
+          "part": "40、  概述增强式学习 二 – Policy GradientA",
+          "duration": 2474
+        },
+        {
+          "page": 40,
+          "part": "41、  概述增强式学习 三 – ActorCriticA",
+          "duration": 2081
+        },
+        {
+          "page": 41,
+          "part": "42、  概述增强式学习 四 – 回馈非常罕見的時候怎么办？机器A",
+          "duration": 1055
+        },
+        {
+          "page": 42,
+          "part": "43、  概述增强式学习 五 – 如何从示范中学习？逆向增強式学A",
+          "duration": 1628
+        },
+        {
+          "page": 43,
+          "part": "44、第十三节   神经网络压缩 一  类神经网络剪枝PruA",
+          "duration": 1772
+        },
+        {
+          "page": 44,
+          "part": "45、  神经网络压缩 二  从各种不同的面向來压缩神经网络A",
+          "duration": 3406
+        },
+        {
+          "page": 45,
+          "part": "46、第十四节   机器终身学习  一  为什么今日的人工智能A",
+          "duration": 1920
+        },
+        {
+          "page": 46,
+          "part": "47、  机器終身学习  二  灾难性遗忘CatastropA",
+          "duration": 2199
+        },
+        {
+          "page": 47,
+          "part": "48、  作业说明 HW14 中文高清A",
+          "duration": 1669
+        },
+        {
+          "page": 48,
+          "part": "49、  作业说明 HW14A",
+          "duration": 1323
+        },
+        {
+          "page": 49,
+          "part": "50、第十五节   元学习 Meta Learning 一  A",
+          "duration": 2780
+        },
+        {
+          "page": 50,
+          "part": "51、  元学习 Meta Learning 二  万物皆可 A",
+          "duration": 1897
+        },
+        {
+          "page": 51,
+          "part": "52、  各种奇葩的元学习 Meta Learning 用法A",
+          "duration": 1873
+        },
+        {
+          "page": 52,
+          "part": "53、【机器学习】课程结语 完结撒花A",
+          "duration": 1661
+        }
+      ]
+    },
+    "BV1JXppejE8q": {
+      "status": 200,
+      "title": "《概率论与数理统计》教学视频 2.0版本【宋浩老师】",
+      "owner": "宋浩老师官方",
+      "mid": 66607740,
+      "pubdate": 1725938603,
+      "duration": 133164,
+      "videos": 63,
+      "pages": [
+        {
+          "page": 1,
+          "part": "预备知识（加法原理 乘法原理 排列与组合）",
+          "duration": 2611
+        },
+        {
+          "page": 2,
+          "part": "1.1 随机试验与随机事件",
+          "duration": 4296
+        },
+        {
+          "page": 3,
+          "part": "1.2 频率与概率",
+          "duration": 2070
+        },
+        {
+          "page": 4,
+          "part": "1.3 古典概型与几何概型",
+          "duration": 4817
+        },
+        {
+          "page": 5,
+          "part": "1.4条件概率与乘法公式",
+          "duration": 3823
+        },
+        {
+          "page": 6,
+          "part": "1.5 全概率公式与贝叶斯公式",
+          "duration": 5054
+        },
+        {
+          "page": 7,
+          "part": "1.6 事件的独立性和伯努利实验",
+          "duration": 4512
+        },
+        {
+          "page": 8,
+          "part": "2.1 随机变量",
+          "duration": 952
+        },
+        {
+          "page": 9,
+          "part": "2.2 概率分布",
+          "duration": 2025
+        },
+        {
+          "page": 10,
+          "part": "2.2 0-1分布 二项分布",
+          "duration": 1744
+        },
+        {
+          "page": 11,
+          "part": "2.2 泊松分布几何分布超几何分布",
+          "duration": 2985
+        },
+        {
+          "page": 12,
+          "part": "2.3 随机变量的分布函数",
+          "duration": 3064
+        },
+        {
+          "page": 13,
+          "part": "2.4 连续型随机变量及其密度函数",
+          "duration": 5725
+        },
+        {
+          "page": 14,
+          "part": "2.4 均匀分布和指数分布",
+          "duration": 1963
+        },
+        {
+          "page": 15,
+          "part": "2.4 正态分布",
+          "duration": 3620
+        },
+        {
+          "page": 16,
+          "part": "2.5 随机变量函数的分布-离散型",
+          "duration": 539
+        },
+        {
+          "page": 17,
+          "part": "2.5 随机变量函数的分布-连续型",
+          "duration": 4386
+        },
+        {
+          "page": 18,
+          "part": "3.1 X与Y的联合分布函数",
+          "duration": 1568
+        },
+        {
+          "page": 19,
+          "part": "3.1二维离散型(X,Y)的概率分布",
+          "duration": 1264
+        },
+        {
+          "page": 20,
+          "part": "（前面还有视频在剪辑）3.2 边缘分布函数",
+          "duration": 653
+        },
+        {
+          "page": 21,
+          "part": "3.2 二维离散型随机变量(X,Y)的边缘分布律",
+          "duration": 497
+        },
+        {
+          "page": 22,
+          "part": "3.2 二维连续型随机变量的边缘密度",
+          "duration": 3057
+        },
+        {
+          "page": 23,
+          "part": "3.3 离散型随机变量的条件分布",
+          "duration": 1220
+        },
+        {
+          "page": 24,
+          "part": "3.3 连续型随机变量的条件密度",
+          "duration": 1430
+        },
+        {
+          "page": 25,
+          "part": "3.4 离散型随机变量X与Y相互独立的判定",
+          "duration": 979
+        },
+        {
+          "page": 26,
+          "part": "总结【二维离散型随机变量知识点】",
+          "duration": 391
+        },
+        {
+          "page": 27,
+          "part": "3.4 连续型随机变量X与Y相互独立的判定【1】",
+          "duration": 1048
+        },
+        {
+          "page": 28,
+          "part": "3.4 连续型随机变量X与Y相互独立的判定【2】",
+          "duration": 634
+        },
+        {
+          "page": 29,
+          "part": "3.5 两个随机变量函数的分布（离散型）",
+          "duration": 1291
+        },
+        {
+          "page": 30,
+          "part": "3.5 两个随机变量函数的分布（连续型）",
+          "duration": 2812
+        },
+        {
+          "page": 31,
+          "part": "3.5 两个随机变量函数的分布（离散型+连续型）",
+          "duration": 854
+        },
+        {
+          "page": 32,
+          "part": "3.5 max{X,Y} min{X,Y}的分布",
+          "duration": 1160
+        },
+        {
+          "page": 33,
+          "part": "4.1 数学期望的定义",
+          "duration": 894
+        },
+        {
+          "page": 34,
+          "part": "4.1 一维随机变量函数的期望",
+          "duration": 1579
+        },
+        {
+          "page": 35,
+          "part": "4.1 二维随机变量函数的期望",
+          "duration": 588
+        },
+        {
+          "page": 36,
+          "part": "4.1 数学期望的性质",
+          "duration": 1648
+        },
+        {
+          "page": 37,
+          "part": "4.2 方差的定义",
+          "duration": 1422
+        },
+        {
+          "page": 38,
+          "part": "4.2 方差的性质",
+          "duration": 1236
+        },
+        {
+          "page": 39,
+          "part": "4.2 方差的例题",
+          "duration": 870
+        },
+        {
+          "page": 40,
+          "part": "4.2 常见分布的期望和方差",
+          "duration": 1570
+        },
+        {
+          "page": 41,
+          "part": "4.3 协方差",
+          "duration": 1577
+        },
+        {
+          "page": 42,
+          "part": "4.3 相关系数",
+          "duration": 3781
+        },
+        {
+          "page": 43,
+          "part": "4.4 矩、协方差矩阵",
+          "duration": 1195
+        },
+        {
+          "page": 44,
+          "part": "5.1 切比雪夫不等式",
+          "duration": 1592
+        },
+        {
+          "page": 45,
+          "part": "5.2 大数定律",
+          "duration": 2059
+        },
+        {
+          "page": 46,
+          "part": "5.3 中心极限定理",
+          "duration": 1482
+        },
+        {
+          "page": 47,
+          "part": "6.1 总体与样本",
+          "duration": 1967
+        },
+        {
+          "page": 48,
+          "part": "6.2 统计量",
+          "duration": 3430
+        },
+        {
+          "page": 49,
+          "part": "6.3 抽样分布（分位数 卡方分布 t分布）",
+          "duration": 2965
+        },
+        {
+          "page": 50,
+          "part": "6.3 F分布 正态总体下的抽样分布",
+          "duration": 3722
+        },
+        {
+          "page": 51,
+          "part": "7.1 距估计",
+          "duration": 2490
+        },
+        {
+          "page": 52,
+          "part": "7.1 极大似然估计",
+          "duration": 1830
+        },
+        {
+          "page": 53,
+          "part": "7.2 估计量的评价标准",
+          "duration": 1187
+        },
+        {
+          "page": 54,
+          "part": "7.3 区间估计",
+          "duration": 1570
+        },
+        {
+          "page": 55,
+          "part": "7.4 正态总体均值与方差的区间估计",
+          "duration": 2846
+        },
+        {
+          "page": 56,
+          "part": "8.1（一、假设检验问题）",
+          "duration": 2174
+        },
+        {
+          "page": 57,
+          "part": "8.1（二、假设检验的基本概念）",
+          "duration": 586
+        },
+        {
+          "page": 58,
+          "part": "8.1（三、假设检验的基本思想）",
+          "duration": 1480
+        },
+        {
+          "page": 59,
+          "part": "8.1（四、两类错误）",
+          "duration": 685
+        },
+        {
+          "page": 60,
+          "part": "8.2（一、均值的假设检验）",
+          "duration": 3881
+        },
+        {
+          "page": 61,
+          "part": "8.2（二、方差的假设检验）",
+          "duration": 2406
+        },
+        {
+          "page": 62,
+          "part": "8.3 （一、均值的差异性检验）",
+          "duration": 2575
+        },
+        {
+          "page": 63,
+          "part": "8.3（二、方差的差异性检验）",
+          "duration": 2833
+        }
+      ]
+    },
+    "BV13GaG6iE8y": {
+      "status": 200,
+      "title": "【浙江大学】《概率论与数理统计》（公开课）全64讲",
+      "owner": "哔哩大学教学中心",
+      "mid": 1178740882,
+      "pubdate": 1790581931,
+      "duration": 67625,
+      "videos": 88,
+      "pages": [
+        {
+          "page": 1,
+          "part": "第0讲 绪论",
+          "duration": 768
+        },
+        {
+          "page": 2,
+          "part": "第1讲 样本空间，随机事件",
+          "duration": 574
+        },
+        {
+          "page": 3,
+          "part": "第2讲 事件的相互关系及运算",
+          "duration": 1059
+        },
+        {
+          "page": 4,
+          "part": "第3讲 频率",
+          "duration": 391
+        },
+        {
+          "page": 5,
+          "part": "第4讲 概率",
+          "duration": 822
+        },
+        {
+          "page": 6,
+          "part": "第5讲 等可能概型（古典概型）",
+          "duration": 1029
+        },
+        {
+          "page": 7,
+          "part": "第6讲 条件概率（1）",
+          "duration": 603
+        },
+        {
+          "page": 8,
+          "part": "第6讲 条件概率（2）",
+          "duration": 651
+        },
+        {
+          "page": 9,
+          "part": "第7讲 全概率公式与贝叶斯公式（1）",
+          "duration": 500
+        },
+        {
+          "page": 10,
+          "part": "第7讲 全概率公式与贝叶斯公式（2）",
+          "duration": 643
+        },
+        {
+          "page": 11,
+          "part": "第8讲 事件独立性（1）",
+          "duration": 649
+        },
+        {
+          "page": 12,
+          "part": "第8讲 事件独立性（2）",
+          "duration": 796
+        },
+        {
+          "page": 13,
+          "part": "第9讲 随机变量（1）",
+          "duration": 838
+        },
+        {
+          "page": 14,
+          "part": "第9讲 随机变量（2）",
+          "duration": 609
+        },
+        {
+          "page": 15,
+          "part": "第10讲 离散型随机变量（1）",
+          "duration": 971
+        },
+        {
+          "page": 16,
+          "part": "第10讲 离散型随机变量（2）",
+          "duration": 795
+        },
+        {
+          "page": 17,
+          "part": "第11讲 分布函数（1）",
+          "duration": 445
+        },
+        {
+          "page": 18,
+          "part": "第11讲 分布函数（2）",
+          "duration": 651
+        },
+        {
+          "page": 19,
+          "part": "第11讲 分布函数（3）",
+          "duration": 409
+        },
+        {
+          "page": 20,
+          "part": "第12讲 连续型随机变量及其概率密度（1）",
+          "duration": 749
+        },
+        {
+          "page": 21,
+          "part": "第12讲 连续型随机变量及其概率密度（2）",
+          "duration": 815
+        },
+        {
+          "page": 22,
+          "part": "第13讲 均匀分布与指数分布（1）",
+          "duration": 748
+        },
+        {
+          "page": 23,
+          "part": "第13讲 均匀分布与指数分布（2）",
+          "duration": 747
+        },
+        {
+          "page": 24,
+          "part": "第14讲 正态分布（1）",
+          "duration": 756
+        },
+        {
+          "page": 25,
+          "part": "第14讲 正态分布（2）",
+          "duration": 993
+        },
+        {
+          "page": 26,
+          "part": "第15讲 随机变量函数的分布（1）",
+          "duration": 791
+        },
+        {
+          "page": 27,
+          "part": "第15讲 随机变量函数的分布（2）",
+          "duration": 645
+        },
+        {
+          "page": 28,
+          "part": "第16讲 二元随机变量，离散型随机变量分布律",
+          "duration": 963
+        },
+        {
+          "page": 29,
+          "part": "第17讲 二元离散型随机变量边际分布律条件分布律（1）",
+          "duration": 858
+        },
+        {
+          "page": 30,
+          "part": "第17讲 二元离散型随机变量边际分布律与条件分布律（2）",
+          "duration": 854
+        },
+        {
+          "page": 31,
+          "part": "第18讲  二元随机变量分布函数 边际分布函数及条件分布函数 1",
+          "duration": 570
+        },
+        {
+          "page": 32,
+          "part": "第18讲  二元随机变量分布函数 边际分布函数及条件分布函数 2",
+          "duration": 647
+        },
+        {
+          "page": 33,
+          "part": "第19讲  二元连续型随机变量 联合概率密度",
+          "duration": 869
+        },
+        {
+          "page": 34,
+          "part": "第20讲 二元连续型随机变量边际概率密度",
+          "duration": 537
+        },
+        {
+          "page": 35,
+          "part": "第21讲 二元连续型随机变量条件概率密度（1）",
+          "duration": 719
+        },
+        {
+          "page": 36,
+          "part": "第21讲 二元连续型随机变量条件概率密度（2）",
+          "duration": 415
+        },
+        {
+          "page": 37,
+          "part": "第22讲 二元均匀分布，二元正态分布",
+          "duration": 647
+        },
+        {
+          "page": 38,
+          "part": "第23讲 随机变量的独立性（1）",
+          "duration": 770
+        },
+        {
+          "page": 39,
+          "part": "第23讲 随机变量的独立性（2）",
+          "duration": 931
+        },
+        {
+          "page": 40,
+          "part": "第24讲  二元随机变量函数的分布",
+          "duration": 925
+        },
+        {
+          "page": 41,
+          "part": "第25讲  Z=X+Y的分布（1）",
+          "duration": 797
+        },
+        {
+          "page": 42,
+          "part": "第25讲  Z=X+Y的分布（2）",
+          "duration": 504
+        },
+        {
+          "page": 43,
+          "part": "第26讲 max X Y 和min X Y 的分布",
+          "duration": 846
+        },
+        {
+          "page": 44,
+          "part": "第27讲 随机变量的数学期望（1）",
+          "duration": 811
+        },
+        {
+          "page": 45,
+          "part": "第27讲 随机变量的数学期望（2）",
+          "duration": 521
+        },
+        {
+          "page": 46,
+          "part": "第28讲 随机变量函数的数学期望（1）",
+          "duration": 645
+        },
+        {
+          "page": 47,
+          "part": "第28讲 随机变量函数的数学期望（2）",
+          "duration": 598
+        },
+        {
+          "page": 48,
+          "part": "第30讲 方差定义和计算公式",
+          "duration": 1082
+        },
+        {
+          "page": 49,
+          "part": "第31讲 方差的性质（1）",
+          "duration": 673
+        },
+        {
+          "page": 50,
+          "part": "第31讲 方差的性质（2）",
+          "duration": 921
+        },
+        {
+          "page": 51,
+          "part": "第32讲 协方差与相关系数（1）",
+          "duration": 884
+        },
+        {
+          "page": 52,
+          "part": "第32讲 协方差与相关系数（2）",
+          "duration": 437
+        },
+        {
+          "page": 53,
+          "part": "第33讲 不相关与独立",
+          "duration": 725
+        },
+        {
+          "page": 54,
+          "part": "第34讲 矩，协方差矩阵，多元正态分布的性质",
+          "duration": 1156
+        },
+        {
+          "page": 55,
+          "part": "第35讲 依概率收敛，切比雪夫不等式",
+          "duration": 874
+        },
+        {
+          "page": 56,
+          "part": "第36讲 大数定律 1",
+          "duration": 603
+        },
+        {
+          "page": 57,
+          "part": "第36讲 大数定律 2",
+          "duration": 470
+        },
+        {
+          "page": 58,
+          "part": "第37讲 中心极限定理",
+          "duration": 766
+        },
+        {
+          "page": 59,
+          "part": "第38讲 总体，样本",
+          "duration": 983
+        },
+        {
+          "page": 60,
+          "part": "第39讲 统计量，常用统计量",
+          "duration": 837
+        },
+        {
+          "page": 61,
+          "part": "第40讲 χ2分布",
+          "duration": 550
+        },
+        {
+          "page": 62,
+          "part": "第41讲 t分布，F分布",
+          "duration": 642
+        },
+        {
+          "page": 63,
+          "part": "第42讲 单个正态总体的抽样分布",
+          "duration": 959
+        },
+        {
+          "page": 64,
+          "part": "第43讲 两个正态总体的抽样分布",
+          "duration": 721
+        },
+        {
+          "page": 65,
+          "part": "第44讲 矩估计",
+          "duration": 1115
+        },
+        {
+          "page": 66,
+          "part": "第45讲 极大似然估计（1）",
+          "duration": 757
+        },
+        {
+          "page": 67,
+          "part": "第45讲 极大似然估计（2）",
+          "duration": 749
+        },
+        {
+          "page": 68,
+          "part": "第46讲 估计量的评价准则，无偏性",
+          "duration": 1007
+        },
+        {
+          "page": 69,
+          "part": "第47讲 有效性，均方误差",
+          "duration": 876
+        },
+        {
+          "page": 70,
+          "part": "第48讲 相合性",
+          "duration": 565
+        },
+        {
+          "page": 71,
+          "part": "第49讲  置信区间，置信限",
+          "duration": 957
+        },
+        {
+          "page": 72,
+          "part": "第50讲  枢轴量法 1",
+          "duration": 561
+        },
+        {
+          "page": 73,
+          "part": "第50讲  枢轴量法 2",
+          "duration": 625
+        },
+        {
+          "page": 74,
+          "part": "第51讲  单个正态总体均值的区间估计",
+          "duration": 903
+        },
+        {
+          "page": 75,
+          "part": "第52讲  成对数据均值差 单个正态总体方差的区间估计",
+          "duration": 660
+        },
+        {
+          "page": 76,
+          "part": "第53讲  两个正态总体参数的区间估计",
+          "duration": 785
+        },
+        {
+          "page": 77,
+          "part": "第54讲  假设检验的基本思想 1",
+          "duration": 748
+        },
+        {
+          "page": 78,
+          "part": "第54讲  假设检验的基本思想 2",
+          "duration": 965
+        },
+        {
+          "page": 79,
+          "part": "第55讲  单个正态总体均值假设检验（标准差已知 Z检验）",
+          "duration": 867
+        },
+        {
+          "page": 80,
+          "part": "第56讲  单个正态总体均值假设检验（标准差未知 t检验）",
+          "duration": 887
+        }
+      ]
+    },
+    "BV1u4411H7Ry": {
+      "status": 200,
+      "title": "3Blue1Brown - Essence of linear algebra",
+      "owner": "哩哏儿楞",
+      "mid": 27356724,
+      "pubdate": 1559620488,
+      "duration": 10365,
+      "videos": 16,
+      "pages": [
+        {
+          "page": 1,
+          "part": "s1e00 - Preview - Essence of linear algebra",
+          "duration": 305
+        },
+        {
+          "page": 2,
+          "part": "s1e01 - Vectors, what even are they - Essence of linear algebra",
+          "duration": 592
+        },
+        {
+          "page": 3,
+          "part": "s1e02 - Linear combinations, span, and basis vectors - Essence of linear algebra",
+          "duration": 599
+        },
+        {
+          "page": 4,
+          "part": "s1e03 - Linear transformations and matrices - Essence of linear algebra",
+          "duration": 659
+        },
+        {
+          "page": 5,
+          "part": "s1e04 - Matrix multiplication as composition - Essence of linear algebra",
+          "duration": 604
+        },
+        {
+          "page": 6,
+          "part": "s1e05 - Three-dimensional linear transformations - Essence of linear algebra",
+          "duration": 286
+        },
+        {
+          "page": 7,
+          "part": "s1e06 - The determinant - Essence of linear algebra",
+          "duration": 603
+        },
+        {
+          "page": 8,
+          "part": "s1e07 - Inverse matrices, column space and null space - Essence of linear algebr",
+          "duration": 729
+        },
+        {
+          "page": 9,
+          "part": "s1e08 - Nonsquare matrices as transformations between dimensions - Essence of li",
+          "duration": 267
+        },
+        {
+          "page": 10,
+          "part": "s1e09 - Dot products and duality - Essence of linear algebra",
+          "duration": 852
+        },
+        {
+          "page": 11,
+          "part": "s1e10 - Cross products - Essence of linear algebra",
+          "duration": 534
+        },
+        {
+          "page": 12,
+          "part": "s1e11 - Cross products in the light of linear transformations - Essence of linea",
+          "duration": 790
+        },
+        {
+          "page": 13,
+          "part": "s1e12 - Cramer's rule, explained geometrically - Essence of linear algebra",
+          "duration": 732
+        },
+        {
+          "page": 14,
+          "part": "s1e13 - Change of basis - Essence of linear algebra",
+          "duration": 771
+        },
+        {
+          "page": 15,
+          "part": "s1e14 - Eigenvectors and eigenvalues - Essence of linear algebra",
+          "duration": 1036
+        },
+        {
+          "page": 16,
+          "part": "s1e15 - Abstract vector spaces - Essence of linear algebra",
+          "duration": 1006
+        }
+      ]
+    },
+    "BV1u4411H7kZ": {
+      "status": 200,
+      "title": "3Blue1Brown - Essence of calculus",
+      "owner": "哩哏儿楞",
+      "mid": 27356724,
+      "pubdate": 1559621548,
+      "duration": 11816,
+      "videos": 12,
+      "pages": [
+        {
+          "page": 1,
+          "part": "s2e01 - Essence of calculus",
+          "duration": 1025
+        },
+        {
+          "page": 2,
+          "part": "s2e02 - The paradox of the derivative - Essence of calculus",
+          "duration": 1118
+        },
+        {
+          "page": 3,
+          "part": "s2e03 - Derivative formulas through geometry - Essence of calculus",
+          "duration": 1123
+        },
+        {
+          "page": 4,
+          "part": "s2e04 - Visualizing the chain rule and product rule - Essence of calculus",
+          "duration": 1012
+        },
+        {
+          "page": 5,
+          "part": "s2e05 - What's so special about Euler's number e - Essence of calculus",
+          "duration": 830
+        },
+        {
+          "page": 6,
+          "part": "s2e06 - Implicit differentiation, what's going on here - Essence of calculus",
+          "duration": 934
+        },
+        {
+          "page": 7,
+          "part": "s2e07 - Limits, L'Hopital's rule, and epsilon delta definitions - Essence of cal",
+          "duration": 1107
+        },
+        {
+          "page": 8,
+          "part": "s2e08 - Integration and the fundamental theorem of calculus - Essence of calculu",
+          "duration": 1246
+        },
+        {
+          "page": 9,
+          "part": "s2e09 - What does area have to do with slope - Essence of calculus",
+          "duration": 759
+        },
+        {
+          "page": 10,
+          "part": "s2e10 - Higher order derivatives - Essence of calculus",
+          "duration": 339
+        },
+        {
+          "page": 11,
+          "part": "s2e11 - Taylor series - Essence of calculus",
+          "duration": 1340
+        },
+        {
+          "page": 12,
+          "part": "s2e12 - What they won't teach you in calculus",
+          "duration": 983
+        }
+      ]
+    }
+  },
+  "series": {
+    "线性代数的本质": [
+      {
+        "bvid": "BV1Ys411k7yQ",
+        "title": "【熟肉】线性代数的本质 - 01 - 向量究竟是什么？",
+        "duration": "9:52",
+        "pubdate": 1472030546
+      },
+      {
+        "bvid": "BV1rs411k7ru",
+        "title": "【熟肉】线性代数的本质 - 00 - “线性代数的本质”系列预览",
+        "duration": "5:9",
+        "pubdate": 1471969311
+      },
+      {
+        "bvid": "BV1ns41167b9",
+        "title": "【熟肉】线性代数的本质 - 03 - 矩阵与线性变换",
+        "duration": "10:58",
+        "pubdate": 1472312856
+      },
+      {
+        "bvid": "BV12K4y1A7NA",
+        "title": "【官方双语】计算二阶矩阵特征值的妙计 -- 线性代数的本质 13",
+        "duration": "13:13",
+        "pubdate": 1620657387
+      },
+      {
+        "bvid": "BV1Ss41167dG",
+        "title": "【熟肉】线性代数的本质 - 04补充 - 三维空间中的线性变换",
+        "duration": "4:45",
+        "pubdate": 1472904508
+      },
+      {
+        "bvid": "BV12s411k7S5",
+        "title": "【熟肉】线性代数的本质 - 02 - 线性组合、张成的空间与基",
+        "duration": "9:59",
+        "pubdate": 1472218896
+      },
+      {
+        "bvid": "BV1qW411N7FU",
+        "title": "【官方双语/合集】微积分的本质 - 系列合集",
+        "duration": "180:29",
+        "pubdate": 1528012990
+      }
+    ],
+    "微积分的本质": [
+      {
+        "bvid": "BV1qW411N7FU",
+        "title": "【官方双语/合集】微积分的本质 - 系列合集",
+        "duration": "180:29",
+        "pubdate": 1528012990
+      },
+      {
+        "bvid": "BV1cx411m78R",
+        "title": "【官方双语】微积分的本质 - 01 -",
+        "duration": "17:5",
+        "pubdate": 1493894462
+      }
+    ]
+  }
+}

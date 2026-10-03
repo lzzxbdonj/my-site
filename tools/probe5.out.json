@@ -1,0 +1,1092 @@
+{
+  "BV1eZ421b7ag": {
+    "title": "尚硅谷Python视频教程，0基础入门学习python，轻松掌握python",
+    "owner": "尚硅谷",
+    "mid": 302417610,
+    "totalParts": 139,
+    "hits": [
+      {
+        "page": 3,
+        "part": "003-初识python-软件安装",
+        "duration": 678
+      },
+      {
+        "page": 4,
+        "part": "004-初识python-windows软件安装",
+        "duration": 1206
+      },
+      {
+        "page": 5,
+        "part": "005-初识python-mac软件安装",
+        "duration": 1436
+      },
+      {
+        "page": 8,
+        "part": "008-第1个程序-打印变量",
+        "duration": 812
+      },
+      {
+        "page": 15,
+        "part": "015-变量-变量的创建",
+        "duration": 692
+      },
+      {
+        "page": 16,
+        "part": "016-变量-变量的修改",
+        "duration": 508
+      },
+      {
+        "page": 17,
+        "part": "017-变量-变量的命名",
+        "duration": 547
+      },
+      {
+        "page": 18,
+        "part": "018-变量-变量的类型",
+        "duration": 410
+      },
+      {
+        "page": 19,
+        "part": "019-数据类型-整数",
+        "duration": 316
+      },
+      {
+        "page": 20,
+        "part": "020-数据类型-浮点数",
+        "duration": 674
+      },
+      {
+        "page": 21,
+        "part": "021-数据类型-布尔型",
+        "duration": 199
+      },
+      {
+        "page": 22,
+        "part": "022-数据类型-字符串",
+        "duration": 1025
+      },
+      {
+        "page": 23,
+        "part": "023-数据类型-字符串索引",
+        "duration": 1093
+      },
+      {
+        "page": 24,
+        "part": "024-数据类型-类型转换",
+        "duration": 1547
+      },
+      {
+        "page": 25,
+        "part": "025-数据类型-小整数地址",
+        "duration": 439
+      },
+      {
+        "page": 26,
+        "part": "026-数据类型-知识总结",
+        "duration": 211
+      },
+      {
+        "page": 27,
+        "part": "027-数据类型-本章练习",
+        "duration": 518
+      },
+      {
+        "page": 37,
+        "part": "037-条件判断-单分支",
+        "duration": 842
+      },
+      {
+        "page": 38,
+        "part": "038-条件判断-双分支",
+        "duration": 392
+      },
+      {
+        "page": 39,
+        "part": "039-条件判断-多分支",
+        "duration": 1217
+      },
+      {
+        "page": 40,
+        "part": "040-条件判断-嵌套选择",
+        "duration": 86
+      },
+      {
+        "page": 41,
+        "part": "041-条件判断-match",
+        "duration": 528
+      },
+      {
+        "page": 42,
+        "part": "042-条件判断-本章总结",
+        "duration": 182
+      },
+      {
+        "page": 43,
+        "part": "043-条件判断-本章练习",
+        "duration": 960
+      },
+      {
+        "page": 44,
+        "part": "044-条件判断-闰年判断",
+        "duration": 367
+      },
+      {
+        "page": 45,
+        "part": "045-循环-while",
+        "duration": 1061
+      },
+      {
+        "page": 46,
+        "part": "046-循环-for循环",
+        "duration": 980
+      },
+      {
+        "page": 47,
+        "part": "047-循环-break",
+        "duration": 889
+      },
+      {
+        "page": 48,
+        "part": "048-循环-continue",
+        "duration": 266
+      },
+      {
+        "page": 49,
+        "part": "049-循环-指数爆炸",
+        "duration": 783
+      },
+      {
+        "page": 50,
+        "part": "050-循环-本章总结",
+        "duration": 72
+      },
+      {
+        "page": 51,
+        "part": "051-循环-本章练习",
+        "duration": 1143
+      },
+      {
+        "page": 52,
+        "part": "052-循环-九九乘法表",
+        "duration": 505
+      },
+      {
+        "page": 53,
+        "part": "053-组合数据类型-序列",
+        "duration": 272
+      },
+      {
+        "page": 54,
+        "part": "054-组合数据类型-列表的创建",
+        "duration": 456
+      },
+      {
+        "page": 55,
+        "part": "055-组合数据类型-列表的常用操作",
+        "duration": 552
+      },
+      {
+        "page": 56,
+        "part": "056-组合数据类型-列表的遍历",
+        "duration": 308
+      },
+      {
+        "page": 57,
+        "part": "057-组合数据类型-列表的常用方法",
+        "duration": 1083
+      },
+      {
+        "page": 58,
+        "part": "058-组合数据类型-元组的创建",
+        "duration": 804
+      },
+      {
+        "page": 59,
+        "part": "059-组合数据类型-元组的常用操作",
+        "duration": 613
+      },
+      {
+        "page": 60,
+        "part": "060-组合数据类型-元组的遍历",
+        "duration": 297
+      },
+      {
+        "page": 61,
+        "part": "061-组合数据类型-range",
+        "duration": 1034
+      },
+      {
+        "page": 62,
+        "part": "062-组合数据类型-字符串",
+        "duration": 1255
+      },
+      {
+        "page": 63,
+        "part": "063-组合数据类型-字典",
+        "duration": 1466
+      },
+      {
+        "page": 64,
+        "part": "064-组合数据类型-集合",
+        "duration": 1182
+      },
+      {
+        "page": 65,
+        "part": "065-组合数据类型-可变与不可变",
+        "duration": 290
+      },
+      {
+        "page": 66,
+        "part": "066-组合数据类型-本章总结",
+        "duration": 226
+      },
+      {
+        "page": 67,
+        "part": "067-组合数据类型-本章练习",
+        "duration": 419
+      },
+      {
+        "page": 71,
+        "part": "071-异常处理-基本概念",
+        "duration": 414
+      },
+      {
+        "page": 72,
+        "part": "072-异常处理-常见错误类型",
+        "duration": 664
+      },
+      {
+        "page": 73,
+        "part": "073-异常处理-try语句",
+        "duration": 956
+      },
+      {
+        "page": 74,
+        "part": "074-异常处理-raise关键字",
+        "duration": 398
+      },
+      {
+        "page": 75,
+        "part": "075-异常处理-代码调试",
+        "duration": 411
+      },
+      {
+        "page": 76,
+        "part": "076-异常处理-本章总结",
+        "duration": 125
+      },
+      {
+        "page": 77,
+        "part": "077-异常处理-本章练习",
+        "duration": 295
+      },
+      {
+        "page": 78,
+        "part": "078-异常处理-简单计算器",
+        "duration": 1388
+      },
+      {
+        "page": 79,
+        "part": "079-函数-基本概念",
+        "duration": 1160
+      },
+      {
+        "page": 80,
+        "part": "080-函数-默认参数",
+        "duration": 776
+      }
+    ]
+  },
+  "BV1tDsgzxECr": {
+    "title": "python零基础教程，Python入门到大神，AI人工智能必备",
+    "owner": "尚硅谷",
+    "mid": 302417610,
+    "totalParts": 172,
+    "hits": [
+      {
+        "page": 4,
+        "part": "04.安装Python解释器（10分钟搞定Python环境）",
+        "duration": 633
+      },
+      {
+        "page": 6,
+        "part": "06.安装PyCharm（最强的Python IDE长啥样？）",
+        "duration": 543
+      },
+      {
+        "page": 10,
+        "part": "10.变量（让数据能被反复使用）",
+        "duration": 826
+      },
+      {
+        "page": 15,
+        "part": "15.数据类型（数据也分性格，各有各的脾气）",
+        "duration": 508
+      },
+      {
+        "page": 18,
+        "part": "18_字符串_四种定义方式",
+        "duration": 310
+      },
+      {
+        "page": 19,
+        "part": "19_字符串_格式化输出",
+        "duration": 1025
+      },
+      {
+        "page": 20,
+        "part": "20_字符串_占位符精度控制",
+        "duration": 802
+      },
+      {
+        "page": 21,
+        "part": "21_字符串_转义字符",
+        "duration": 1033
+      },
+      {
+        "page": 22,
+        "part": "22_数据类型转换",
+        "duration": 709
+      },
+      {
+        "page": 26,
+        "part": "26_布尔类型",
+        "duration": 480
+      },
+      {
+        "page": 35,
+        "part": "35_while循环",
+        "duration": 732
+      },
+      {
+        "page": 36,
+        "part": "36_while循环案例",
+        "duration": 262
+      },
+      {
+        "page": 37,
+        "part": "37_for循环",
+        "duration": 727
+      },
+      {
+        "page": 38,
+        "part": "38_for循环案例",
+        "duration": 352
+      },
+      {
+        "page": 40,
+        "part": "40_嵌套循环",
+        "duration": 652
+      },
+      {
+        "page": 44,
+        "part": "44_函数_概念及分类",
+        "duration": 341
+      },
+      {
+        "page": 45,
+        "part": "45_函数_基本使用",
+        "duration": 366
+      },
+      {
+        "page": 46,
+        "part": "46_函数_参数的使用",
+        "duration": 540
+      },
+      {
+        "page": 47,
+        "part": "47_函数_位置参数",
+        "duration": 379
+      },
+      {
+        "page": 48,
+        "part": "48_函数_关键字参数",
+        "duration": 592
+      },
+      {
+        "page": 49,
+        "part": "49_函数_限制传参方式",
+        "duration": 337
+      },
+      {
+        "page": 50,
+        "part": "50_函数_参数默认值",
+        "duration": 375
+      },
+      {
+        "page": 51,
+        "part": "51_函数_可变参数",
+        "duration": 701
+      },
+      {
+        "page": 53,
+        "part": "53_函数_返回值",
+        "duration": 565
+      },
+      {
+        "page": 55,
+        "part": "55_函数_嵌套调用",
+        "duration": 690
+      },
+      {
+        "page": 56,
+        "part": "56_函数_递归调用",
+        "duration": 743
+      },
+      {
+        "page": 57,
+        "part": "57_函数_递归的应用",
+        "duration": 500
+      },
+      {
+        "page": 58,
+        "part": "58_函数_说明文档",
+        "duration": 254
+      },
+      {
+        "page": 59,
+        "part": "59_函数_综合案例",
+        "duration": 995
+      },
+      {
+        "page": 61,
+        "part": "61_列表_定义列表",
+        "duration": 334
+      },
+      {
+        "page": 62,
+        "part": "62_列表_下标（索引值）",
+        "duration": 250
+      },
+      {
+        "page": 63,
+        "part": "63_列表_增删改查",
+        "duration": 980
+      },
+      {
+        "page": 64,
+        "part": "64_列表_常用方法",
+        "duration": 751
+      },
+      {
+        "page": 65,
+        "part": "65_列表_常用内置函数",
+        "duration": 732
+      },
+      {
+        "page": 66,
+        "part": "66_列表_循环遍历",
+        "duration": 627
+      },
+      {
+        "page": 67,
+        "part": "67_列表_小练习",
+        "duration": 462
+      },
+      {
+        "page": 68,
+        "part": "68_列表_总结",
+        "duration": 86
+      },
+      {
+        "page": 69,
+        "part": "69_元组",
+        "duration": 1067
+      },
+      {
+        "page": 70,
+        "part": "70_函数_解包列表或元组传参",
+        "duration": 589
+      },
+      {
+        "page": 71,
+        "part": "71_元组_总结",
+        "duration": 45
+      },
+      {
+        "page": 72,
+        "part": "72_字符串",
+        "duration": 1210
+      },
+      {
+        "page": 75,
+        "part": "75_集合_定义集合",
+        "duration": 1058
+      },
+      {
+        "page": 76,
+        "part": "76_集合_增删改查",
+        "duration": 664
+      },
+      {
+        "page": 77,
+        "part": "77_集合_常用方法",
+        "duration": 555
+      },
+      {
+        "page": 78,
+        "part": "78_集合_数学运算",
+        "duration": 244
+      },
+      {
+        "page": 79,
+        "part": "79_集合_循环遍历",
+        "duration": 125
+      },
+      {
+        "page": 80,
+        "part": "80_集合_总结",
+        "duration": 82
+      }
+    ]
+  },
+  "BV1qW4y1a7fU": {
+    "title": "黑马程序员python零基础全套教程，8天python从入门到精通，学python看这套就够了",
+    "owner": "黑马程序员",
+    "mid": 37974444,
+    "totalParts": 164,
+    "hits": [
+      {
+        "page": 4,
+        "part": "第一阶段-第一章-03-Python环境安装(Windows)",
+        "duration": 396
+      },
+      {
+        "page": 5,
+        "part": "第一阶段-第一章-04-【拓展】-Python环境安装(MacOS)",
+        "duration": 379
+      },
+      {
+        "page": 6,
+        "part": "第一阶段-第一章-05-【拓展】-Python环境安装(Linux)",
+        "duration": 727
+      },
+      {
+        "page": 11,
+        "part": "第一阶段-第一章-10-PyCharm开发工具的安装和基础使用",
+        "duration": 706
+      },
+      {
+        "page": 16,
+        "part": "第一阶段-第二章-03-变量",
+        "duration": 735
+      },
+      {
+        "page": 17,
+        "part": "第一阶段-第二章-04-数据类型",
+        "duration": 602
+      },
+      {
+        "page": 18,
+        "part": "第一阶段-第二章-05-数据类型转换",
+        "duration": 792
+      },
+      {
+        "page": 21,
+        "part": "第一阶段-第二章-08-字符串的三种定义方式",
+        "duration": 554
+      },
+      {
+        "page": 22,
+        "part": "第一阶段-第二章-09-字符串的拼接",
+        "duration": 321
+      },
+      {
+        "page": 23,
+        "part": "第一阶段-第二章-10-字符串格式化",
+        "duration": 775
+      },
+      {
+        "page": 24,
+        "part": "第一阶段-第二章-11-字符串格式化的精度控制",
+        "duration": 437
+      },
+      {
+        "page": 25,
+        "part": "第一阶段-第二章-12-字符串格式化的方式2",
+        "duration": 291
+      },
+      {
+        "page": 27,
+        "part": "第一阶段-第二章-14-字符串格式化练习题讲解",
+        "duration": 404
+      },
+      {
+        "page": 29,
+        "part": "第一阶段-第三章-01-布尔类型和比较运算符",
+        "duration": 1064
+      },
+      {
+        "page": 31,
+        "part": "第一阶段-第三章-03-案例-成年人判断讲解",
+        "duration": 211
+      },
+      {
+        "page": 32,
+        "part": "第一阶段-第三章-04-if else组合判断语句",
+        "duration": 465
+      },
+      {
+        "page": 36,
+        "part": "第一阶段-第三章-08-判断语句的嵌套",
+        "duration": 1077
+      },
+      {
+        "page": 37,
+        "part": "第一阶段-第三章-09-判断语句综合案例",
+        "duration": 480
+      },
+      {
+        "page": 38,
+        "part": "第一阶段-第四章-01-while循环的基础应用",
+        "duration": 745
+      },
+      {
+        "page": 40,
+        "part": "第一阶段-第四章-03-while循环猜数字案例",
+        "duration": 583
+      },
+      {
+        "page": 41,
+        "part": "第一阶段-第四章-04-while循环的嵌套应用",
+        "duration": 737
+      },
+      {
+        "page": 42,
+        "part": "第一阶段-第四章-05-while循环案例-九九乘法表",
+        "duration": 1201
+      },
+      {
+        "page": 43,
+        "part": "第一阶段-第四章-06-for循环的基础语法",
+        "duration": 616
+      },
+      {
+        "page": 44,
+        "part": "第一阶段-第四章-07-for循环案例-数一数多少字母a讲解",
+        "duration": 233
+      },
+      {
+        "page": 46,
+        "part": "第一阶段-第四章-09-for循环临时变量作用域",
+        "duration": 381
+      },
+      {
+        "page": 47,
+        "part": "第一阶段-第四章-10-for循环的嵌套使用",
+        "duration": 563
+      },
+      {
+        "page": 48,
+        "part": "第一阶段-第四章-11-for循环打印九九乘法表",
+        "duration": 270
+      },
+      {
+        "page": 50,
+        "part": "第一阶段-第四章-13-循环综合案例",
+        "duration": 475
+      },
+      {
+        "page": 51,
+        "part": "第一阶段-第五章-01-函数的初体验",
+        "duration": 707
+      },
+      {
+        "page": 52,
+        "part": "第一阶段-第五章-02-函数的基础定义语法",
+        "duration": 543
+      },
+      {
+        "page": 53,
+        "part": "第一阶段-第五章-03-函数基础定义练习案例",
+        "duration": 170
+      },
+      {
+        "page": 54,
+        "part": "第一阶段-第五章-04-函数的传入参数",
+        "duration": 606
+      },
+      {
+        "page": 55,
+        "part": "第一阶段-第五章-05-函数的参数练习案例",
+        "duration": 190
+      },
+      {
+        "page": 56,
+        "part": "第一阶段-第五章-06-函数的返回值定义语法",
+        "duration": 486
+      },
+      {
+        "page": 57,
+        "part": "第一阶段-第五章-07-函数返回值之None类型",
+        "duration": 552
+      },
+      {
+        "page": 58,
+        "part": "第一阶段-第五章-08-函数的说明文档",
+        "duration": 371
+      },
+      {
+        "page": 59,
+        "part": "第一阶段-第五章-09-函数的嵌套调用",
+        "duration": 254
+      },
+      {
+        "page": 60,
+        "part": "第一阶段-第五章-10-变量在函数中的作用域",
+        "duration": 587
+      },
+      {
+        "page": 61,
+        "part": "第一阶段-第五章-11-函数综合案例",
+        "duration": 1126
+      },
+      {
+        "page": 63,
+        "part": "第一阶段-第六章-02-列表的定义语法",
+        "duration": 637
+      },
+      {
+        "page": 64,
+        "part": "第一阶段-第六章-03-列表的下标索引",
+        "duration": 721
+      },
+      {
+        "page": 65,
+        "part": "第一阶段-第六章-04-列表的常用操作方法",
+        "duration": 1799
+      },
+      {
+        "page": 66,
+        "part": "第一阶段-第六章-05-列表的常用操作课后练习讲解",
+        "duration": 343
+      },
+      {
+        "page": 67,
+        "part": "第一阶段-第六章-06-列表的循环遍历",
+        "duration": 866
+      },
+      {
+        "page": 68,
+        "part": "第一阶段-第六章-07-元组的定义和操作",
+        "duration": 1249
+      },
+      {
+        "page": 69,
+        "part": "第一阶段-第六章-08-字符串的定义和操作",
+        "duration": 1344
+      },
+      {
+        "page": 70,
+        "part": "第一阶段-第六章-09-字符串的课后练习讲解",
+        "duration": 218
+      },
+      {
+        "page": 73,
+        "part": "第一阶段-第六章-12-集合的定义和操作",
+        "duration": 1450
+      },
+      {
+        "page": 74,
+        "part": "第一阶段-第六章-13-集合的课后练习",
+        "duration": 171
+      },
+      {
+        "page": 75,
+        "part": "第一阶段-第六章-14-字典的定义",
+        "duration": 1408
+      },
+      {
+        "page": 76,
+        "part": "第一阶段-第六章-15-字典的常用操作",
+        "duration": 953
+      },
+      {
+        "page": 77,
+        "part": "第一阶段-第六章-16-字典课后练习讲解",
+        "duration": 553
+      },
+      {
+        "page": 78,
+        "part": "第一阶段-第六章-17-5类数据容器的总结对比",
+        "duration": 247
+      },
+      {
+        "page": 80,
+        "part": "第一阶段-第六章-19-拓展-字符串大小比较的方式",
+        "duration": 435
+      }
+    ]
+  },
+  "BV1owrpYKEtP": {
+    "title": "【官方中英】2025年公认最好的【吴恩达机器学习课程】附课件、代码及实战项目！！！--人工智能/机器学习/深度学习",
+    "owner": "吴恩达AI_AndrewNg",
+    "mid": 3493134768016008,
+    "totalParts": 146,
+    "hits": [
+      {
+        "page": 1,
+        "part": "1.欢迎来到机器学习（课程配套作业与习题见评论区）",
+        "duration": 401
+      },
+      {
+        "page": 2,
+        "part": "2.什么是机器学习（建议学习本课程一定要）",
+        "duration": 321
+      },
+      {
+        "page": 3,
+        "part": "3.监督学习部分（完成代码作业与课后习题）",
+        "duration": 841
+      },
+      {
+        "page": 4,
+        "part": "4.无监督学习部分",
+        "duration": 751
+      },
+      {
+        "page": 6,
+        "part": "6.线性回归模型",
+        "duration": 1001
+      },
+      {
+        "page": 10,
+        "part": "10.梯度下降",
+        "duration": 484
+      },
+      {
+        "page": 11,
+        "part": "11.实现梯度下降",
+        "duration": 600
+      },
+      {
+        "page": 12,
+        "part": "12.梯度下降直觉",
+        "duration": 422
+      },
+      {
+        "page": 14,
+        "part": "14.线性回归的梯度下降",
+        "duration": 397
+      },
+      {
+        "page": 15,
+        "part": "15.运行梯度下降",
+        "duration": 349
+      },
+      {
+        "page": 16,
+        "part": "16.多特征",
+        "duration": 592
+      },
+      {
+        "page": 19,
+        "part": "19.多重线性回归的梯度下降",
+        "duration": 466
+      },
+      {
+        "page": 20,
+        "part": "20.特征缩放（第一部分）",
+        "duration": 396
+      },
+      {
+        "page": 21,
+        "part": "21.特征缩放（第二部分）",
+        "duration": 455
+      },
+      {
+        "page": 22,
+        "part": "22.检查梯度下降是否收敛.",
+        "duration": 340
+      },
+      {
+        "page": 24,
+        "part": "24.特征工程",
+        "duration": 185
+      },
+      {
+        "page": 25,
+        "part": "25.多项式回归.",
+        "duration": 352
+      },
+      {
+        "page": 27,
+        "part": "27.逻辑回归",
+        "duration": 589
+      },
+      {
+        "page": 28,
+        "part": "28.决策边界",
+        "duration": 643
+      },
+      {
+        "page": 29,
+        "part": "29.逻辑回归的成本函数.",
+        "duration": 720
+      },
+      {
+        "page": 30,
+        "part": "30.简化后的逻辑回归成本函数",
+        "duration": 345
+      },
+      {
+        "page": 31,
+        "part": "31.梯度下降实现",
+        "duration": 392
+      },
+      {
+        "page": 32,
+        "part": "32.过拟合问题",
+        "duration": 713
+      },
+      {
+        "page": 33,
+        "part": "33.解决过拟合",
+        "duration": 496
+      },
+      {
+        "page": 34,
+        "part": "34.带正则化的成本函数",
+        "duration": 544
+      },
+      {
+        "page": 35,
+        "part": "35.正则化线性回归",
+        "duration": 533
+      },
+      {
+        "page": 36,
+        "part": "36.正则化逻辑回归",
+        "duration": 333
+      },
+      {
+        "page": 39,
+        "part": "39.神经元与大脑",
+        "duration": 653
+      },
+      {
+        "page": 42,
+        "part": "42.神经网络层",
+        "duration": 590
+      },
+      {
+        "page": 43,
+        "part": "43.更复杂的神经网络",
+        "duration": 490
+      },
+      {
+        "page": 47,
+        "part": "47.构建神经网络",
+        "duration": 502
+      },
+      {
+        "page": 51,
+        "part": "51.神经网络的高效实现方式",
+        "duration": 262
+      },
+      {
+        "page": 62,
+        "part": "62.带有Softmax输出的神经网络",
+        "duration": 445
+      },
+      {
+        "page": 64,
+        "part": "64.多输出分类（可选）",
+        "duration": 260
+      },
+      {
+        "page": 69,
+        "part": "69.更大的神经网络示例（可选）",
+        "duration": 593
+      },
+      {
+        "page": 71,
+        "part": "71.模型评估",
+        "duration": 625
+      },
+      {
+        "page": 72,
+        "part": "72.模型选择与训练、交叉验证、测试集",
+        "duration": 838
+      },
+      {
+        "page": 74,
+        "part": "74.正则化与偏差方差",
+        "duration": 628
+      },
+      {
+        "page": 78,
+        "part": "78.偏差、方差与神经网络.",
+        "duration": 645
+      },
+      {
+        "page": 79,
+        "part": "79.机器学习开发的迭代循环.",
+        "duration": 463
+      }
+    ]
+  },
+  "BV1qW411N7FU": {
+    "title": "【官方双语/合集】微积分的本质 - 系列合集",
+    "owner": "3Blue1Brown",
+    "mid": 88461692,
+    "totalParts": 11,
+    "hits": [
+      {
+        "page": 1,
+        "part": "01",
+        "duration": 1025
+      },
+      {
+        "page": 2,
+        "part": "02 - 导数的悖论",
+        "duration": 1118
+      },
+      {
+        "page": 3,
+        "part": "03 - 用几何来求导",
+        "duration": 1123
+      },
+      {
+        "page": 4,
+        "part": "04 - 直观理解链式法则和乘积法则",
+        "duration": 1012
+      },
+      {
+        "page": 5,
+        "part": "05 - 指数函数求导",
+        "duration": 830
+      },
+      {
+        "page": 6,
+        "part": "06 - 隐函数求导是怎么回事？",
+        "duration": 933
+      },
+      {
+        "page": 7,
+        "part": "07 - 极限",
+        "duration": 1106
+      },
+      {
+        "page": 8,
+        "part": "08 - 积分与微积分基本定理",
+        "duration": 1246
+      },
+      {
+        "page": 9,
+        "part": "09 - 面积和斜率有什么联系？",
+        "duration": 759
+      },
+      {
+        "page": 10,
+        "part": "09脚注 - 高阶导数",
+        "duration": 338
+      },
+      {
+        "page": 11,
+        "part": "10 - 泰勒级数",
+        "duration": 1339
+      }
+    ]
+  }
+}

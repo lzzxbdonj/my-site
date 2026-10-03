@@ -1,0 +1,140 @@
+{
+  "file": "C:\\Users\\Administrator\\Downloads\\1999-1.4(new).pptx",
+  "bytes": 276034338,
+  "entries": 892,
+  "slides": 53,
+  "layouts": 47,
+  "masters": 8,
+  "mediaCount": 185,
+  "mediaBytes": 239604149,
+  "themeColors": {
+    "folHlink": "#6F3B55",
+    "accent5": "#374F57",
+    "accent1": "#D1CCB5",
+    "lt1": "#FFFFFF",
+    "lt2": "#D1CCB5",
+    "dk1": "#5EABA9",
+    "accent3": "#50696D",
+    "accent2": "#F2EFE6",
+    "dk2": "#50696D",
+    "accent4": "#5EABA9",
+    "hlink": "#7030A0",
+    "accent6": "#2B2A2F"
+  },
+  "themeFonts": {
+    "major": {
+      "ea": "华文中宋",
+      "latin": "Times New Roman"
+    },
+    "minor": {
+      "ea": "华文中宋",
+      "latin": "Times New Roman"
+    }
+  },
+  "sizeEmu": {
+    "cx": 12192000,
+    "cy": 6858000
+  },
+  "topColors": [
+    {
+      "color": "#E9E4D5",
+      "count": 216
+    },
+    {
+      "color": "#D1CCB5",
+      "count": 130
+    },
+    {
+      "color": "#A29F7E",
+      "count": 96
+    },
+    {
+      "color": "#FFFFFF",
+      "count": 67
+    },
+    {
+      "color": "#828DAA",
+      "count": 48
+    },
+    {
+      "color": "#EDECE3",
+      "count": 38
+    },
+    {
+      "color": "#BAA780",
+      "count": 37
+    },
+    {
+      "color": "#F6F0EB",
+      "count": 37
+    },
+    {
+      "color": "#787B6A",
+      "count": 35
+    },
+    {
+      "color": "#ABA98D",
+      "count": 33
+    },
+    {
+      "color": "#37969B",
+      "count": 32
+    },
+    {
+      "color": "#6C6038",
+      "count": 32
+    }
+  ],
+  "topFonts": [
+    {
+      "font": "Cambria Math",
+      "count": 251
+    },
+    {
+      "font": "+mj-ea",
+      "count": 109
+    },
+    {
+      "font": "+mj-lt",
+      "count": 85
+    },
+    {
+      "font": "华文中宋",
+      "count": 72
+    },
+    {
+      "font": "Arial",
+      "count": 56
+    },
+    {
+      "font": "Calibri Light",
+      "count": 54
+    },
+    {
+      "font": "方正小标宋简体",
+      "count": 24
+    },
+    {
+      "font": "Book Antiqua",
+      "count": 23
+    },
+    {
+      "font": "Times New Roman",
+      "count": 16
+    },
+    {
+      "font": "Baskerville Old Face",
+      "count": 10
+    },
+    {
+      "font": "Wingdings",
+      "count": 8
+    },
+    {
+      "font": "Aptos",
+      "count": 6
+    }
+  ],
+  "slideXmlBytes": 7180537,
+  "totalSlideTextChars": 8223
+}

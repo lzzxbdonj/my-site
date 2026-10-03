@@ -1,0 +1,24 @@
+{
+  "name": "studymate-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "StudyMate-Web：受 Study-Mate 启发的中文优先学习网站（定制课程 + 精选视频 + 测验 + 进度）",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-reporter=tap tests/unit/*.test.mjs tests/integration/*.test.mjs",
+    "test:browser": "node --test --test-concurrency=4 --test-reporter=tap tests/browser/*.test.mjs",
+    "verify:videos": "node --use-system-ca tools/verify-videos.mjs",
+    "worker:dev": "wrangler dev worker/src/index.js --config worker/wrangler.toml",
+    "worker:dev:local": "wrangler dev --config worker/wrangler.toml --port 8787 --var ALLOWED_ORIGINS:http://localhost:4173,http://127.0.0.1:4173",
+    "worker:deploy": "wrangler deploy --config worker/wrangler.toml",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
+  }
+}

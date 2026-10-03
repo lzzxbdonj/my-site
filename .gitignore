@@ -1,0 +1,12 @@
+node_modules/
+dist/
+tests/.tmp/
+docs/evidence/*.local.json
+*.log
+.cache/
+**/.wrangler/
+worker/.dev.vars
+# 交付快照不进仓库（它是整个项目的一份拷贝）
+*.zip
+*.tgz
+
