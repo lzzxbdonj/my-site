@@ -21,6 +21,7 @@ import { validateGeneratedCourse, validateCourseOutline, validateConceptContent,
 import { RateLimiter } from './ratelimit.js';
 import { AccountLedger } from './ledger.js';
 import { SERVER_VIDEOS, SERVER_CATALOG_VERSION, selectServerVideos, searchServerVideos, knownVideoIds } from './catalog.js';
+import { searchVideosOnline } from './video-search.js';
 import { normalizeTemplateId, getTemplate } from '../../src/data/course-templates.js';
 import {
   buildAuthorizeUrl,
@@ -577,11 +578,23 @@ async function handleLesson({ raw, config, cors, reservation, env, visitorHash =
   });
   content.videoIds = found.videos.map((video) => video.id);
 
+  // 联网搜索 + 逐个核实：只在开关打开时启用（前端还没支持渲染联网视频，见 config.js 注释）。
+  // 无论成功与否都不影响建课：失败就保持本地目录的结果。
+  let online = null;
+  if (config.videoSearchOnline) {
+    online = await searchVideosOnline({ keywords, limit: 3 }).catch(() => null);
+    if (online && online.videos.length > 0) {
+      content.videoIds = online.videos.map((video) => video.id);
+    }
+  }
+
   return {
     outcome: 'success',
     response: json({
       ok: true,
       concept: content,
+      // 联网核实过的视频元数据（含观看链接）单独回传：前端支持渲染后可直接使用
+      videos: online && online.videos.length > 0 ? online.videos : [],
       meta: {
         stage: 'lesson',
         conceptId: concept.id,
@@ -590,6 +603,8 @@ async function handleLesson({ raw, config, cors, reservation, env, visitorHash =
         templateLabel: getTemplate(input.templateId)?.label || '',
         stagedCalls: plannedSections.length + 2,
         videoSearchKeywords: keywords,
+        videoSource: online && online.videos.length > 0 ? 'online-search' : 'local-catalog',
+        videoSearchStats: online ? { searched: online.searched, verified: online.verified } : null,
         videoSearchMatched: found.matched,
         warnings,
         matchedVideoIds: content.videoIds,

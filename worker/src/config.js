@@ -123,6 +123,11 @@ export function loadConfig(env = {}) {
     creditsError,
     creditsPerOutline: positiveInt(env.CREDITS_PER_OUTLINE, 1),
     creditsPerLesson: positiveInt(env.CREDITS_PER_LESSON, 1),
+    // 联网搜索视频（服务端搜索 + 逐个核实）。
+    // ⚠️ 默认关闭：前端目前只渲染「本地已核实目录」里的视频 id，
+    //    直接打开会让前端把不认识的 id 丢掉，课程反而变得没有视频。
+    //    等前端支持渲染联网视频后再打开这个开关。
+    videoSearchOnline: String(env.VIDEO_SEARCH_ONLINE || '').toLowerCase() === 'true',
   };
 
   if (missing.length > 0 || invalid.length > 0) {
