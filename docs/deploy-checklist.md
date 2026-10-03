@@ -3,6 +3,52 @@
 > 这份清单是**照做就行**的操作步骤。把 `<用户名>`、`<仓库名>` 替换成你自己的值。
 > 顺序不能颠倒：GitHub 登录的回调地址必须和 Worker 地址完全一致，所以**先部署 Worker，再建 OAuth App**。
 
+## 免费绕开 `workers.dev` 封锁：Pages 反向代理
+
+**问题**：`workers.dev` 在部分网络被 DNS 污染 + 连接重置（实测：用户家庭宽带与手机流量均不通）。
+
+**关键事实**：Cloudflare 的**边缘自己**访问 `workers.dev` 是通的；被封的只是「用户 → workers.dev」这段路径。而 `pages.dev` 实测可用。
+
+**做法**：让浏览器只连 `pages.dev`，由 Pages Function（[`functions/api/[[path]].js`](../functions/api/[[path]].js)）在边缘内部转发到现有的 Worker。**上游 Worker 不需要任何改动。**
+
+```
+浏览器 ──(pages.dev，可访问)──> Pages Function ──(Cloudflare 内部)──> Workers（原有代码）
+                                       └─ 回程把 CORS 改写成真实请求方
+```
+
+### 在网页后台连接（CLI 在此网络下不可用，必须用后台）
+
+1. 打开 https://dash.cloudflare.com/ → 左侧 **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
+2. 授权 Cloudflare 的 GitHub App，选择仓库 `my-site`
+3. 填写（**项目名必须是 `ai-zixuetong`**，否则 `pages.dev` 地址会变，代理里的来源白名单也要跟着改）：
+
+   | 字段 | 值 |
+   | --- | --- |
+   | Project name | `ai-zixuetong` |
+   | Production branch | `main` |
+   | Build command | `npm run build` |
+   | Build output directory | `dist` |
+
+4. **Save and Deploy**
+
+完成后会得到两个地址：
+
+- 站点：**https://ai-zixuetong.pages.dev/**（`dist` 的静态前端，与 GitHub Pages 内容相同）
+- API 代理：**https://ai-zixuetong.pages.dev/api/***（转发到原 Worker）
+
+之后每次 push 到 `main`，Cloudflare 会自动重新构建部署——不需要本机 CLI。
+
+### 使用方式
+
+在网站 **设置 → AI 通道** 里把地址填成 `https://ai-zixuetong.pages.dev` 即可。
+如果直接用 `https://ai-zixuetong.pages.dev/` 打开站点，前后端同源，连 CORS 都不需要。
+
+### 已知限制（如实记录）
+
+- **访客级限额可能退化为共享计数**：经过代理后，Worker 看到的 `CF-Connecting-IP` 是否仍为终端用户 IP 取决于 Cloudflare 行为，本网络下无法实测确认。**全站每日限额（200 次/天）始终有效**。要彻底解决，需要在 Worker 侧加「可信代理签名」校验——那需要重新部署 Worker。
+- Pages 项目创建与部署**必须走网页后台**：本机到 `api.cloudflare.com` 的连接被劫持（POST 返回 302、证书被替换），CLI 会 `fetch failed`。
+- 这是绕过网络封锁，不是修复网络：`workers.dev` 本身在该地区依旧不可用。
+
 ## 实际部署结果（已发生的事实）
 
 | 项目 | 实际值 | 状态 |
